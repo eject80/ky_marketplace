@@ -18,6 +18,31 @@ metadata:
 gws gmail <resource> <method> [flags]
 ```
 
+## 중요 규칙
+
+### userId는 항상 명시할 것
+
+raw API 명령에서 `userId` 경로 파라미터는 스키마상 기본값(`me`)이 있더라도
+CLI가 자동으로 채워주지 않는다. **항상 `--params`에 `"userId":"me"`를 포함시켜야 한다.**
+
+```bash
+# ❌ 실패 — userId 누락
+gws gmail users getProfile --format json
+# Error: Required path parameter userId is missing. Provide it via --params
+
+# ✅ 성공 — userId 명시
+gws gmail users getProfile --params '{"userId":"me"}' --format json
+```
+
+이 규칙은 아래 모든 raw API 메서드에 적용된다:
+- `users getProfile`
+- `users messages list`
+- `users messages get`
+- `users messages send`
+- `users threads list`
+- `users labels list`
+- 기타 `users` 하위 리소스 전체
+
 ## Helper Commands
 
 | Command | Description |
