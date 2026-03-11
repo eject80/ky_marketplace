@@ -1,0 +1,11 @@
+{
+  "name": "gws-skills",
+  "version": "1.0.1",
+  "description": "Google Workspace CLI (gws) skills for Claude Code — covers Gmail, Calendar, Drive, Sheets, Chat, Meet, and more, plus recipes, personas, and Model Armor helpers.",
+  "author": {
+    "name": "gws-skills contributors",
+    "email": "fasteject@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "keywords": ["google-workspace", "gws", "gmail", "calendar", "drive", "sheets", "productivity"]
+}

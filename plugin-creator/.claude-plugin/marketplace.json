@@ -1,0 +1,15 @@
+{
+  "name": "plugin-creator",
+  "owner": {
+    "name": "fasteject",
+    "email": "fasteject@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "plugin-creator",
+      "source": "./",
+      "description": "Scaffolds new Claude Code plugins with correct structure, validation, and marketplace integration",
+      "version": "2.1.0"
+    }
+  ]
+}

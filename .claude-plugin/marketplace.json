@@ -1,0 +1,30 @@
+{
+  "name": "local-marketplace",
+  "description": "Local plugin marketplace for fasteject's Claude Code plugins",
+  "owner": {
+    "name": "fasteject",
+    "email": "fasteject@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "gws-skills",
+      "description": "Google Workspace CLI (gws) skills for Claude Code — Gmail, Calendar, Drive, Sheets, Chat, Meet, and more",
+      "version": "1.0.1",
+      "source": "./gws-skills",
+      "author": {
+        "name": "fasteject",
+        "email": "fasteject@gmail.com"
+      }
+    },
+    {
+      "name": "plugin-creator",
+      "description": "Scaffolds new Claude Code plugins with correct structure, validation, and marketplace integration",
+      "version": "2.1.0",
+      "source": "./plugin-creator",
+      "author": {
+        "name": "fasteject",
+        "email": "fasteject@gmail.com"
+      }
+    }
+  ]
+}
