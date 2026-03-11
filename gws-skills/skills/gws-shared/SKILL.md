@@ -51,6 +51,39 @@ gws <service> <resource> [sub-resource] <method> [flags]
 | `--page-limit <N>` | Max pages when using --page-all (default: 10) |
 | `--page-delay <MS>` | Delay between pages in ms (default: 100) |
 
+## Platform Notes
+
+### Windows PowerShell — 알려진 제한사항
+
+> [!WARNING]
+> **Windows PowerShell에서 raw `--params` / `--json` 호출은 현재 gws CLI와 호환되지 않는다.**
+>
+> 이스케이프(`\"`), 히어-스트링(`@' '@`), `--%` stop-parsing, 백틱, `cmd /c` 우회 등
+> 모든 방법이 동일한 JSON 파싱 오류를 반환한다.
+
+**Windows에서 권장하는 대안:**
+
+1. **helper command 사용** (가장 빠름)
+   ```powershell
+   gws gmail +triage --max 5
+   gws calendar +agenda
+   ```
+   helper command는 `--params`가 필요 없어서 PowerShell에서도 정상 동작한다.
+
+2. **Git Bash 또는 WSL 사용** (raw API가 꼭 필요할 때)
+   ```bash
+   # Git Bash / WSL bash 안에서
+   gws gmail users messages list --params '{"userId":"me","maxResults":5}'
+   ```
+
+### bash / zsh (Linux · macOS · Git Bash · WSL)
+
+```bash
+gws gmail users getProfile --params '{"userId":"me"}'
+```
+
+작은따옴표로 감싸면 이스케이프 없이 전달된다.
+
 ## Security Rules
 
 - **Never** output secrets (API keys, tokens) directly
