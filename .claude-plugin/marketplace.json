@@ -9,7 +9,7 @@
     {
       "name": "gws-skills",
       "description": "Google Workspace CLI (gws) skills for Claude Code — Gmail, Calendar, Drive, Sheets, Chat, Meet, and more",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "source": "./gws-skills",
       "author": {
         "name": "fasteject",
