@@ -26,12 +26,12 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
 │
 ├── gws-skills/                    ← 플러그인 1
 │   ├── .claude-plugin/
-│   │   ├── plugin.json
+│   │   └── plugin.json
 │   └── skills/[name]/SKILL.md
 │
 ├── plugin-creator/                ← 플러그인 2
 │   ├── .claude-plugin/
-│   │   ├── plugin.json
+│   │   └── plugin.json
 │   └── skills/plugin-creator/SKILL.md
 │
 └── README.md
@@ -172,8 +172,8 @@ local_plugin_marketplace/
 ### 플러그인 내용 수정 후 업데이트
 
 1. 소스 파일 수정
-2. 해당 플러그인의 `plugin.json`과 `marketplace.json` 양쪽 `version` 증가 (예: `1.0.0` → `1.0.1`)
-3. 루트 `marketplace.json`의 해당 플러그인 `version`도 동일하게 업데이트
+2. 해당 플러그인의 `plugin.json` `version` 증가 (예: `1.0.0` → `1.0.1`)
+3. 루트 `.claude-plugin/marketplace.json`에서 **그 플러그인 항목의** `version`을 같은 값으로 업데이트 (다른 플러그인 버전은 건드리지 않음)
 4. Claude Code에서:
 
 ```
@@ -208,7 +208,7 @@ claude --plugin-dir ./[plugin-name]
 ### `plugin.json`
 
 - `name` 이 유일한 필수 필드
-- `version`은 `marketplace.json`의 `plugins[].version`과 항상 동일해야 함
+- 각 플러그인의 버전은 독립적이며, 루트 `marketplace.json`의 **해당 플러그인 항목** `version`과 일치해야 함
 - `repository` 필드는 실제 공개 저장소가 있을 때만 포함 (없으면 반드시 제거)
 
 ```json
