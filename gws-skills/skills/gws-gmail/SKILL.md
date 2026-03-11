@@ -43,13 +43,47 @@ gws gmail users getProfile --params '{"userId":"me"}' --format json
 - `users labels list`
 - 기타 `users` 하위 리소스 전체
 
-## Helper Commands
+## 명령어 유형 선택 가이드
+
+### Helper Commands — 모든 플랫폼에서 바로 사용 가능
+
+복잡한 플래그가 필요 없고, Windows PowerShell 포함 모든 환경에서 정상 동작한다.
+**가능하면 helper command를 먼저 사용한다.**
 
 | Command | Description |
 |---------|-------------|
-| [`+send`](../gws-gmail-send/SKILL.md) | Send an email |
-| [`+triage`](../gws-gmail-triage/SKILL.md) | Show unread inbox summary (sender, subject, date) |
-| [`+watch`](../gws-gmail-watch/SKILL.md) | Watch for new emails and stream them as NDJSON |
+| [`+send`](../gws-gmail-send/SKILL.md) | 이메일 보내기 |
+| [`+triage`](../gws-gmail-triage/SKILL.md) | 수신함 요약 (발신자, 제목, 날짜) |
+| `+reply` | 메시지에 답장 (스레딩 자동 처리) |
+| `+reply-all` | 전체 답장 |
+| `+forward` | 메시지 전달 |
+| [`+watch`](../gws-gmail-watch/SKILL.md) | 새 메일 스트리밍 (NDJSON) |
+
+```bash
+# Windows PowerShell / bash / zsh 모두 동작
+gws gmail +triage --max 5
+gws gmail +triage --query 'from:boss' --format json
+gws gmail +reply --message-id MESSAGE_ID --body 'Thanks!'
+gws gmail +forward --message-id MESSAGE_ID --to someone@example.com
+```
+
+### Raw API Commands — bash / zsh 전용
+
+`gws schema`로 파라미터를 확인하고 `--params`를 명시적으로 구성한다.
+helper command로 불가능한 세밀한 제어가 필요할 때 사용한다.
+
+> [!WARNING]
+> **Windows PowerShell에서는 raw API `--params` 호출이 동작하지 않는다.**
+> Git Bash 또는 WSL을 사용하거나, helper command로 대체한다.
+> 자세한 내용은 `gws-shared` → **Platform Notes** 참조.
+
+```bash
+# 1단계: schema 확인 (모든 플랫폼 가능)
+gws schema gmail.users.messages.list
+
+# 2단계: bash/zsh에서 호출 (userId는 반드시 명시)
+gws gmail users messages list --params '{"userId":"me","maxResults":5}'
+```
 
 ## API Resources
 
