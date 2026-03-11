@@ -53,26 +53,33 @@ gws <service> <resource> [sub-resource] <method> [flags]
 
 ## Platform Notes
 
-### Windows PowerShell — 알려진 제한사항
+### Windows PowerShell
 
-> [!WARNING]
-> **Windows PowerShell에서 raw `--params` / `--json` 호출은 현재 gws CLI와 호환되지 않는다.**
->
-> 이스케이프(`\"`), 히어-스트링(`@' '@`), `--%` stop-parsing, 백틱, `cmd /c` 우회 등
-> 모든 방법이 동일한 JSON 파싱 오류를 반환한다.
+> [!NOTE]
+> **Windows PowerShell에서 `--params` / `--json`은 직접 리터럴 방식으로 전달하면 동작한다.**
 
-**Windows에서 권장하는 대안:**
+```powershell
+# 직접 이스케이프 리터럴 방식 (가장 안정적으로 검증됨)
+gws gmail users messages list --params '{\"userId\":\"me\",\"maxResults\":5}'
+```
 
-1. **helper command 사용** (가장 빠름)
+히어-스트링(`@' '@`)이나 PowerShell 객체 직렬화보다 위의 직접 리터럴 방식이 테스트 시 더 안정적이다.
+
+**Windows에서 추천하는 방식 (선호도 순):**
+
+1. **helper command 사용** (가장 쉬움, JSON 이스케이프 불필요)
    ```powershell
    gws gmail +triage --max 5
    gws calendar +agenda
    ```
-   helper command는 `--params`가 필요 없어서 PowerShell에서도 정상 동작한다.
 
-2. **Git Bash 또는 WSL 사용** (raw API가 꼭 필요할 때)
+2. **직접 리터럴 방식** (raw API가 필요할 때)
+   ```powershell
+   gws ... --params '{\"key\":\"value\"}'
+   ```
+
+3. **Git Bash 또는 WSL 사용** (작은따옴표 사용 가능)
    ```bash
-   # Git Bash / WSL bash 안에서
    gws gmail users messages list --params '{"userId":"me","maxResults":5}'
    ```
 

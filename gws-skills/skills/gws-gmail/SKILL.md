@@ -67,23 +67,23 @@ gws gmail +reply --message-id MESSAGE_ID --body 'Thanks!'
 gws gmail +forward --message-id MESSAGE_ID --to someone@example.com
 ```
 
-### Raw API Commands — bash / zsh 전용
+### Raw API Commands
 
 `gws schema`로 파라미터를 확인하고 `--params`를 명시적으로 구성한다.
 helper command로 불가능한 세밀한 제어가 필요할 때 사용한다.
-
-> [!WARNING]
-> **Windows PowerShell에서는 raw API `--params` 호출이 동작하지 않는다.**
-> Git Bash 또는 WSL을 사용하거나, helper command로 대체한다.
-> 자세한 내용은 `gws-shared` → **Platform Notes** 참조.
 
 ```bash
 # 1단계: schema 확인 (모든 플랫폼 가능)
 gws schema gmail.users.messages.list
 
-# 2단계: bash/zsh에서 호출 (userId는 반드시 명시)
+# 2단계: 호출 (userId는 반드시 명시)
+# bash/zsh
 gws gmail users messages list --params '{"userId":"me","maxResults":5}'
+# Windows PowerShell — 직접 리터럴 방식
+gws gmail users messages list --params '{\"userId\":\"me\",\"maxResults\":5}'
 ```
+
+> 자세한 플랫폼별 차이는 `gws-shared` → **Platform Notes** 참조.
 
 ## API Resources
 
@@ -113,10 +113,9 @@ gws schema gmail.<resource>.<method>
 
 Use `gws schema` output to build your `--params` and `--json` flags.
 
-## Raw API 예시 (bash/zsh)
+## Raw API 예시
 
-> **Windows PowerShell 사용자:** 아래 예시는 bash/zsh 전용이다.
-> PowerShell에서는 helper command(`+triage`, `+send` 등)를 사용한다.
+> **플랫폼 참고:** bash/zsh는 작은따옴표 그대로 사용. Windows PowerShell은 `'{\"...\"}'` 직접 리터럴 방식으로 대체한다.
 
 ### messages.list — 최근 메일 목록
 
