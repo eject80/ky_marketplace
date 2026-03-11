@@ -177,7 +177,7 @@ Scaffolds production-ready Claude Code plugins with complete directory structure
 }
 ```
 
-> ⚠️ `plugins[].version`은 해당 플러그인 `plugin.json`의 `version`과 항상 동일하게 유지한다.
+> ⚠️ 각 플러그인의 버전은 독립적이다. `plugins[].version`은 해당 플러그인 `plugin.json`의 `version`과 일치시킨다. 다른 플러그인의 버전은 건드리지 않는다.
 
 ---
 
@@ -464,7 +464,7 @@ claude plugin install plugin-name@marketplace-name --scope user
 - ✅ `.claude-plugin/plugin.json` 존재하고 JSON 문법 유효
 - ✅ `.claude-plugin/plugin.json` `name` 필드 존재 (유일한 필수 필드)
 - ✅ `marketplace.json` JSON 문법 유효
-- ✅ `marketplace.json` `plugins[].version`이 해당 `plugin.json`의 `version`과 동일
+- ✅ `marketplace.json`에서 해당 플러그인 항목의 `version`이 그 `plugin.json`의 `version`과 일치 (플러그인마다 독립적으로 관리)
 - ✅ `marketplace.json` `plugins[].source`: 단독 배포 시 `"./"`, 묶음 배포 시 `"./plugin-name"`
 - ✅ `plugin.json`에 `repository` 미포함 (공개 저장소 없을 때)
 - ✅ Skills는 `skills/[name]/SKILL.md` flat 구조 (중첩 금지)
@@ -554,8 +554,8 @@ claude plugin install plugin-name@marketplace-name --scope user
 1. ❌ `marketplace.json`에 절대 경로 사용 (`source: "/absolute/path"`)
    → 다른 컴퓨터에서 작동 안 함. 단독 배포는 `"./"`, 묶음 배포는 `"./plugin-name"` 사용.
 
-2. ❌ `plugin.json`과 `marketplace.json`의 `version` 불일치
-   → 업데이트 시 두 파일 동시에 올려야 함.
+2. ❌ `plugin.json`과 `marketplace.json` 해당 플러그인 항목의 `version` 불일치
+   → 수정한 플러그인의 `plugin.json`과 `marketplace.json` 해당 항목을 같은 값으로 맞춘다. 다른 플러그인 버전은 건드리지 않는다.
 
 3. ❌ Skills를 `skills/category/skill-name/SKILL.md` 처럼 중첩
    → `skills/skill-name/SKILL.md` flat 구조만 인식.
