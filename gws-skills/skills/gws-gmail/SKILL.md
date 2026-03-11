@@ -113,3 +113,42 @@ gws schema gmail.<resource>.<method>
 
 Use `gws schema` output to build your `--params` and `--json` flags.
 
+## Raw API 예시 (bash/zsh)
+
+> **Windows PowerShell 사용자:** 아래 예시는 bash/zsh 전용이다.
+> PowerShell에서는 helper command(`+triage`, `+send` 등)를 사용한다.
+
+### messages.list — 최근 메일 목록
+
+```bash
+gws gmail users messages list \
+  --params '{"userId":"me","maxResults":5,"q":"is:unread"}'
+```
+
+응답에는 `id`와 `threadId`만 포함된다. 본문은 `messages.get`으로 개별 조회한다.
+
+### messages.get — 메일 상세 조회
+
+```bash
+# format=full: 전체 페이로드 (기본값)
+gws gmail users messages get \
+  --params '{"userId":"me","id":"MESSAGE_ID","format":"full"}'
+
+# format=metadata: 전체 헤더 조회 (권장)
+gws gmail users messages get \
+  --params '{"userId":"me","id":"MESSAGE_ID","format":"metadata"}'
+```
+
+> **metadataHeaders 알려진 제한사항:** `metadataHeaders` 파라미터로 헤더를 필터링하는 기능은
+> 현재 gws CLI에서 동작하지 않는다. JSON 배열(`["From","Subject"]`)과 쉼표 문자열
+> (`"From,Subject"`) 모두 `payload.headers` 필드 자체가 응답에서 사라지는 결과가 나온다.
+>
+> **대안:** `format=metadata` 단독 사용으로 전체 헤더를 받은 뒤, 필요한 헤더를 클라이언트
+> 측에서 필터링한다.
+
+### getProfile — 내 계정 정보
+
+```bash
+gws gmail users getProfile --params '{"userId":"me"}' --format json
+```
+
