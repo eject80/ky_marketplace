@@ -25,6 +25,16 @@
         "name": "fasteject",
         "email": "fasteject@gmail.com"
       }
+    },
+    {
+      "name": "WebPPT-creator",
+      "description": "순수 HTML/CSS/JavaScript만으로 동작하는 웹 기반 슬라이드 프레젠테이션 생성 스킬. 번들러 불필요, 단일 파일 실행.",
+      "version": "1.0.1",
+      "source": "./WebPPT-creator",
+      "author": {
+        "name": "fasteject",
+        "email": "fasteject@gmail.com"
+      }
     }
   ]
 }

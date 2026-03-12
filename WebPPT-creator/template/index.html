@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  WebPPT 템플릿                                               ║
+  ║                                                              ║
+  ║  사용법:                                                     ║
+  ║  1. <title>과 lang 속성을 수정하세요.                        ║
+  ║  2. 필요한 슬라이드 유형을 복사해서 내 내용으로 교체하세요.  ║
+  ║  3. presentation.css와 presentation.js는 수정하지 마세요.    ║
+  ║                                                              ║
+  ║  전환 효과: data-transition="fade | slide | zoom"            ║
+  ║  슬라이드 추가 시 data-slide-index와 id="slide-N" 순서 유지  ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <!-- ★ 프레젠테이션 제목 수정 -->
+  <title>내 프레젠테이션</title>
+
+  <!-- 엔진 스타일 (수정하지 마세요) -->
+  <link rel="stylesheet" href="presentation.css">
+
+  <!--
+    ★ 선택: CSS 변수로 색상/테마를 커스터마이즈할 수 있습니다.
+       아래 주석을 해제하고 원하는 값으로 변경하세요.
+  -->
+  <!--
+  <style>
+    :root {
+      --slide-bg:    linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+      --slide-color: #f0f0f0;
+      --primary:     #60a5fa;
+      --accent:      #fb923c;
+    }
+    [data-theme="light"] {
+      --slide-bg:    #f4f6f9;
+      --slide-color: #1a1a1a;
+      --primary:     #0057b7;
+    }
+  </style>
+  -->
+</head>
+<body>
+
+<!-- ───── 고정 UI (수정하지 마세요) ───── -->
+<div class="progress-bar-track" aria-hidden="true">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+<div class="slide-counter" aria-hidden="true">
+  <span id="current-num">1</span> / <span id="total-num"></span>
+</div>
+<button class="theme-toggle" id="theme-toggle" aria-label="다크/라이트 모드 전환 (D)">🌙</button>
+<div class="sr-only" aria-live="polite" aria-atomic="true" id="slide-status"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     프레젠테이션
+     ★ 슬라이드 섹션을 추가/삭제/수정하여 내 PPT를 만드세요.
+     ═══════════════════════════════════════════════════════════ -->
+<main class="presentation" role="region" aria-label="프레젠테이션" id="presentation">
+
+
+  <!-- ══════════════════════════════════════════
+       유형 01: 타이틀 슬라이드
+       첫 번째 슬라이드. 제목·부제목·태그 배치.
+       class="slide slide--title" 사용.
+       ══════════════════════════════════════════ -->
+  <section class="slide slide--title" id="slide-1"
+           data-slide-index="0" data-transition="fade"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <!-- ★ 제목 — <span class="hl">단어</span>로 핵심 단어 강조 -->
+      <h1>프레젠테이션 <span class="hl">제목</span></h1>
+      <div class="divider"></div>
+      <!-- ★ 부제목 -->
+      <p class="subtitle">부제목 또는 발표자 이름 · 날짜</p>
+      <!-- ★ 태그 뱃지 (삭제 가능) -->
+      <div class="slide__tags">
+        <span class="tag">태그 1</span>
+        <span class="tag">태그 2</span>
+        <span class="tag">태그 3</span>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>인사 및 자기소개</li>
+        <li>N 키로 노트 토글 / ? 키로 단축키 전체 보기</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 02: 목차 (Agenda)
+       발표 순서를 번호 목록으로 나열.
+       현재 진행 항목에 class="active" 추가.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-2"
+           data-slide-index="1" data-transition="fade"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <h2>목차 <span class="hl">Agenda</span></h2>
+      <!-- ★ 항목 추가/삭제, 현재 섹션에 class="active" -->
+      <ul class="agenda-list">
+        <li class="agenda-item active">
+          <span class="agenda-num">01</span>
+          현재 진행 중인 섹션 제목
+        </li>
+        <li class="agenda-item">
+          <span class="agenda-num">02</span>
+          두 번째 섹션 제목
+        </li>
+        <li class="agenda-item">
+          <span class="agenda-num">03</span>
+          세 번째 섹션 제목
+        </li>
+        <li class="agenda-item">
+          <span class="agenda-num">04</span>
+          네 번째 섹션 제목
+        </li>
+      </ul>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>발표 전 전체 흐름을 청중에게 안내합니다.</li>
+        <li>현재 섹션 항목에 class="active"를 추가하면 강조됩니다.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 03: 섹션 구분 슬라이드
+       챕터/파트 사이 전환. 간결하게 섹션 번호+제목만.
+       class="slide slide--section" 사용.
+       ══════════════════════════════════════════ -->
+  <section class="slide slide--section" id="slide-3"
+           data-slide-index="2" data-transition="fade"
+           role="group" aria-roledescription="슬라이드">
+    <!-- 우측 반투명 큰 숫자 (장식) -->
+    <span class="section-bg-num" aria-hidden="true">01</span>
+    <div class="slide__content">
+      <!-- ★ 상단 라벨 -->
+      <p class="section-eyebrow">Part 01</p>
+      <!-- ★ 섹션 제목 -->
+      <h2><span class="hl">섹션</span> 제목</h2>
+      <p class="subtitle">이 파트에서 다룰 내용을 한 줄로 요약합니다.</p>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>새로운 섹션 시작 알림. 잠깐 멈추고 청중의 집중을 유도하세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 04: 불릿 리스트 (Step 순차 표시)
+       data-step="N" 순서대로 자동 재생.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-4"
+           data-slide-index="3" data-transition="slide"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content text-left">
+      <h2><span class="hl">핵심</span> 내용 제목</h2>
+      <!-- ★ 항목 추가/삭제 시 data-step 번호를 순서대로 맞추세요 -->
+      <ul>
+        <li class="step" data-step="1">
+          <strong>첫 번째 포인트:</strong> <span class="hl">핵심 단어</span>와 설명을 작성하세요.
+        </li>
+        <li class="step" data-step="2">
+          <strong>두 번째 포인트:</strong> 설명 텍스트를 작성하세요.
+        </li>
+        <li class="step" data-step="3">
+          <strong>세 번째 포인트:</strong> 설명 텍스트를 작성하세요.
+        </li>
+        <li class="step" data-step="4">
+          <strong>네 번째 포인트:</strong> 설명 텍스트를 작성하세요.
+        </li>
+      </ul>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>슬라이드 진입 시 항목이 350ms 간격으로 자동 표시됩니다.</li>
+        <li>이전 슬라이드로 돌아오면 모든 항목이 즉시 표시됩니다.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 05: 코드 블록
+       .code-block + .tk-* 클래스로 구문 강조.
+       외부 라이브러리 없이 CSS만으로 동작.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-5"
+           data-slide-index="4" data-transition="slide"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content text-left">
+      <h2><span class="hl">코드</span> 예시</h2>
+      <!-- ★ .step으로 감싸면 슬라이드 진입 시 자동 표시 -->
+      <div class="step" data-step="1">
+        <!-- ★ <code> 태그 안에 코드를 작성하세요 -->
+        <pre class="code-block"><code><span class="tk-cmt">// ★ 여기에 코드를 작성하세요</span>
+<span class="tk-kw">function</span> <span class="tk-fn">hello</span>(<span class="tk-prop">name</span>) {
+  <span class="tk-kw">return</span> <span class="tk-str">`Hello, ${name}!`</span>;
+}
+
+<span class="tk-fn">hello</span>(<span class="tk-str">'World'</span>); <span class="tk-cmt">// → "Hello, World!"</span></code></pre>
+      </div>
+      <!-- ★ 코드 설명 텍스트 (선택) -->
+      <p class="step slide__caption" data-step="2">
+        코드에 대한 <span class="hl">설명</span>을 여기에 작성하세요.
+      </p>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>구문 강조 클래스: tk-kw(키워드) / tk-fn(함수) / tk-str(문자열) / tk-num(숫자) / tk-cmt(주석) / tk-prop(속성)</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 06: 카드 그리드
+       여러 항목을 동등하게 나열할 때.
+       열 수: card-grid.col-3, card-grid.col-4 클래스 추가 가능.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-6"
+           data-slide-index="5" data-transition="zoom"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <h2>카드 <span class="hl">그리드</span></h2>
+      <!-- ★ 2열 그리드. 3열은 class="card-grid col-3" -->
+      <div class="card-grid">
+        <div class="card step" data-step="1">
+          <strong class="hl">카드 제목 1</strong>
+          <ul>
+            <li>항목 A</li>
+            <li>항목 B</li>
+          </ul>
+        </div>
+        <div class="card step" data-step="2">
+          <strong class="hl">카드 제목 2</strong>
+          <ul>
+            <li>항목 A</li>
+            <li>항목 B</li>
+          </ul>
+        </div>
+        <div class="card step" data-step="3">
+          <strong class="hl">카드 제목 3</strong>
+          <ul>
+            <li>항목 A</li>
+            <li>항목 B</li>
+          </ul>
+        </div>
+        <div class="card step" data-step="4">
+          <strong class="hl">카드 제목 4</strong>
+          <ul>
+            <li>항목 A</li>
+            <li>항목 B</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>카드가 순서대로 등장합니다.</li>
+        <li>카드 추가 시 data-step 번호를 이어서 매겨주세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 07: 두 컬럼 텍스트
+       좌/우 영역에 서로 다른 내용을 배치.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-7"
+           data-slide-index="6" data-transition="slide"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content text-left">
+      <h2>두 <span class="hl">컬럼</span> 레이아웃</h2>
+      <div class="two-col">
+        <!-- ★ 왼쪽 컬럼 -->
+        <div>
+          <p class="two-col-header">왼쪽 제목</p>
+          <ul>
+            <li>항목 A — 설명 텍스트</li>
+            <li>항목 B — 설명 텍스트</li>
+            <li>항목 C — 설명 텍스트</li>
+          </ul>
+        </div>
+        <!-- ★ 오른쪽 컬럼 -->
+        <div>
+          <p class="two-col-header">오른쪽 제목</p>
+          <ul>
+            <li>항목 D — 설명 텍스트</li>
+            <li>항목 E — 설명 텍스트</li>
+            <li>항목 F — 설명 텍스트</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>관련 있는 두 그룹을 나란히 보여줄 때 사용합니다.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 08: 이미지 + 텍스트
+       이미지와 설명 텍스트를 좌우로 배치.
+       이미지를 오른쪽에 두려면: class="img-text-grid img-right"
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-8"
+           data-slide-index="7" data-transition="slide"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <div class="img-text-grid">
+        <!-- ★ 이미지 영역
+             실제 이미지: <img-placeholder> 대신 <img src="..." alt="...">로 교체
+             또는 background-image를 사용하세요 -->
+        <div class="img-placeholder">
+          <span class="img-icon">🖼️</span>
+          <span>이미지를 여기에 배치하세요</span>
+        </div>
+        <!-- ★ 텍스트 영역 -->
+        <div class="text-left">
+          <h2><span class="hl">이미지</span> + 텍스트</h2>
+          <p>이미지 왼쪽에 설명 텍스트를 배치합니다.<br>
+             <code>class="img-text-grid img-right"</code>로 이미지를 오른쪽으로 이동할 수 있습니다.</p>
+          <ul>
+            <li>포인트 1</li>
+            <li>포인트 2</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>이미지는 직접 파일을 제공해야 합니다 (img 태그 또는 background-image).</li>
+        <li>img-right 클래스로 이미지 위치를 오른쪽으로 바꿀 수 있습니다.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 09: 전체 화면 배경 이미지
+       이미지가 슬라이드 전체를 덮고 텍스트를 위에 표시.
+       class="slide slide--fullbg" 사용.
+       실제 이미지: style="background-image: url('이미지.jpg')" 추가.
+       ══════════════════════════════════════════ -->
+  <!-- ★ 실제 이미지 사용 시: style="background-image: url('이미지.jpg')" 추가 -->
+  <section class="slide slide--fullbg slide--fullbg-demo" id="slide-9"
+           data-slide-index="8" data-transition="fade"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <!-- ★ 배경 위 텍스트. 짧고 임팩트 있게 작성하세요 -->
+      <h1>배경 이미지 위의 <span class="hl">제목</span></h1>
+      <p class="subtitle">간결한 한 줄 설명</p>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>section 태그에 style="background-image: url('이미지경로')"를 추가하면 실제 이미지가 표시됩니다.</li>
+        <li>slide--fullbg-demo 클래스는 데모용 그라디언트입니다. 실제 이미지 사용 시 삭제하세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 10: 통계 / 큰 숫자 강조 (Stats)
+       핵심 KPI나 통계 숫자를 크게 강조.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-10"
+           data-slide-index="9" data-transition="zoom"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <h2>핵심 <span class="hl">지표</span></h2>
+      <!-- ★ stat-item을 추가/삭제해서 지표 수를 조정하세요 -->
+      <div class="stats-grid">
+        <div class="stat-item step" data-step="1">
+          <!-- ★ 숫자와 단위를 수정하세요 -->
+          <div class="stat-number">98<span class="stat-unit">%</span></div>
+          <div class="stat-label">고객 만족도</div>
+        </div>
+        <div class="stat-item step" data-step="2">
+          <div class="stat-number">2.4<span class="stat-unit">M</span></div>
+          <div class="stat-label">월간 사용자</div>
+        </div>
+        <div class="stat-item step" data-step="3">
+          <div class="stat-number">3<span class="stat-unit">x</span></div>
+          <div class="stat-label">성능 향상</div>
+        </div>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>숫자는 청중에게 가장 강한 인상을 남깁니다. 출처를 준비해두세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 11: 인용구 (Quote)
+       강렬한 한 문장을 크게 표시.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-11"
+           data-slide-index="10" data-transition="fade"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <div class="quote-block">
+        <span class="quote-mark" aria-hidden="true">"</span>
+        <!-- ★ 인용 문장 -->
+        <p class="quote-text">
+          좋은 디자인은 가능한 한 적게 디자인하는 것이다.<br>
+          단순함이 복잡함보다 낫다.
+        </p>
+        <!-- ★ 출처 -->
+        <cite class="quote-author">Dieter Rams</cite>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>인용구는 섹션 전환이나 핵심 메시지를 전달할 때 효과적입니다.</li>
+        <li>잠시 멈추고 청중이 읽을 시간을 주세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 12: 비교 (Before vs After / Comparison)
+       두 옵션을 나란히 놓고 대비.
+       pro(파랑)와 con(오렌지) 컬러를 활용.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-12"
+           data-slide-index="11" data-transition="slide"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content text-left">
+      <h2><span class="hl">Before</span> vs After</h2>
+      <div class="compare-grid">
+        <!-- ★ 왼쪽: class="compare-col pro" (파랑 강조) 또는 "compare-col con" (오렌지 강조) -->
+        <div class="compare-col con">
+          <p class="compare-header">❌ Before</p>
+          <ul>
+            <li>문제점 또는 기존 방식</li>
+            <li>비효율적인 프로세스</li>
+            <li>높은 유지보수 비용</li>
+            <li>느린 응답 속도</li>
+          </ul>
+        </div>
+        <!-- ★ 오른쪽 -->
+        <div class="compare-col pro">
+          <p class="compare-header">✅ After</p>
+          <ul>
+            <li>개선된 방식</li>
+            <li>자동화된 프로세스</li>
+            <li>유지보수 비용 절감</li>
+            <li>빠른 응답 속도</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>Before는 con(오렌지), After는 pro(파랑) 클래스로 색상이 구분됩니다.</li>
+        <li>제목을 "장점 vs 단점", "A안 vs B안" 등으로 자유롭게 변경하세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 13: 체크리스트 (Checklist)
+       완료/미완료/해당없음 항목을 구분해서 표시.
+       li 클래스: done(완료) / (기본:미완료) / na(해당없음)
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-13"
+           data-slide-index="12" data-transition="slide"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <h2>출시 전 <span class="hl">체크리스트</span></h2>
+      <!-- ★ li에 class="done"(완료), 기본(미완료), class="na"(해당없음) -->
+      <ul class="checklist">
+        <li class="done">
+          <span class="check-icon">✅</span>요구사항 정의 완료
+        </li>
+        <li class="done">
+          <span class="check-icon">✅</span>디자인 시안 확정
+        </li>
+        <li class="done">
+          <span class="check-icon">✅</span>개발 완료 및 코드 리뷰
+        </li>
+        <li>
+          <span class="check-icon">☐</span>QA 테스트 진행 중
+        </li>
+        <li>
+          <span class="check-icon">☐</span>스테이징 배포 확인
+        </li>
+        <li class="na">
+          <span class="check-icon">✗</span>레거시 마이그레이션 (해당 없음)
+        </li>
+      </ul>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>done: 완료 / 기본: 미완료 / na: 해당없음</li>
+        <li>진행 상황 보고, 사전 점검, 회고 등에 활용하세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 14: 프로세스 / 단계 흐름 (Process)
+       1→2→3 순서 흐름을 가로로 표시.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-14"
+           data-slide-index="13" data-transition="zoom"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <h2><span class="hl">프로세스</span> 흐름</h2>
+      <!-- ★ process-step과 process-arrow를 교대로 배치하세요 -->
+      <div class="process-steps">
+        <div class="process-step step" data-step="1">
+          <div class="process-num">1</div>
+          <div class="process-label">단계 제목</div>
+          <div class="process-desc">간단한 설명</div>
+        </div>
+        <span class="process-arrow step" data-step="2" aria-hidden="true">→</span>
+        <div class="process-step step" data-step="3">
+          <div class="process-num">2</div>
+          <div class="process-label">단계 제목</div>
+          <div class="process-desc">간단한 설명</div>
+        </div>
+        <span class="process-arrow step" data-step="4" aria-hidden="true">→</span>
+        <div class="process-step step" data-step="5">
+          <div class="process-num">3</div>
+          <div class="process-label">단계 제목</div>
+          <div class="process-desc">간단한 설명</div>
+        </div>
+        <span class="process-arrow step" data-step="6" aria-hidden="true">→</span>
+        <div class="process-step step" data-step="7">
+          <div class="process-num">4</div>
+          <div class="process-label">단계 제목</div>
+          <div class="process-desc">간단한 설명</div>
+        </div>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>단계와 화살표가 교대로 자동 표시됩니다.</li>
+        <li>단계 수를 줄이려면 process-step + process-arrow 쌍을 삭제하세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 15: 타임라인 (Timeline)
+       시간 순서로 이벤트를 세로로 나열.
+       dot.filled: 완료된 이벤트.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-15"
+           data-slide-index="14" data-transition="slide"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content text-left">
+      <h2>프로젝트 <span class="hl">타임라인</span></h2>
+      <!-- ★ timeline-item을 추가/삭제하세요. filled 클래스: 완료된 항목 -->
+      <ul class="timeline">
+        <li class="timeline-item step" data-step="1">
+          <span class="timeline-dot filled"></span>
+          <div>
+            <div class="timeline-date">2025 Q1</div>
+            <div class="timeline-title">프로젝트 킥오프</div>
+            <div class="timeline-desc">요구사항 수집 및 팀 구성</div>
+          </div>
+        </li>
+        <li class="timeline-item step" data-step="2">
+          <span class="timeline-dot filled"></span>
+          <div>
+            <div class="timeline-date">2025 Q2</div>
+            <div class="timeline-title">설계 및 프로토타입</div>
+            <div class="timeline-desc">아키텍처 설계, MVP 개발</div>
+          </div>
+        </li>
+        <li class="timeline-item step" data-step="3">
+          <span class="timeline-dot"></span>
+          <div>
+            <div class="timeline-date">2025 Q3</div>
+            <div class="timeline-title">베타 출시</div>
+            <div class="timeline-desc">외부 테스터 모집 및 피드백 수집</div>
+          </div>
+        </li>
+        <li class="timeline-item step" data-step="4">
+          <span class="timeline-dot"></span>
+          <div>
+            <div class="timeline-date">2025 Q4</div>
+            <div class="timeline-title">정식 출시</div>
+            <div class="timeline-desc">전체 공개 및 마케팅 캠페인</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>filled 클래스: 완료된 이벤트(속이 찬 점). 기본: 예정된 이벤트(빈 점).</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 16: 템플릿 응용 예시
+       원하는 레이아웃이 없을 때, 기존 컴포넌트를
+       조합해서 새로운 슬라이드를 만드는 방법 예시.
+
+       이 슬라이드 = .two-col + .stat-item + .checklist 조합.
+       좌측에 3개 지표, 우측에 체크리스트를 배치한
+       "프로젝트 현황 대시보드" 슬라이드.
+       ══════════════════════════════════════════ -->
+  <section class="slide" id="slide-16"
+           data-slide-index="15" data-transition="zoom"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content text-left">
+      <h2>프로젝트 <span class="hl">현황</span> 대시보드</h2>
+      <!--
+        응용 포인트:
+        - .two-col 로 좌/우 분리
+        - 왼쪽: stat-item을 세로로 나열 (stats-grid 없이 단독 사용)
+        - 오른쪽: checklist 배치
+      -->
+      <div class="two-col">
+        <!-- 왼쪽: 핵심 지표 -->
+        <div>
+          <p class="two-col-header">핵심 지표</p>
+          <!-- stat-number.sm 클래스로 좁은 공간에서 숫자 크기를 줄임 -->
+          <div class="stat-item">
+            <div class="stat-number sm">87<span class="stat-unit">%</span></div>
+            <div class="stat-label">스프린트 완료율</div>
+          </div>
+          <br>
+          <div class="stat-item">
+            <div class="stat-number sm">12<span class="stat-unit">일</span></div>
+            <div class="stat-label">남은 기간</div>
+          </div>
+        </div>
+        <!-- 오른쪽: 진행 체크리스트 -->
+        <div>
+          <p class="two-col-header">이번 스프린트</p>
+          <ul class="checklist">
+            <li class="done"><span class="check-icon">✅</span>API 설계 완료</li>
+            <li class="done"><span class="check-icon">✅</span>DB 스키마 확정</li>
+            <li><span class="check-icon">☐</span>프론트엔드 연동</li>
+            <li><span class="check-icon">☐</span>E2E 테스트</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>응용 방법: .two-col + .stat-item + .checklist를 조합했습니다.</li>
+        <li>stat-item의 font-size를 인라인으로 줄여 두 컬럼 안에 맞췄습니다.</li>
+        <li>이처럼 기존 컴포넌트를 자유롭게 중첩·조합할 수 있습니다.</li>
+      </ul>
+    </aside>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       유형 17: 마무리 / Q&A 슬라이드
+       감사 인사, 연락처, QR코드 등 마지막 슬라이드.
+       class="slide slide--title slide--closing" 사용.
+       ══════════════════════════════════════════ -->
+  <section class="slide slide--title slide--closing" id="slide-17"
+           data-slide-index="16" data-transition="fade"
+           role="group" aria-roledescription="슬라이드">
+    <div class="slide__content">
+      <!-- ★ 아이콘 이모지 (선택) -->
+      <span class="closing-icon" aria-hidden="true">🙏</span>
+      <!-- ★ 마무리 제목 -->
+      <h1>감사합니다</h1>
+      <div class="divider"></div>
+      <p class="subtitle">질문이 있으신가요?</p>
+      <!-- ★ 연락처 목록 (선택) -->
+      <ul class="contact-list">
+        <li>📧 <a href="mailto:your@email.com">your@email.com</a></li>
+        <li>🔗 <a href="#">github.com/yourname</a></li>
+        <li>💬 <a href="#">@yourhandle</a></li>
+      </ul>
+    </div>
+    <aside class="slide__notes">
+      <h3>발표자 노트</h3>
+      <ul>
+        <li>질의응답 시간입니다.</li>
+        <li>F 키로 전체화면 해제 후 자료를 참고하세요.</li>
+      </ul>
+    </aside>
+  </section>
+
+  <!--
+    ★ 슬라이드를 더 추가하려면 위 유형 중 하나를 복사하고
+      data-slide-index 번호와 id="slide-N"을 이어서 매겨주세요.
+      (data-slide-index는 0부터 시작하는 정수입니다)
+  -->
+
+</main><!-- end .presentation -->
+
+
+<!-- ───── 도움말 오버레이 (수정하지 마세요) ───── -->
+<div id="help-overlay" class="help-overlay" hidden
+     role="dialog" aria-modal="true" aria-label="키보드 단축키">
+  <div class="help-content">
+    <h2>키보드 단축키</h2>
+    <dl>
+      <dt><kbd>→</kbd> / <kbd>Space</kbd></dt><dd>다음 슬라이드</dd>
+      <dt><kbd>←</kbd></dt><dd>이전 슬라이드</dd>
+      <dt><kbd>Home</kbd></dt><dd>첫 번째 슬라이드</dd>
+      <dt><kbd>End</kbd></dt><dd>마지막 슬라이드</dd>
+      <dt><kbd>F</kbd></dt><dd>전체화면 토글</dd>
+      <dt><kbd>N</kbd></dt><dd>발표자 노트 토글</dd>
+      <dt><kbd>D</kbd></dt><dd>다크/라이트 모드 전환</dd>
+      <dt><kbd>?</kbd></dt><dd>이 도움말</dd>
+      <dt><kbd>Esc</kbd></dt><dd>오버레이 닫기</dd>
+    </dl>
+    <button class="help-close" id="help-close">닫기</button>
+  </div>
+</div>
+
+<!-- 엔진 스크립트 (수정하지 마세요) -->
+<script src="presentation.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "WebPPT-creator",
+  "version": "1.0.1",
+  "description": "순수 HTML/CSS/JavaScript만으로 동작하는 웹 기반 슬라이드 프레젠테이션 생성 스킬. 번들러 불필요, 단일 파일 실행.",
+  "author": {
+    "name": "fasteject",
+    "email": "fasteject@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": ["presentation", "slides", "html", "css", "javascript", "webppt"]
+}
