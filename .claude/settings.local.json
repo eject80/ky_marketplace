@@ -9,7 +9,15 @@
       "Bash(gws --version 2>&1 || which gws 2>&1 || echo \"gws not found\")",
       "Bash(gws gmail:*)",
       "Bash(gws auth:*)",
-      "Bash(gws schema:*)"
+      "Bash(gws schema:*)",
+      "Skill(plugin-creator)",
+      "Bash(python -c \"import json; data = json.load\\(open\\('D:/Python_Project/local_plugin_marketplace/.claude-plugin/marketplace.json'\\)\\); print\\('플러그인 수:', len\\(data['plugins']\\)\\); [print\\(f'  - {p[\\\\\"name\\\\\"]} v{p[\\\\\"version\\\\\"]}'\\) for p in data['plugins']]\")",
+      "Bash(python -c \"import json; data = json.load\\(open\\('D:/Python_Project/local_plugin_marketplace/.claude-plugin/marketplace.json', encoding='utf-8'\\)\\); print\\('플러그인 수:', len\\(data['plugins']\\)\\); [print\\(f'  - {p[\\\\\"name\\\\\"]} v{p[\\\\\"version\\\\\"]}'\\) for p in data['plugins']]\")",
+      "Bash(python3 -c \"\nimport json\nmp = json.load\\(open\\('D:/Python_Project/local_plugin_marketplace/.claude-plugin/marketplace.json'\\)\\)\npj = json.load\\(open\\('D:/Python_Project/local_plugin_marketplace/WebPPT-creator/.claude-plugin/plugin.json'\\)\\)\nplugin = next\\(p for p in mp['plugins'] if p['name'] == 'WebPPT-creator'\\)\nprint\\(f'marketplace.json version: {plugin[\\\\\"version\\\\\"]}'\\)\nprint\\(f'plugin.json version:      {pj[\\\\\"version\\\\\"]}'\\)\nprint\\(f'일치: {plugin[\\\\\"version\\\\\"] == pj[\\\\\"version\\\\\"]}'\\)\nprint\\(f'source: {plugin[\\\\\"source\\\\\"]}'\\)\n\")",
+      "Bash(python3 -c \"\nimport json\nmp = json.load\\(open\\('D:/Python_Project/local_plugin_marketplace/.claude-plugin/marketplace.json', encoding='utf-8'\\)\\)\npj = json.load\\(open\\('D:/Python_Project/local_plugin_marketplace/WebPPT-creator/.claude-plugin/plugin.json', encoding='utf-8'\\)\\)\nplugin = next\\(p for p in mp['plugins'] if p['name'] == 'WebPPT-creator'\\)\nprint\\(f'marketplace.json version: {plugin[\\\\\"version\\\\\"]}'\\)\nprint\\(f'plugin.json version:      {pj[\\\\\"version\\\\\"]}'\\)\nprint\\(f'일치: {plugin[\\\\\"version\\\\\"] == pj[\\\\\"version\\\\\"]}'\\)\nprint\\(f'source: {plugin[\\\\\"source\\\\\"]}'\\)\n\")",
+      "mcp__plugin_context7_context7__resolve-library-id",
+      "mcp__plugin_context7_context7__query-docs",
+      "Bash(git -C \"D:/Python_Project/local_plugin_marketplace\" add .claude-plugin/marketplace.json WebPPT-creator/ && git -C \"D:/Python_Project/local_plugin_marketplace\" commit -m \"$\\(cat <<'EOF'\nfeat :: WebPPT-creator 플러그인 1.0.1 추가\n\n- 플러그인 초기 구조 생성 \\(plugin.json, README, LICENSE\\)\n- webppt-create 스킬: HTML/CSS/JS 웹 프레젠테이션 생성\n- 공식 스펙 기반 스킬 구조: SKILL.md + references/ + examples/\n- references/slide-types.md: 슬라이드 유형 17종 코드 레퍼런스\n- examples/: 완성 예시 PPT \\(구 sample/ 이동\\)\n- ${CLAUDE_SKILL_DIR} 변수로 엔진 파일 경로 처리\n- research/08-plugin-skills-spec.md: Claude Code 스킬 스펙 조사 내용 추가\n\nCo-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
