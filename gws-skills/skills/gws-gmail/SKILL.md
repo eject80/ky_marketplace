@@ -47,7 +47,7 @@ gws gmail users getProfile --params '{"userId":"me"}' --format json
 
 ### Helper Commands — 모든 플랫폼에서 바로 사용 가능
 
-복잡한 플래그가 필요 없고, Windows PowerShell 포함 모든 환경에서 정상 동작한다.
+복잡한 플래그가 필요 없고, 모든 환경에서 정상 동작한다.
 **가능하면 helper command를 먼저 사용한다.**
 
 | Command | Description |
@@ -60,7 +60,6 @@ gws gmail users getProfile --params '{"userId":"me"}' --format json
 | [`+watch`](../gws-gmail-watch/SKILL.md) | 새 메일 스트리밍 (NDJSON) |
 
 ```bash
-# Windows PowerShell / bash / zsh 모두 동작
 gws gmail +triage --max 5
 gws gmail +triage --query 'from:boss' --format json
 gws gmail +reply --message-id MESSAGE_ID --body 'Thanks!'
@@ -77,13 +76,8 @@ helper command로 불가능한 세밀한 제어가 필요할 때 사용한다.
 gws schema gmail.users.messages.list
 
 # 2단계: 호출 (userId는 반드시 명시)
-# bash/zsh
 gws gmail users messages list --params '{"userId":"me","maxResults":5}'
-# Windows PowerShell — 직접 리터럴 방식
-gws gmail users messages list --params '{\"userId\":\"me\",\"maxResults\":5}'
 ```
-
-> 자세한 플랫폼별 차이는 `gws-shared` → **Platform Notes** 참조.
 
 ## API Resources
 
@@ -114,8 +108,6 @@ gws schema gmail.<resource>.<method>
 Use `gws schema` output to build your `--params` and `--json` flags.
 
 ## Raw API 예시
-
-> **플랫폼 참고:** bash/zsh는 작은따옴표 그대로 사용. Windows PowerShell은 `'{\"...\"}'` 직접 리터럴 방식으로 대체한다.
 
 ### messages.list — 최근 메일 목록
 
