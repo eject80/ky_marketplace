@@ -52,7 +52,7 @@
   <div class="slide__content">
     <h2>목차 <span class="hl">Agenda</span></h2>
     <ul class="agenda-list">
-      <li class="agenda-item active">   <!-- 현재 섹션에만 active -->
+      <li class="agenda-item">   <!-- 필요시 섹션에만 active 클래스 추가하여 강조 -->
         <span class="agenda-num">01</span> 섹션 제목
       </li>
       <li class="agenda-item">
