@@ -34,6 +34,21 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
 │   │   └── plugin.json
 │   └── skills/plugin-creator/SKILL.md
 │
+├── WebPPT-creator/                ← 플러그인 3
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   └── skills/webppt-create/SKILL.md
+│
+├── Supanova-Design-Skill/         ← 플러그인 4
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   └── skills/[output|redesign|soft|taste]/SKILL.md
+│
+├── card-news-creator/             ← 플러그인 5
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   └── skills/card-news-create/SKILL.md
+│
 └── README.md
 ```
 
@@ -44,8 +59,11 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
   "name": "local-marketplace",
   "owner": { "name": "fasteject", "email": "fasteject@gmail.com" },
   "plugins": [
-    { "name": "gws-skills",     "source": "./gws-skills",     "version": "1.0.1" },
-    { "name": "plugin-creator", "source": "./plugin-creator", "version": "2.1.0" }
+    { "name": "gws-skills",            "source": "./gws-skills",            "version": "1.0.5" },
+    { "name": "plugin-creator",        "source": "./plugin-creator",        "version": "2.1.0" },
+    { "name": "WebPPT-creator",        "source": "./WebPPT-creator",        "version": "1.0.2" },
+    { "name": "Supanova-Design-Skill", "source": "./Supanova-Design-Skill", "version": "1.0.0" },
+    { "name": "card-news-creator",     "source": "./card-news-creator",     "version": "1.0.0" }
   ]
 }
 ```
@@ -59,8 +77,11 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
 
 | 플러그인 | 버전 | 라이선스 | 설명 |
 |---------|------|---------|------|
-| `gws-skills` | 1.0.1 | Apache-2.0 | Google Workspace 작업 자동화 (Gmail, Calendar, Drive, Sheets, Meet 등) |
+| `gws-skills` | 1.0.5 | Apache-2.0 | Google Workspace 작업 자동화 (Gmail, Calendar, Drive, Sheets, Meet 등) |
 | `plugin-creator` | 2.1.0 | MIT | 새 플러그인 스캐폴딩 자동화 |
+| `WebPPT-creator` | 1.0.2 | MIT | 순수 HTML/CSS/JS 웹 슬라이드 프레젠테이션 생성 |
+| `Supanova-Design-Skill` | 1.0.0 | MIT | 프리미엄 한국어 랜딩페이지 디자인 시스템 (4개 스킬) |
+| `card-news-creator` | 1.0.0 | MIT | 컨텍스트 기반 카드뉴스 HTML + PNG 자동 생성 |
 
 ### gws-skills 스킬 카테고리
 
@@ -68,6 +89,21 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
 - `recipe-*` — 복합 작업 레시피 30개 이상 (예: `recipe-find-free-time`, `recipe-post-mortem-setup`)
 - `persona-*` — 역할별 워크플로우 (exec-assistant, project-manager, team-lead, researcher 등)
 - `gws-workflow-*` — 크로스 서비스 워크플로우
+
+### WebPPT-creator 스킬
+
+- `webppt-create` — 브라우저에서 바로 실행되는 독립 HTML 슬라이드 폴더 생성. 번들러 없이 동작.
+
+### Supanova-Design-Skill 스킬 카테고리
+
+- `output-skill` — 완전한 HTML 생성 강제 (플레이스홀더·스켈레톤 금지)
+- `redesign-skill` — 기존 랜딩페이지를 프리미엄 품질로 업그레이드
+- `soft-skill` — 랜딩페이지 폰트·간격·그림자·애니메이션 디자인 기준 정의
+- `taste-skill` — 프리미엄 전환 최적화 랜딩페이지 생성 엔진 (Tailwind CDN)
+
+### card-news-creator 스킬
+
+- `card-news-create` — 컨텍스트 입력 → 템플릿 자동/수동 선택 → 슬라이드 구성 → HTML + PNG 출력 (`output/YYYY-MM-DD-주제/` 폴더)
 
 ---
 
@@ -88,6 +124,9 @@ Claude Code 대화 안에서:
 ```
 /plugin install gws-skills@local-marketplace
 /plugin install plugin-creator@local-marketplace
+/plugin install WebPPT-creator@local-marketplace
+/plugin install Supanova-Design-Skill@local-marketplace
+/plugin install card-news-creator@local-marketplace
 ```
 
 ### 3. 확인
@@ -97,7 +136,10 @@ Claude Code 대화 안에서:
 ```json
 "enabledPlugins": {
   "gws-skills@local-marketplace": true,
-  "plugin-creator@local-marketplace": true
+  "plugin-creator@local-marketplace": true,
+  "WebPPT-creator@local-marketplace": true,
+  "Supanova-Design-Skill@local-marketplace": true,
+  "card-news-creator@local-marketplace": true
 },
 "extraKnownMarketplaces": {
   "local-marketplace": {
