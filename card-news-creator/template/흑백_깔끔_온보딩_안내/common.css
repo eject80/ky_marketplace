@@ -1,0 +1,1091 @@
+/* ===== LAYER 1: Universal Fixed ===== */
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.canvas {
+  position: relative;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== LAYER 2: Design Variables ===== */
+
+/* Canvas: light warm off-white */
+.canvas {
+  background-color: #f0efed;
+}
+
+/* Main card wrapper */
+.card {
+  position: relative;
+  width: 980px;
+  height: 1340px;
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Top label bar: 회사명 | 카테고리 */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 28px 52px 0;
+  flex-shrink: 0;
+}
+.top-bar-company {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: #888;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.top-bar-divider {
+  width: 1.5px;
+  height: 16px;
+  background: #ccc;
+  margin: 0 16px;
+  flex-shrink: 0;
+}
+.top-bar-category {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #aaa;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Card inner content area */
+.card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 52px 0;
+  overflow: hidden;
+}
+
+/* Bottom footer */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 52px 28px;
+  flex-shrink: 0;
+  border-top: 1.5px solid #ebebeb;
+}
+.footer-logo {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+}
+.footer-logo span {
+  font-weight: 400;
+  color: #999;
+  font-size: 22px;
+  margin-left: 6px;
+}
+.footer-date {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: #999;
+}
+
+/* Section label (small text above title) */
+.section-label {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #999;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* Large page title */
+.page-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 86px;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+.page-title .highlight {
+  color: #1a1a1a;
+}
+
+/* Sub-heading */
+.sub-heading {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 60px;
+  color: #1a1a1a;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+/* Body text */
+.body-text {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: #555;
+  line-height: 1.75;
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  border: none;
+  border-top: 1.5px solid #e8e8e8;
+  flex-shrink: 0;
+  margin: 20px 0;
+}
+
+/* Icon circle */
+.icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f0efed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Tag / Badge */
+.tag {
+  display: inline-block;
+  border: 2px solid #1a1a1a;
+  border-radius: 40px;
+  padding: 8px 24px;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: #1a1a1a;
+}
+.tag--filled {
+  background: #1a1a1a;
+  color: #fff;
+}
+.tag--blue {
+  background: #4a6bff;
+  color: #fff;
+  border-color: #4a6bff;
+}
+
+/* Two-column layout */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+/* Box panel */
+.panel {
+  background: #f7f7f5;
+  border-radius: 14px;
+  padding: 28px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.panel-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 32px;
+  color: #1a1a1a;
+}
+.panel-text {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 25px;
+  color: #555;
+  line-height: 1.65;
+}
+
+/* Image placeholder */
+.img-placeholder {
+  border-radius: 12px;
+  background: linear-gradient(135deg, #d8d8d8 0%, #b8b8b8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.img-placeholder-label {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Pretendard', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+
+/* ===== slide-01-cover ===== */
+.card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 36px 52px 0;
+      position: relative;
+    }
+
+    /* Cover layout: left text + right ID card illustration */
+    .cover-inner {
+      display: flex;
+      align-items: center;
+      /* justify-content: space-between; */
+      flex: 1;
+      gap: 170px;
+    }
+
+    .cover-left {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .cover-pretitle {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .cover-main-title {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 100px;
+      color: #1a1a1a;
+      line-height: 1.05;
+      letter-spacing: -3px;
+    }
+
+    /* ID card illustration */
+    .id-card-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* Lanyard strap */
+    .lanyard {
+      width: 8px;
+      height: 80px;
+      background: #1a1a1a;
+      border-radius: 4px;
+      position: relative;
+      z-index: 2;
+    }
+    .lanyard-clip {
+      width: 28px;
+      height: 16px;
+      background: #555;
+      border-radius: 8px 8px 0 0;
+      margin: 0 auto;
+      margin-bottom: -2px;
+      position: relative;
+      z-index: 3;
+    }
+
+    /* ID card body */
+    .id-card {
+      width: 240px;
+      background: #ffffff;
+      border: 3px solid #1a1a1a;
+      border-radius: 18px;
+      padding: 22px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 6px 8px 0 #1a1a1a;
+    }
+
+    /* Photo area */
+    .id-photo {
+      width: 130px;
+      height: 130px;
+      border-radius: 10px;
+      background: linear-gradient(160deg, #d5d5d5 0%, #a8a8a8 100%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+    /* Silhouette person */
+    .id-photo svg {
+      width: 90px;
+      height: 100px;
+    }
+
+    /* Welcome bubble */
+    .welcome-bubble {
+      position: absolute;
+      top: 90px;
+      right: -90px;
+      background: #4a6bff;
+      color: #fff;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      padding: 10px 18px;
+      border-radius: 10px 10px 10px 2px;
+      white-space: nowrap;
+    }
+    .welcome-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 14px;
+      border-width: 10px 8px 0 0;
+      border-style: solid;
+      border-color: #4a6bff transparent transparent transparent;
+    }
+
+    .id-name-bar {
+      width: 100%;
+      height: 10px;
+      background: #1a1a1a;
+      border-radius: 4px;
+    }
+    .id-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      width: 100%;
+    }
+    .id-line {
+      height: 8px;
+      border-radius: 4px;
+    }
+    .id-line--dark { background: #1a1a1a; width: 70%; }
+    .id-line--gray { background: #ccc; width: 90%; }
+    .id-line--gray2 { background: #ddd; width: 60%; }
+
+
+/* ===== slide-02-welcome ===== */
+.card-body {
+      padding: 44px 52px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+
+    /* Title area */
+    .welcome-pre {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 28px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .welcome-title {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 88px;
+      color: #1a1a1a;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 14px;
+    }
+    .welcome-title .line2 {
+      display: block;
+    }
+
+    /* Hello bubble floating right */
+    .hello-bubble {
+      position: absolute;
+      top: 160px;
+      right: 52px;
+      background: #4a6bff;
+      color: #fff;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      padding: 12px 22px;
+      border-radius: 12px 12px 2px 12px;
+    }
+    .welcome-bubble {
+      position: absolute;
+      top: 220px;
+      right: 52px;
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      padding: 12px 22px;
+      border-radius: 12px 2px 12px 12px;
+    }
+
+    /* Divider */
+    .section-divider {
+      width: 100%;
+      border: none;
+      border-top: 1.5px solid #e8e8e8;
+      margin: 28px 0;
+      flex-shrink: 0;
+    }
+
+    /* Item list */
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      flex: 1;
+    }
+
+    .item-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    /* Icon area */
+    .item-icon {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #f0efed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 2px solid #e0e0e0;
+    }
+
+    /* Text area */
+    .item-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 6px;
+    }
+    .item-title {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 34px;
+      color: #1a1a1a;
+    }
+    .item-desc {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+
+/* ===== slide-03-mission-vision ===== */
+.card-body {
+      padding: 38px 52px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+
+    .section-pre {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .page-title {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 84px;
+      color: #1a1a1a;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    .desc-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 27px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 28px;
+    }
+
+    /* Mission / Vision two-col */
+    .mv-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+
+    .mv-box {
+      border-radius: 14px;
+      border: 2px solid #e0e0e0;
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .mv-label {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 26px;
+      color: #1a1a1a;
+      background: #1a1a1a;
+      color: #fff;
+      display: inline-block;
+      padding: 5px 18px;
+      border-radius: 6px;
+      letter-spacing: 2px;
+    }
+    .mv-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #444;
+      line-height: 1.65;
+    }
+
+    /* Core value section */
+    .core-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .core-label-wrap {
+      text-align: center;
+    }
+    .core-label {
+      display: inline-block;
+      border: 2px solid #1a1a1a;
+      border-radius: 6px;
+      padding: 6px 24px;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: #1a1a1a;
+      letter-spacing: 3px;
+    }
+    .core-pills {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .core-pill {
+      background: #f0efed;
+      border-radius: 50px;
+      padding: 14px 30px;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #1a1a1a;
+    }
+
+
+/* ===== slide-04-points ===== */
+.card-body {
+      padding: 38px 52px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+
+    .section-pre {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .page-title {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 84px;
+      color: #1a1a1a;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .intro-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Labels row */
+    .label-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 18px;
+    }
+    .label-tag {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      color: #888;
+    }
+
+    /* Points grid */
+    .points-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      flex: 1;
+    }
+
+    .point-box {
+      background: #f7f7f5;
+      border-radius: 14px;
+      padding: 24px 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .point-icon-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .point-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #e8e8e6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .point-title {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      color: #1a1a1a;
+    }
+    .point-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      color: #555;
+      line-height: 1.65;
+    }
+
+
+/* ===== slide-05-table ===== */
+.card-body {
+      padding: 38px 52px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+
+    .section-pre {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .page-title {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 84px;
+      color: #1a1a1a;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .intro-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Table */
+    .rules-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      flex: 1;
+    }
+
+    /* Header row */
+    .rules-table thead tr th {
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      padding: 16px 20px;
+      text-align: left;
+    }
+    .rules-table thead tr th:first-child {
+      border-radius: 10px 0 0 0;
+      width: 180px;
+    }
+    .rules-table thead tr th:last-child {
+      border-radius: 0 10px 0 0;
+    }
+
+    /* Body rows */
+    .rules-table tbody tr td {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-size: 25px;
+      padding: 18px 20px;
+      border-bottom: 1.5px solid #e8e8e8;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .rules-table tbody tr td:first-child {
+      font-weight: 700;
+      color: #1a1a1a;
+      white-space: nowrap;
+      width: 180px;
+    }
+    .rules-table tbody tr td:nth-child(2) {
+      color: #444;
+      border-left: 1.5px solid #e8e8e8;
+      border-right: 1.5px solid #e8e8e8;
+    }
+    .rules-table tbody tr td:last-child {
+      color: #888;
+      font-size: 23px;
+    }
+
+    .rules-table tbody tr:nth-child(odd) {
+      background: #fafafa;
+    }
+    .rules-table tbody tr:nth-child(even) {
+      background: #ffffff;
+    }
+
+    /* Highlight category label */
+    .cat-label {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .cat-label--gray {
+      background: #888;
+    }
+
+
+/* ===== slide-06-image-grid ===== */
+.card-body {
+      padding: 38px 52px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+
+    .section-pre {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .page-title {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 84px;
+      color: #1a1a1a;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .intro-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Main large image */
+    .main-img {
+      width: 100%;
+      height: 320px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #c8c8c6 0%, #9e9e9c 60%, #7a7a78 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px 20px;
+      flex-shrink: 0;
+      margin-bottom: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .main-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.35) 100%);
+    }
+    .main-img-label {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      background: rgba(0,0,0,0.4);
+      padding: 6px 14px;
+      border-radius: 6px;
+    }
+
+    /* 2x2 image grid */
+    .sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      flex: 1;
+    }
+
+    .sub-img-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sub-img {
+      flex: 1;
+      background: linear-gradient(135deg, #d0d0ce 0%, #a8a8a6 100%);
+      min-height: 180px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px 14px;
+    }
+    .sub-img--1 { background: linear-gradient(135deg, #b8c0c8 0%, #8898a8 100%); }
+    .sub-img--2 { background: linear-gradient(135deg, #d4d0cc 0%, #aaa8a4 100%); }
+    .sub-img--3 { background: linear-gradient(135deg, #c8ccd0 0%, #9098a0 100%); }
+    .sub-img--4 { background: linear-gradient(135deg, #ccccc8 0%, #a0a09c 100%); }
+
+    .sub-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%);
+    }
+    .sub-img-label {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 23px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+
+
+/* ===== slide-07-checklist ===== */
+.card-body {
+      padding: 36px 52px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+
+    /* Title row */
+    .title-row {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      margin-bottom: 8px;
+    }
+    .page-title-main {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 80px;
+      color: #1a1a1a;
+      letter-spacing: -2px;
+    }
+    .page-title-sub {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 72px;
+      color: #1a1a1a;
+      letter-spacing: 2px;
+    }
+
+    .note-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 23px;
+      color: #888;
+      margin-bottom: 22px;
+    }
+
+    /* 3-col checklist grid */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .checklist-col {
+      display: flex;
+      flex-direction: column;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1.5px solid #e0e0e0;
+    }
+
+    .checklist-col-header {
+      padding: 14px 16px;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: #fff;
+    }
+    .checklist-col-header--black { background: #1a1a1a; }
+    .checklist-col-header--gray  { background: #888; }
+    .checklist-col-header--blue  { background: #4a6bff; }
+
+    .checklist-col-body {
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #fff;
+      flex: 1;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .check-icon {
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .check-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 23px;
+      color: #333;
+      line-height: 1.5;
+    }
+
+    /* Q&A bottom section */
+    .qa-section {
+      background: #f7f7f5;
+      border-radius: 14px;
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .qa-q {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .qa-q-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+    .qa-a {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      color: #555;
+      line-height: 1.65;
+      padding-left: 42px;
+    }
+
+    /* Time badges for blue col */
+    .time-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0f3ff;
+      border-radius: 20px;
+      padding: 3px 10px 3px 6px;
+      font-size: 20px;
+      color: #4a6bff;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+    .time-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4a6bff;
+    }

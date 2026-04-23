@@ -1,0 +1,856 @@
+/* ===== LAYER 1: Universal Fixed ===== */
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.canvas {
+  position: relative;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== LAYER 2: Design Variables ===== */
+
+/* Canvas: light gray background */
+.canvas {
+  background-color: #e8e8e8;
+}
+
+/* ─── Notebook-style wrapper ─── */
+/* Back pages (stacked effect, right side) */
+.page-stack {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  width: 960px;
+  height: 1320px;
+  z-index: 0;
+}
+.page-stack-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 32px;
+  border: 2px solid #d0d0d0;
+}
+.page-stack-layer--1 {
+  transform: translateX(14px) translateY(6px);
+  opacity: 0.7;
+  z-index: 1;
+}
+.page-stack-layer--2 {
+  transform: translateX(7px) translateY(3px);
+  opacity: 0.85;
+  z-index: 2;
+}
+
+/* Main white card */
+.main-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 960px;
+  height: 1320px;
+  background: #ffffff;
+  border-radius: 32px;
+  border: 2.5px solid #c8c8c8;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 72px 76px 64px;
+  overflow: hidden;
+}
+
+/* Bookmark tab (right edge) — blue + gray double flag */
+.bookmark-tab {
+  position: absolute;
+  top: 120px;
+  right: -2px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.bookmark-blue {
+  width: 44px;
+  height: 68px;
+  background: #3d7fc4;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+}
+.bookmark-gray {
+  width: 44px;
+  height: 58px;
+  background: #9a9a9a;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+  margin-top: -4px;
+}
+
+/* ─── Page title area ─── */
+.page-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-shrink: 0;
+  margin-bottom: 16px;
+}
+.page-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 88px;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+.page-title .t-blue {
+  color: #3d7fc4;
+}
+.page-title .t-orange {
+  color: #f0a030;
+}
+
+.divider-line {
+  width: 100%;
+  border: none;
+  border-top: 2px solid #d0d0d0;
+  flex-shrink: 0;
+  margin-bottom: 32px;
+}
+
+/* ─── Cover specific ─── */
+.cover-badge {
+  display: inline-block;
+  border: 2px solid #888;
+  border-radius: 100px;
+  padding: 12px 40px;
+  font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 1px;
+  margin-bottom: 32px;
+}
+.cover-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 168px;
+  line-height: 1.05;
+  letter-spacing: -4px;
+  text-align: center;
+}
+.cover-title .t-blue { color: #3d7fc4; }
+.cover-title .t-orange { color: #f0a030; }
+.cover-title .t-black { color: #1a1a1a; }
+
+.cover-sub {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+  color: #666;
+  text-align: center;
+  line-height: 1.7;
+  margin-top: 24px;
+}
+
+/* ─── TOC ─── */
+.toc-header-row {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  margin-bottom: 12px;
+}
+.toc-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 96px;
+  color: #1a1a1a;
+  letter-spacing: -2px;
+}
+.toc-desc {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 26px;
+  color: #888;
+  font-weight: 400;
+  line-height: 1.6;
+  flex: 1;
+}
+.toc-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 16px;
+}
+.toc-item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px 0;
+  border-bottom: 1.5px solid #e8e8e8;
+}
+.toc-item:first-child {
+  border-top: 1.5px solid #e8e8e8;
+}
+.toc-num-box {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border: 2.5px solid #f0a030;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+/* Blue corner decorations on toc-num-box */
+.toc-num-box::before,
+.toc-num-box::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #3d7fc4;
+  border-radius: 2px;
+}
+.toc-num-box::before {
+  top: -6px;
+  right: -6px;
+}
+.toc-num-box::after {
+  bottom: -6px;
+  left: -6px;
+}
+.toc-num {
+  font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+  font-weight: 900;
+  font-size: 34px;
+  color: #f0a030;
+}
+.toc-item-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  color: #1a1a1a;
+  flex: 1;
+}
+.toc-item-desc {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 26px;
+  color: #999;
+  font-weight: 400;
+}
+
+/* ─── Section intro (title only centered) ─── */
+.section-num-badge {
+  width: 120px;
+  height: 120px;
+  background: #3d7fc4;
+  border-radius: 20px 20px 20px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  position: relative;
+}
+/* small triangle tail */
+.section-num-badge::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 16px solid #3d7fc4;
+}
+.section-num {
+  font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+  font-weight: 900;
+  font-size: 64px;
+  color: #fff;
+  line-height: 1;
+}
+.section-label {
+  font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+  font-size: 30px;
+  color: #888;
+  font-weight: 400;
+  margin-top: 28px;
+}
+.section-main-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 96px;
+  color: #1a1a1a;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  text-align: center;
+  margin-top: 16px;
+}
+.section-body-text {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 32px;
+  color: #666;
+  font-weight: 400;
+  line-height: 1.75;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ─── Table layout ─── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  flex: 1;
+}
+.data-table th {
+  background: #f0a030;
+  color: #fff;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  padding: 22px 28px;
+  text-align: center;
+  border: 2px solid #fff;
+}
+.data-table th:first-child {
+  background: #f0a030;
+  width: 120px;
+}
+.data-table td {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 30px;
+  color: #888;
+  font-weight: 400;
+  padding: 24px 28px;
+  text-align: center;
+  border: 1.5px solid #e8e8e8;
+}
+.data-table tbody tr td:first-child {
+  background: #f0a030;
+  color: #fff;
+  font-weight: 700;
+  border: 2px solid #fff;
+}
+.table-desc {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 28px;
+  color: #666;
+  line-height: 1.75;
+  text-align: center;
+  margin-top: 36px;
+}
+
+/* ─── Key-message: 2-column quote cards ─── */
+.quote-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  flex: 1;
+  margin-top: 8px;
+}
+.quote-card {
+  background: #f5f5f5;
+  border-radius: 16px;
+  padding: 36px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.quote-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: #3d7fc4;
+  line-height: 1.4;
+  text-align: center;
+}
+.quote-divider {
+  width: 100%;
+  border: none;
+  border-top: 1.5px dashed #ccc;
+}
+.quote-body {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 26px;
+  color: #555;
+  line-height: 1.75;
+  text-align: center;
+}
+.quote-highlight {
+  background: #f0a030;
+  color: #fff;
+  text-decoration: none;
+}
+/* Quotation mark decoration */
+.quote-mark-open {
+  font-size: 80px;
+  color: #ccc;
+  line-height: 0.5;
+  font-family: Georgia, serif;
+  align-self: flex-start;
+  margin-top: -12px;
+}
+
+/* ─── Image list (사진 활용) ─── */
+.img-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1;
+}
+.img-list-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+}
+.img-placeholder {
+  width: 400px;
+  height: 210px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #a8c8e8 0%, #6aaad4 50%, #8dc89e 100%);
+  flex-shrink: 0;
+  border: 2px solid #d0d0d0;
+}
+.img-list-text {
+  flex: 1;
+  padding-top: 8px;
+}
+.img-list-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  color: #f0a030;
+  margin-bottom: 10px;
+}
+.img-list-desc {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 28px;
+  color: #888;
+  line-height: 1.7;
+}
+
+/* ─── Steps (순서 과정) ─── */
+.steps-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.steps-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.step-card {
+  flex: 1;
+  background: #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.step-header {
+  background: #3d7fc4;
+  color: #fff;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  padding: 16px 24px;
+  text-align: center;
+}
+.step-body {
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  flex: 1;
+}
+.step-icon-area {
+  width: 96px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-desc {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 26px;
+  color: #666;
+  line-height: 1.7;
+  text-align: center;
+}
+.step-arrow {
+  font-size: 48px;
+  color: #f0a030;
+  flex-shrink: 0;
+  font-weight: 900;
+}
+.steps-footer {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 28px;
+  color: #666;
+  line-height: 1.75;
+  text-align: center;
+}
+
+/* ─── Comparison (BEFORE / AFTER) ─── */
+.compare-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.compare-block {
+  flex: 1;
+  border: 2px solid #d0d0d0;
+  border-radius: 16px;
+  padding: 36px 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  position: relative;
+}
+.compare-label-pill {
+  position: absolute;
+  top: -20px;
+  left: 32px;
+  border-radius: 100px;
+  padding: 8px 28px;
+  font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+.compare-label-pill--before {
+  background: #d0d0d0;
+  color: #555;
+}
+.compare-label-pill--after {
+  background: #3d7fc4;
+  color: #fff;
+}
+.compare-keyword {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 52px;
+  line-height: 1.25;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+.compare-keyword--before {
+  color: #1a1a1a;
+}
+.compare-keyword--after {
+  color: #f0a030;
+}
+.compare-body {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 28px;
+  color: #666;
+  line-height: 1.75;
+  flex: 1;
+  padding-top: 4px;
+}
+.compare-arrow-down {
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ─── Body text utility ─── */
+.body-text {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-size: 30px;
+  color: #666;
+  line-height: 1.75;
+}
+
+
+/* ===== slide-01-cover ===== */
+/* Cover: centered layout, full card flex-center */
+    .main-card {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 0;
+      padding: 80px 80px 80px;
+    }
+
+    /* Character illustrations at bottom-right (CSS only) */
+    .char-group {
+      position: absolute;
+      bottom: 48px;
+      right: 60px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    .char {
+      border-radius: 50%;
+      background: linear-gradient(160deg, #d8d8d8 0%, #b8b8b8 100%);
+      position: relative;
+    }
+    .char--big {
+      width: 110px;
+      height: 110px;
+    }
+    .char--small {
+      width: 80px;
+      height: 80px;
+    }
+    .char::before {
+      content: '•  •';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      font-size: 20px;
+      color: #555;
+      letter-spacing: 6px;
+    }
+
+
+/* ===== slide-02-toc ===== */
+/* Character at bottom-right */
+    .char-note {
+      position: absolute;
+      bottom: 48px;
+      right: 60px;
+      width: 110px;
+      height: 110px;
+      background: linear-gradient(160deg, #f0f0f0 0%, #d8d8d8 100%);
+      border-radius: 16px;
+      border: 2px solid #d0d0d0;
+    }
+    .char-note::before {
+      content: '•  •';
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #666;
+      letter-spacing: 6px;
+    }
+
+
+/* ===== slide-03-section ===== */
+.main-card {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* Megaphone deco (left side) */
+    .deco-megaphone {
+      position: absolute;
+      left: 56px;
+      top: 240px;
+      width: 80px;
+      height: 80px;
+    }
+
+    /* Cloud character (bottom-right) */
+    .char-cloud {
+      position: absolute;
+      bottom: 52px;
+      right: 60px;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(160deg, #f0f0f0 0%, #d8d8d8 100%);
+      border-radius: 40% 40% 50% 50%;
+      border: 2px solid #d0d0d0;
+    }
+    .char-cloud::before {
+      content: '•  •';
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #666;
+      letter-spacing: 6px;
+    }
+
+
+/* ===== slide-04-table ===== */
+.table-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Char at bottom-left */
+    .char-blob {
+      position: absolute;
+      bottom: 44px;
+      left: 56px;
+      width: 90px;
+      height: 80px;
+      background: linear-gradient(160deg, #e8e8e8 0%, #d0d0d0 100%);
+      border-radius: 50%;
+      border: 2px solid #ccc;
+    }
+    .char-blob::before {
+      content: '•  •';
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      color: #666;
+      letter-spacing: 5px;
+    }
+    /* bottom-right char */
+    .char-heart {
+      position: absolute;
+      bottom: 44px;
+      right: 60px;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(160deg, #e8e8e8 0%, #d0d0d0 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      border: 2px solid #ccc;
+    }
+    .char-heart::before {
+      content: '•';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #666;
+    }
+
+
+/* ===== slide-05-key-message ===== */
+/* Closing quote mark decoration (bottom right) */
+    .quote-mark-close {
+      position: absolute;
+      bottom: 52px;
+      right: 60px;
+      font-size: 100px;
+      color: #d8d8d8;
+      line-height: 0.5;
+      font-family: Georgia, serif;
+    }
+
+
+/* ===== slide-06-image-list ===== */
+/* Camera icon deco (left) */
+    .deco-camera {
+      position: absolute;
+      left: 56px;
+      top: 240px;
+    }
+
+    /* Film strip deco (bottom-right) */
+    .deco-film {
+      position: absolute;
+      bottom: 44px;
+      right: 56px;
+      width: 60px;
+      height: 80px;
+      background: #bbb;
+      border-radius: 4px;
+      transform: rotate(-15deg);
+    }
+    .deco-film::before {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 6px;
+      right: 6px;
+      bottom: 8px;
+      border: 2px dashed #888;
+      border-radius: 2px;
+    }
+
+
+/* ===== slide-07-steps ===== */
+/* override step-body icon to match design */
+    .step-icon-area svg {
+      width: 88px;
+      height: 88px;
+    }
+
+
+/* ===== slide-08-comparison ===== */
+/* Down arrow between blocks */
+    .compare-arrow-down {
+      text-align: center;
+      flex-shrink: 0;
+      margin: -4px 0;
+    }
+    .compare-arrow-svg {
+      display: inline-block;
+    }
+
+    /* Cloud char (left) */
+    .char-left {
+      position: absolute;
+      left: 52px;
+      bottom: 200px;
+      width: 90px;
+      height: 80px;
+      background: linear-gradient(160deg, #e8e8e8 0%, #d0d0d0 100%);
+      border-radius: 50%;
+      border: 2px solid #ccc;
+    }
+    .char-left::before {
+      content: '•  •';
+      position: absolute;
+      top: 42%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 16px;
+      color: #666;
+      letter-spacing: 5px;
+    }
+
+    /* Blob char (bottom-right) */
+    .char-right {
+      position: absolute;
+      bottom: 44px;
+      right: 52px;
+      width: 100px;
+      height: 90px;
+      background: linear-gradient(160deg, #e8e8e8 0%, #d0d0d0 100%);
+      border-radius: 60% 40% 55% 45%;
+      border: 2px solid #ccc;
+    }
+    .char-right::before {
+      content: '•';
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #666;
+    }

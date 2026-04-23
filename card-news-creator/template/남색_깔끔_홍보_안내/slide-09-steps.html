@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>순서 레이아웃</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-blob bg-blob--1"></div>
+    <div class="bg-blob bg-blob--2"></div>
+    <div class="bg-blob bg-blob--3"></div>
+    <div class="clipboard-frame">
+      <div class="clip-wrapper">
+        <svg viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" width="220" height="80">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9aaae0"/><stop offset="100%" stop-color="#5b6bbf"/></linearGradient></defs>
+          <rect x="6" y="46" width="208" height="30" rx="10" fill="url(#cg)"/>
+          <path d="M76 46 C76 8 144 8 144 46" fill="none" stroke="url(#cg)" stroke-width="20" stroke-linecap="round"/>
+          <rect x="6" y="46" width="208" height="12" rx="10" fill="rgba(255,255,255,0.18)"/>
+          <line x1="6" y1="61" x2="214" y2="61" stroke="rgba(0,0,30,0.15)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="card">
+        <div class="slide-icon">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="50" r="25" stroke="currentColor" stroke-width="4"/>
+            <rect x="32" y="12" width="16" height="9" rx="3" stroke="currentColor" stroke-width="3.5"/>
+            <line x1="40" y1="21" x2="40" y2="25" stroke="currentColor" stroke-width="3"/>
+            <line x1="40" y1="50" x2="40" y2="36" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="40" y1="50" x2="51" y2="50" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="40" cy="50" r="3.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <h1 class="h2c"><span class="h-blue">순서</span><span class="h-black"> 레이아웃</span></h1>
+        <div class="steps-container">
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-header-word">STEP</span>
+                <span class="step-header-num">01</span>
+              </div>
+              <div class="step-body">
+                <div class="step-icon-area">
+                  <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
+                    <rect x="16" y="30" width="40" height="28" rx="4" stroke="currentColor" stroke-width="3.5"/>
+                    <path d="M24 30 L24 22 Q24 12 36 12 Q48 12 48 22 L48 30" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                    <circle cx="36" cy="44" r="5" fill="currentColor"/>
+                  </svg>
+                </div>
+                <p class="step-desc">첫 번째 단계에서는 전체 진행의 시작이 되는 기본 내용을 설명합니다. 가장 기초가 되는 내용을 정리하면 좋습니다.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-header-word">STEP</span>
+                <span class="step-header-num">02</span>
+              </div>
+              <div class="step-body">
+                <div class="step-icon-area">
+                  <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
+                    <circle cx="26" cy="36" r="14" stroke="currentColor" stroke-width="3.5"/>
+                    <circle cx="46" cy="36" r="14" stroke="currentColor" stroke-width="3.5"/>
+                    <path d="M33 30 Q36 36 33 42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M39 30 Q36 36 39 42" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <p class="step-desc">두 번째 단계에서는 주요 실행 내용을 다룹니다. 실제 진행 과정이나 포인트를 중심으로 설명하면 이해가 쉬워집니다.</p>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-header">
+                <span class="step-header-word">STEP</span>
+                <span class="step-header-num">03</span>
+              </div>
+              <div class="step-body">
+                <div class="step-icon-area">
+                  <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" width="72" height="72">
+                    <circle cx="36" cy="22" r="12" stroke="currentColor" stroke-width="3.5"/>
+                    <path d="M14 62 Q14 46 36 46 Q58 46 58 62" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+                    <rect x="30" y="14" width="12" height="7" rx="3" fill="currentColor"/>
+                  </svg>
+                </div>
+                <p class="step-desc">마지막 단계에서는 결과 정리 또는 마무리 내용을 작성합니다. 결과나 효과를 간단히 정리하며 흐름을 마무리합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>아이콘 그리드</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board">
+      <div class="shadow-card shadow-card--2"></div>
+      <div class="shadow-card shadow-card--1"></div>
+
+      <div class="clip-wrapper">
+        <svg viewBox="0 0 50 96" width="50" height="96" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9,72 L9,28 C9,8 41,8 41,28 L41,72" fill="none" stroke="#cf1f1f" stroke-width="9" stroke-linecap="round"/>
+          <path d="M18,72 L18,36 C18,24 32,24 32,36 L32,72" fill="none" stroke="#cf1f1f" stroke-width="9" stroke-linecap="round"/>
+          <rect x="5" y="68" width="40" height="24" rx="5" fill="#cf1f1f"/>
+        </svg>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-header-label">CARDNEWS</span>
+        </div>
+        <div class="card-body">
+          <div class="script-row">
+            <span class="script-text">Simple Card News</span>
+          </div>
+          <h1 class="slide-h1">아이콘 강조 레이아웃</h1>
+          <hr class="divider-red">
+          <div class="icon-grid">
+            <!-- 전구 아이콘 -->
+            <div class="icon-col">
+              <svg class="icon-bubble" viewBox="0 0 130 148" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="65" cy="58" r="54" fill="#cf1f1f"/>
+                <polygon points="46,106 65,134 84,106" fill="#cf1f1f"/>
+                <!-- 전구 아이콘 -->
+                <path d="M65,34 C52,34 42,44 42,57 C42,66 47,74 55,78 L55,86 L75,86 L75,78 C83,74 88,66 88,57 C88,44 78,34 65,34 Z" fill="none" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="58" y1="90" x2="72" y2="90" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="60" y1="96" x2="70" y2="96" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="65" y1="26" x2="65" y2="20" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="48" y1="32" x2="44" y2="28" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                <line x1="82" y1="32" x2="86" y2="28" stroke="white" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+              <div class="icon-keyword">소제목</div>
+              <div class="icon-desc">전달하려는 내용을<br>간단하게 정리해서<br>입력해주세요.</div>
+            </div>
+            <!-- 문서 아이콘 -->
+            <div class="icon-col">
+              <svg class="icon-bubble" viewBox="0 0 130 148" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="65" cy="58" r="54" fill="#cf1f1f"/>
+                <polygon points="46,106 65,134 84,106" fill="#cf1f1f"/>
+                <!-- 문서+펜 아이콘 -->
+                <rect x="42" y="36" width="42" height="46" rx="4" fill="none" stroke="white" stroke-width="4"/>
+                <line x1="50" y1="48" x2="76" y2="48" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="50" y1="57" x2="76" y2="57" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="50" y1="66" x2="64" y2="66" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                <path d="M70,70 L80,60 L86,66 L76,76 Z" fill="white"/>
+              </svg>
+              <div class="icon-keyword">소제목</div>
+              <div class="icon-desc">전달하려는 내용을<br>간단하게 정리해서<br>입력해주세요.</div>
+            </div>
+            <!-- 메일 아이콘 -->
+            <div class="icon-col">
+              <svg class="icon-bubble" viewBox="0 0 130 148" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="65" cy="58" r="54" fill="#cf1f1f"/>
+                <polygon points="46,106 65,134 84,106" fill="#cf1f1f"/>
+                <!-- 열린 봉투 아이콘 -->
+                <rect x="38" y="42" width="54" height="40" rx="4" fill="none" stroke="white" stroke-width="4"/>
+                <polyline points="38,42 65,62 92,42" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="38" y1="62" x2="50" y2="52" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                <line x1="92" y1="62" x2="80" y2="52" stroke="white" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+              <div class="icon-keyword">소제목</div>
+              <div class="icon-desc">전달하려는 내용을<br>간단하게 정리해서<br>입력해주세요.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

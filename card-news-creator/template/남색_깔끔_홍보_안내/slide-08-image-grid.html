@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>3개 이미지</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-blob bg-blob--1"></div>
+    <div class="bg-blob bg-blob--2"></div>
+    <div class="bg-blob bg-blob--3"></div>
+    <div class="clipboard-frame">
+      <div class="clip-wrapper">
+        <svg viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" width="220" height="80">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9aaae0"/><stop offset="100%" stop-color="#5b6bbf"/></linearGradient></defs>
+          <rect x="6" y="46" width="208" height="30" rx="10" fill="url(#cg)"/>
+          <path d="M76 46 C76 8 144 8 144 46" fill="none" stroke="url(#cg)" stroke-width="20" stroke-linecap="round"/>
+          <rect x="6" y="46" width="208" height="12" rx="10" fill="rgba(255,255,255,0.18)"/>
+          <line x1="6" y1="61" x2="214" y2="61" stroke="rgba(0,0,30,0.15)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="card">
+        <div class="slide-icon">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="18" width="64" height="44" rx="5" stroke="currentColor" stroke-width="4"/>
+            <rect x="12" y="24" width="8" height="7" rx="1.5" fill="currentColor"/>
+            <rect x="12" y="36" width="8" height="7" rx="1.5" fill="currentColor"/>
+            <rect x="12" y="48" width="8" height="7" rx="1.5" fill="currentColor"/>
+            <rect x="60" y="24" width="8" height="7" rx="1.5" fill="currentColor"/>
+            <rect x="60" y="36" width="8" height="7" rx="1.5" fill="currentColor"/>
+            <rect x="60" y="48" width="8" height="7" rx="1.5" fill="currentColor"/>
+            <line x1="26" y1="20" x2="26" y2="60" stroke="currentColor" stroke-width="2.5"/>
+            <line x1="54" y1="20" x2="54" y2="60" stroke="currentColor" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <h1 class="h2c"><span class="h-blue">3개</span><span class="h-black"> 이미지</span></h1>
+        <div class="img-grid">
+          <div class="img-grid-item">
+            <div class="img-thumb">
+              <div class="img-thumb-placeholder">
+                <svg viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg" width="50" height="38">
+                  <rect x="2" y="2" width="56" height="41" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                  <circle cx="18" cy="16" r="6" stroke="currentColor" stroke-width="2.5"/>
+                  <path d="M2 32 L16 20 L28 30 L38 22 L58 38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="img-badge">01</div>
+            </div>
+            <p class="img-caption">이 페이지에는 주제와 관련된 이미지를 여러 개 배치하여 내용을 시각적으로 보여줍니다.</p>
+          </div>
+          <div class="img-grid-item">
+            <div class="img-thumb">
+              <div class="img-thumb-placeholder">
+                <svg viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg" width="50" height="38">
+                  <rect x="2" y="2" width="56" height="41" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                  <circle cx="18" cy="16" r="6" stroke="currentColor" stroke-width="2.5"/>
+                  <path d="M2 32 L16 20 L28 30 L38 22 L58 38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="img-badge">02</div>
+            </div>
+            <p class="img-caption">이 페이지에는 주제와 관련된 이미지를 여러 개 배치하여 내용을 시각적으로 보여줍니다.</p>
+          </div>
+          <div class="img-grid-item">
+            <div class="img-thumb">
+              <div class="img-thumb-placeholder">
+                <svg viewBox="0 0 60 45" fill="none" xmlns="http://www.w3.org/2000/svg" width="50" height="38">
+                  <rect x="2" y="2" width="56" height="41" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                  <circle cx="18" cy="16" r="6" stroke="currentColor" stroke-width="2.5"/>
+                  <path d="M2 32 L16 20 L28 30 L38 22 L58 38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="img-badge">03</div>
+            </div>
+            <p class="img-caption">이 페이지에는 주제와 관련된 이미지를 여러 개 배치하여 내용을 시각적으로 보여줍니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

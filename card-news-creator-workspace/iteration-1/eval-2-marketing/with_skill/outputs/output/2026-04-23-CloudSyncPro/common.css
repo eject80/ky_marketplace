@@ -1,0 +1,431 @@
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* ===== 유니버설 고정 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { width: 1080px; height: 1440px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+body::-webkit-scrollbar { display: none; }
+.canvas { position: relative; width: 1080px; height: 1440px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+
+/* ===== 디자인 가변 ===== */
+
+/* 캔버스 배경 */
+.canvas { background: #ebebeb; }
+
+/* 보드 (클립 + 카드 묶음) */
+.board {
+  position: relative;
+  width: 870px;
+  height: 1310px;
+}
+
+/* 그림자 카드 */
+.shadow-card {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 870px;
+  height: calc(100% - 40px);
+  border-radius: 12px;
+  border: 2.5px solid;
+}
+
+.shadow-card--2 {
+  background: #bebebe;
+  border-color: #999;
+  transform: rotate(2.5deg) translate(14px, 5px);
+  z-index: 1;
+}
+
+.shadow-card--1 {
+  background: #d5d5d5;
+  border-color: #bbb;
+  transform: rotate(1.2deg) translate(7px, 2px);
+  z-index: 2;
+}
+
+/* 빨간 클립 (좌측 상단) */
+.clip-wrapper {
+  position: absolute;
+  top: -8px;
+  left: 56px;
+  z-index: 10;
+  width: 50px;
+  height: 96px;
+}
+
+/* 메인 카드 */
+.card {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 870px;
+  height: calc(100% - 40px);
+  background: #ffffff;
+  border-radius: 12px;
+  border: 3px solid #1a1a1a;
+  overflow: hidden;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 표지/마무리: 중앙 정렬 */
+.card--centered {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 80px;
+}
+
+/* 상단 헤더 배너 (슬라이드 3~7용) */
+.card-header {
+  width: 100%;
+  height: 80px;
+  background: #d0d0d0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 44px;
+  flex-shrink: 0;
+}
+
+.card-header-label {
+  font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #aaa;
+  letter-spacing: 5px;
+}
+
+/* 카드 본문 영역 (헤더 아래) */
+.card-body {
+  flex: 1;
+  padding: 48px 70px 56px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Simple Card News 스크립트 행 */
+.script-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.script-line {
+  flex: 1;
+  height: 2px;
+  background: #cf1f1f;
+}
+
+.script-text {
+  font-family: 'Pacifico', cursive;
+  color: #cf1f1f;
+  font-size: 34px;
+  white-space: nowrap;
+}
+
+/* 빨간 구분선 */
+.divider-red {
+  border: none;
+  border-top: 2.5px solid #cf1f1f;
+  width: 100%;
+  margin: 18px 0 36px;
+  flex-shrink: 0;
+}
+
+/* 점선 구분선 */
+.divider-dot {
+  border: none;
+  border-top: 1.5px dashed #ccc;
+  width: 100%;
+}
+
+
+/* ===== slide-01-cover ===== */
+.cover-script-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+    .cover-script-line {
+      width: 90px;
+      height: 2px;
+      background: #cf1f1f;
+    }
+    .cover-script-text {
+      font-family: 'Pacifico', cursive;
+      color: #cf1f1f;
+      font-size: 40px;
+      white-space: nowrap;
+    }
+    .cover-title {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 126px;
+      line-height: 1.08;
+      text-align: center;
+    }
+    .cover-title .black { color: #111; }
+    .cover-title .red   { color: #cf1f1f; }
+
+
+/* ===== slide-02-toc ===== */
+.toc-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 72px 60px;
+    }
+    .toc-title {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 88px;
+      color: #111;
+      text-align: center;
+      margin-bottom: 44px;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+    .toc-item {
+      background: #f0f0f0;
+      border-radius: 50px;
+      padding: 18px 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .toc-check { flex-shrink: 0; }
+    .toc-text {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 30px;
+      font-weight: 600;
+      color: #222;
+    }
+
+
+/* ===== slide-03-text-body ===== */
+.slide-h1 {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 72px;
+      color: #111;
+      line-height: 1.1;
+      margin-bottom: 0;
+    }
+    .body-text {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.85;
+    }
+
+
+/* ===== slide-04-photo ===== */
+.slide-h1 {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 72px;
+      color: #111;
+      line-height: 1.1;
+    }
+    .photo-area {
+      width: 100%;
+      flex: 1;
+      background: #d0e8d0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      min-height: 0;
+    }
+    .photo-placeholder {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 28px;
+      color: #888;
+      font-weight: 500;
+    }
+    .photo-caption {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 28px;
+      color: #444;
+      text-align: center;
+      line-height: 1.6;
+      margin-top: 28px;
+      flex-shrink: 0;
+    }
+
+
+/* ===== slide-05-two-col ===== */
+.slide-h1 {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 72px;
+      color: #111;
+      line-height: 1.1;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      flex: 1;
+      min-height: 0;
+    }
+    .col-item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .col-photo {
+      flex: 1;
+      background: #d0e8d0;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 0;
+    }
+    .col-photo-placeholder {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 22px;
+      color: #888;
+    }
+    .col-label {
+      background: #cf1f1f;
+      color: #fff;
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      padding: 14px 20px;
+      border-radius: 50px;
+      flex-shrink: 0;
+    }
+
+
+/* ===== slide-06-points ===== */
+.slide-h1 {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 72px;
+      color: #111;
+      line-height: 1.1;
+    }
+    .points-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+    }
+    .point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 30px 0;
+    }
+    .point-item + .point-item {
+      border-top: 1.5px dashed #ccc;
+    }
+    .point-bubble {
+      flex-shrink: 0;
+      width: 72px;
+      height: 82px;
+    }
+    .point-content { flex: 1; padding-top: 6px; }
+    .point-keyword {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: #111;
+      margin-bottom: 8px;
+    }
+    .point-desc {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 26px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+
+/* ===== slide-07-icon-grid ===== */
+.slide-h1 {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 72px;
+      color: #111;
+      line-height: 1.1;
+    }
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      flex: 1;
+      align-items: start;
+    }
+    .icon-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+    .icon-bubble {
+      width: 130px;
+      height: 148px;
+      flex-shrink: 0;
+    }
+    .icon-keyword {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: #111;
+    }
+    .icon-desc {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 24px;
+      color: #555;
+      line-height: 1.55;
+      word-break: keep-all;
+    }
+
+
+/* ===== slide-08-closing ===== */
+.closing-script {
+      font-family: 'Pacifico', cursive;
+      color: #cf1f1f;
+      font-size: 40px;
+      margin-bottom: 50px;
+    }
+    .closing-title {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 130px;
+      line-height: 1.05;
+      text-align: center;
+    }
+    .closing-title .red   { color: #cf1f1f; }
+    .closing-title .black { color: #111; }
+    .closing-divider {
+      border: none;
+      border-top: 2.5px solid #cf1f1f;
+      width: 80%;
+      margin: 44px auto 44px;
+    }
+    .closing-sub {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-size: 36px;
+      font-weight: 400;
+      color: #333;
+    }

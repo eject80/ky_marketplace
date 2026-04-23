@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>비교 정리</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-blob bg-blob--1"></div>
+    <div class="bg-blob bg-blob--2"></div>
+    <div class="bg-blob bg-blob--3"></div>
+    <div class="clipboard-frame">
+      <div class="clip-wrapper">
+        <svg viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" width="220" height="80">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9aaae0"/><stop offset="100%" stop-color="#5b6bbf"/></linearGradient></defs>
+          <rect x="6" y="46" width="208" height="30" rx="10" fill="url(#cg)"/>
+          <path d="M76 46 C76 8 144 8 144 46" fill="none" stroke="url(#cg)" stroke-width="20" stroke-linecap="round"/>
+          <rect x="6" y="46" width="208" height="12" rx="10" fill="rgba(255,255,255,0.18)"/>
+          <line x1="6" y1="61" x2="214" y2="61" stroke="rgba(0,0,30,0.15)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="card">
+        <div class="slide-icon">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 10 L54 10 L66 22 L66 72 L14 72 Z" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M54 10 L54 22 L66 22" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+            <line x1="24" y1="36" x2="56" y2="36" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="24" y1="48" x2="56" y2="48" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="24" y1="60" x2="44" y2="60" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h1 class="h2c"><span class="h-blue">비교</span><span class="h-black"> 정리</span></h1>
+        <div class="comp-section">
+          <div class="comp-label">항목 A</div>
+          <ul class="comp-list">
+            <li>이 영역에는 첫 번째 기준이 되는 내용을 작성합니다.</li>
+            <li>현재 상황, 기존 방식, 또는 비교 대상이 되는 요소를 중심으로 설명하면 좋습니다.</li>
+            <li>특징이나 장점, 한계점 등을 간단히 정리해 주면 이후 내용과의 차이를 이해하는 데 도움이 됩니다.</li>
+          </ul>
+        </div>
+        <div class="comp-divider">
+          <div class="comp-divider-line"></div>
+          <div class="comp-arrow">
+            <svg viewBox="0 0 40 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="32">
+              <line x1="20" y1="2" x2="20" y2="22" stroke="#7c8fd4" stroke-width="3.5" stroke-linecap="round"/>
+              <polyline points="8,16 20,28 32,16" stroke="#7c8fd4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="comp-section">
+          <div class="comp-label">항목 B</div>
+          <ul class="comp-list">
+            <li>이 영역에는 항목 A와 비교되는 내용을 작성합니다.</li>
+            <li>개선된 방식, 제안 내용, 또는 새로운 방향성을 중심으로 설명하면 좋습니다.</li>
+            <li>두 항목의 차이점과 변화 포인트가 자연스럽게 드러나도록 작성하면 효과적인 비교가 가능합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

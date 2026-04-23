@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>06 포인트 정리</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <!-- Clip -->
+      <div class="clip-top">
+        <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg" width="280" height="90">
+          <defs>
+            <linearGradient id="clipGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#555555"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="48" width="272" height="38" rx="10" fill="url(#clipGrad)"/>
+          <path d="M90 48 C90 6 190 6 190 48" fill="none" stroke="url(#clipGrad)" stroke-width="24" stroke-linecap="round"/>
+          <rect x="4" y="48" width="272" height="14" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <line x1="4" y1="66" x2="276" y2="66" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="clipboard-board">
+        <div class="card">
+          <!-- Title -->
+          <div class="title-row">
+            <span class="page-title-ko"><span class="h-blue">포인트</span> 정리</span>
+            <span class="page-en">Point Layout</span>
+          </div>
+          <hr class="title-rule">
+
+          <!-- Points -->
+          <ul class="points-list">
+            <!-- Point 1 -->
+            <li class="point-item">
+              <div class="point-header">
+                <!-- Pin icon SVG -->
+                <svg class="pin-icon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" fill="none">
+                  <circle cx="22" cy="15" r="9" stroke="#1a1a1a" stroke-width="3.5" fill="none"/>
+                  <circle cx="22" cy="15" r="4" fill="#1a1a1a"/>
+                  <line x1="22" y1="24" x2="22" y2="40" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+                  <line x1="14" y1="38" x2="30" y2="38" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+                <div class="point-title">핵심 내용 요약</div>
+              </div>
+              <hr class="point-divider">
+              <p class="point-desc">이 페이지에서는 앞에서 설명한 주요 내용을 핵심 포인트 위주로 정리합니다.<br>청중이 전체 흐름을 빠르게 이해하고 기억할 수 있도록 활용하면 좋습니다.</p>
+            </li>
+            <!-- Point 2 -->
+            <li class="point-item">
+              <div class="point-header">
+                <svg class="pin-icon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" fill="none">
+                  <circle cx="22" cy="15" r="9" stroke="#1a1a1a" stroke-width="3.5" fill="none"/>
+                  <circle cx="22" cy="15" r="4" fill="#1a1a1a"/>
+                  <line x1="22" y1="24" x2="22" y2="40" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+                  <line x1="14" y1="38" x2="30" y2="38" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+                <div class="point-title">핵심 내용 요약</div>
+              </div>
+              <hr class="point-divider">
+              <p class="point-desc">이 페이지에서는 앞에서 설명한 주요 내용을 핵심 포인트 위주로 정리합니다.<br>청중이 전체 흐름을 빠르게 이해하고 기억할 수 있도록 활용하면 좋습니다.</p>
+            </li>
+            <!-- Point 3 -->
+            <li class="point-item">
+              <div class="point-header">
+                <svg class="pin-icon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" fill="none">
+                  <circle cx="22" cy="15" r="9" stroke="#1a1a1a" stroke-width="3.5" fill="none"/>
+                  <circle cx="22" cy="15" r="4" fill="#1a1a1a"/>
+                  <line x1="22" y1="24" x2="22" y2="40" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+                  <line x1="14" y1="38" x2="30" y2="38" stroke="#1a1a1a" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+                <div class="point-title">핵심 내용 요약</div>
+              </div>
+              <hr class="point-divider">
+              <p class="point-desc">이 페이지에서는 앞에서 설명한 주요 내용을 핵심 포인트 위주로 정리합니다.<br>청중이 전체 흐름을 빠르게 이해하고 기억할 수 있도록 활용하면 좋습니다.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>08 3개의 이미지</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <!-- Clip -->
+      <div class="clip-top">
+        <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg" width="280" height="90">
+          <defs>
+            <linearGradient id="clipGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#555555"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="48" width="272" height="38" rx="10" fill="url(#clipGrad)"/>
+          <path d="M90 48 C90 6 190 6 190 48" fill="none" stroke="url(#clipGrad)" stroke-width="24" stroke-linecap="round"/>
+          <rect x="4" y="48" width="272" height="14" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <line x1="4" y1="66" x2="276" y2="66" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="clipboard-board">
+        <div class="card">
+          <!-- Title -->
+          <div class="title-row">
+            <span class="page-title-ko"><span class="h-blue">3개의</span> 이미지</span>
+            <span class="page-en">3-Image Layout</span>
+          </div>
+          <hr class="title-rule">
+
+          <!-- 3-row image grid -->
+          <ul class="img-grid-list">
+            <!-- Row 1 -->
+            <li class="img-grid-row">
+              <div class="img-placeholder">
+                <span class="img-placeholder-label">이미지 영역</span>
+              </div>
+              <div class="img-grid-right">
+                <div class="img-num-badge">
+                  <!-- Index finger up icon -->
+                  <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="none">
+                    <path d="M18 6 V24" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M18 24 Q12 24 12 30 H24 Q24 24 18 24Z" fill="white"/>
+                    <path d="M13 12 Q10 12 10 18 V24 Q10 24 12 24" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    <path d="M23 12 Q26 12 26 18 V24 Q26 24 24 24" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                  </svg>
+                </div>
+                <p class="img-grid-desc">이 페이지에는 주제와 관련된 이미지를<br>여러 개 배치하여 내용을 시각적으로<br>보여줍니다.</p>
+              </div>
+            </li>
+            <!-- Row 2 -->
+            <li class="img-grid-row">
+              <div class="img-placeholder">
+                <span class="img-placeholder-label">이미지 영역</span>
+              </div>
+              <div class="img-grid-right">
+                <div class="img-num-badge">
+                  <!-- Two fingers up icon -->
+                  <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="none">
+                    <path d="M14 6 V22" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M22 6 V22" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M14 22 Q8 22 8 30 H28 Q28 22 22 22" fill="white" stroke="none"/>
+                    <path d="M10 14 Q8 14 8 20 V28" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                    <path d="M26 14 Q28 14 28 20 V28" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+                  </svg>
+                </div>
+                <p class="img-grid-desc">이 페이지에는 주제와 관련된 이미지를<br>여러 개 배치하여 내용을 시각적으로<br>보여줍니다.</p>
+              </div>
+            </li>
+            <!-- Row 3 -->
+            <li class="img-grid-row">
+              <div class="img-placeholder">
+                <span class="img-placeholder-label">이미지 영역</span>
+              </div>
+              <div class="img-grid-right">
+                <div class="img-num-badge">
+                  <!-- Three fingers up icon -->
+                  <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="none">
+                    <path d="M11 8 V22" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+                    <path d="M18 6 V22" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+                    <path d="M25 8 V22" stroke="white" stroke-width="2.8" stroke-linecap="round"/>
+                    <path d="M11 22 Q6 22 6 29 H30 Q30 22 25 22" fill="white"/>
+                  </svg>
+                </div>
+                <p class="img-grid-desc">이 페이지에는 주제와 관련된 이미지를<br>여러 개 배치하여 내용을 시각적으로<br>보여줍니다.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

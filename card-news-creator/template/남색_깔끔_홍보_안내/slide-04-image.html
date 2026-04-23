@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>이미지 설명</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-blob bg-blob--1"></div>
+    <div class="bg-blob bg-blob--2"></div>
+    <div class="bg-blob bg-blob--3"></div>
+    <div class="clipboard-frame">
+      <div class="clip-wrapper">
+        <svg viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" width="220" height="80">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9aaae0"/><stop offset="100%" stop-color="#5b6bbf"/></linearGradient></defs>
+          <rect x="6" y="46" width="208" height="30" rx="10" fill="url(#cg)"/>
+          <path d="M76 46 C76 8 144 8 144 46" fill="none" stroke="url(#cg)" stroke-width="20" stroke-linecap="round"/>
+          <rect x="6" y="46" width="208" height="12" rx="10" fill="rgba(255,255,255,0.18)"/>
+          <line x1="6" y1="61" x2="214" y2="61" stroke="rgba(0,0,30,0.15)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="card card--image">
+        <div class="image-area">
+          <!-- 실제 이미지로 교체: <img src="your-image.jpg" alt="설명"> -->
+          <div class="image-placeholder">
+            <div class="image-placeholder-icon">
+              <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg" width="120" height="90">
+                <rect x="4" y="4" width="112" height="82" rx="8" stroke="currentColor" stroke-width="4"/>
+                <circle cx="34" cy="32" r="16" stroke="currentColor" stroke-width="4"/>
+                <path d="M4 64 L30 40 L56 58 L78 44 L116 70" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="image-title-overlay">
+            <div class="image-title-text"><span class="it-blue">이미지</span> 설명</div>
+          </div>
+          <div class="image-icon">
+            <svg viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg" width="68" height="68">
+              <rect x="6" y="20" width="56" height="38" rx="8" stroke="currentColor" stroke-width="4"/>
+              <circle cx="34" cy="39" r="12" stroke="currentColor" stroke-width="4"/>
+              <path d="M22 20 L26 13 L42 13 L46 20" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+              <circle cx="54" cy="28" r="4" fill="currentColor"/>
+            </svg>
+          </div>
+        </div>
+        <div class="text-area">
+          <p>이 영역에는 이미지와 관련된 설명을 작성합니다. 여서, 사례, 활동 사진, 참고 자료 등을 넣어 설명하면 좋습니다. 비즈니스에서는 사례 소개, 학교에서는 활동 광고 및 장리폼으로 활용할 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

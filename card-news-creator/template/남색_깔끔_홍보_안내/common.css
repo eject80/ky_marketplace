@@ -1,0 +1,568 @@
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css');
+
+/* ===== 리셋 ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { width: 1080px; height: 1440px; overflow: hidden; -webkit-font-smoothing: antialiased; }
+body::-webkit-scrollbar { display: none; }
+
+/* ===== 캔버스 ===== */
+.canvas {
+  position: relative;
+  width: 1080px;
+  height: 1440px;
+  background: linear-gradient(135deg, #0d0d25 0%, #1a1a45 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== 배경 블러 원 ===== */
+.bg-blob { position: absolute; border-radius: 50%; pointer-events: none; }
+.bg-blob--1 { width: 600px; height: 600px; background: rgba(43,60,160,0.55); filter: blur(90px); right: -150px; bottom: -100px; }
+.bg-blob--2 { width: 350px; height: 350px; background: rgba(30,40,120,0.45); filter: blur(70px); left: -100px; top: 38%; }
+.bg-blob--3 { width: 250px; height: 250px; background: rgba(60,80,180,0.35); filter: blur(60px); right: 60px; top: 50px; }
+
+/* ===== 클립보드 프레임 ===== */
+.clipboard-frame {
+  position: relative;
+  width: 940px;
+  height: 1300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.clip-wrapper {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 220px;
+  height: 80px;
+}
+
+/* ===== 카드 ===== */
+.card {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  margin-top: 32px;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 3px solid #c0c8f0;
+  padding: 100px 70px 60px;
+  overflow: hidden;
+}
+
+/* 표지: 세로 중앙 정렬 */
+.card--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 이미지 슬라이드: 패딩 없이 이미지로 채움 */
+.card--image {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== 슬라이드 아이콘 (우측 상단) ===== */
+.slide-icon {
+  position: absolute;
+  top: 38px;
+  right: 48px;
+  width: 78px;
+  height: 78px;
+  opacity: 0.28;
+  color: #666;
+}
+
+/* ===== 2컬러 제목 ===== */
+.h2c {
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  font-weight: 900;
+  font-size: 88px;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 44px;
+}
+.h-blue { color: #2d4bba; }
+.h-black { color: #111111; }
+
+/* ===== 공통 유틸리티 ===== */
+.divider-dashed {
+  border: none;
+  border-top: 1.5px dashed #cccccc;
+  width: 100%;
+}
+
+
+/* ===== slide-01-cover ===== */
+.cover-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+    .cover-badge {
+      background: #5b6bbf;
+      color: white;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 28px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 6px;
+      letter-spacing: -0.3px;
+    }
+    .cover-badge-icon {
+      width: 48px;
+      height: 48px;
+      color: #333;
+      opacity: 0.6;
+    }
+    .cover-title {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 134px;
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .cover-title-line { display: block; }
+    .ct-blue { color: #2d4bba; }
+    .ct-black { color: #111111; }
+    .cover-url {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 28px;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      margin-top: 10px;
+    }
+
+
+/* ===== slide-02-toc ===== */
+.toc-title {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 104px;
+      color: #2d4bba;
+      text-align: center;
+      margin-bottom: 54px;
+      line-height: 1;
+    }
+    .toc-list { width: 100%; list-style: none; }
+    .toc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+      padding: 30px 0;
+      border-bottom: 1.5px dashed #cccccc;
+    }
+    .toc-item:last-child { border-bottom: none; }
+    .toc-number {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #888888;
+      color: white;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .toc-text { flex: 1; }
+    .toc-item-title {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 800;
+      font-size: 38px;
+      color: #2d4bba;
+      margin-bottom: 8px;
+    }
+    .toc-item-desc {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 25px;
+      color: #888;
+      font-weight: 400;
+    }
+
+
+/* ===== slide-03-key-message ===== */
+.key-box-wrapper {
+      position: relative;
+      margin-bottom: 50px;
+    }
+    .key-pin {
+      position: absolute;
+      top: -20px;
+      left: -14px;
+      width: 44px;
+      height: 44px;
+      color: #5b6bbf;
+      z-index: 2;
+    }
+    .key-box {
+      background: #f0f0f0;
+      border-radius: 16px;
+      padding: 48px 50px;
+      text-align: center;
+    }
+    .key-box-text {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 48px;
+      color: #2d4bba;
+      line-height: 1.4;
+    }
+    .key-desc {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 27px;
+      color: #666;
+      line-height: 1.85;
+      text-align: center;
+      font-weight: 400;
+    }
+
+
+/* ===== slide-04-image ===== */
+.image-area {
+      position: relative;
+      flex: 0 0 65%;
+      background: #2a3a6a;
+      overflow: hidden;
+    }
+    .image-area img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(160deg, #2a3a6a 0%, #1a2550 40%, #0d1535 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-placeholder-icon { color: rgba(255,255,255,0.2); }
+    .image-title-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 36px 50px;
+      background: linear-gradient(to bottom, rgba(10,10,30,0.5) 0%, transparent 100%);
+    }
+    .image-title-text {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 900;
+      font-size: 68px;
+      color: white;
+      line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+    .image-title-text .it-blue { color: #7090ff; }
+    .image-icon {
+      position: absolute;
+      top: 32px;
+      right: 40px;
+      width: 68px;
+      height: 68px;
+      color: rgba(255,255,255,0.4);
+    }
+    .text-area {
+      flex: 0 0 35%;
+      background: #ffffff;
+      padding: 40px 60px 50px;
+      display: flex;
+      align-items: center;
+    }
+    .text-area p {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 27px;
+      color: #555;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+
+
+/* ===== slide-05-comparison ===== */
+.h2c { margin-bottom: 36px; }
+    .comp-section { width: 100%; }
+    .comp-label {
+      display: inline-block;
+      background: #5b6bbf;
+      color: white;
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 800;
+      font-size: 38px;
+      padding: 10px 26px;
+      border-radius: 8px;
+      margin-bottom: 18px;
+    }
+    .comp-list { list-style: none; padding-left: 4px; }
+    .comp-list li {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 26px;
+      color: #333;
+      line-height: 1.7;
+      padding: 5px 0 5px 26px;
+      position: relative;
+      font-weight: 400;
+    }
+    .comp-list li::before {
+      content: "•";
+      position: absolute;
+      left: 4px;
+      color: #2d4bba;
+      font-size: 22px;
+      line-height: 1.8;
+    }
+    .comp-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 18px 0;
+    }
+    .comp-divider-line {
+      width: 100%;
+      height: 0;
+      border-top: 1.5px dashed #cccccc;
+    }
+    .comp-arrow { margin-top: 6px; }
+
+
+/* ===== slide-06-points ===== */
+.points-list { width: 100%; list-style: none; }
+    .point-item {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 24px 0;
+      border-bottom: 1.5px dashed #cccccc;
+    }
+    .point-item:last-child { border-bottom: none; }
+    .point-left-box {
+      width: 180px;
+      background: #5b6bbf;
+      border-radius: 12px;
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .point-check-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2.5px solid rgba(255,255,255,0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .point-label-text {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: white;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .point-desc {
+      flex: 1;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 25px;
+      color: #555;
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+
+/* ===== slide-07-table ===== */
+.table-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1.5px solid #d8d8d8;
+      margin-bottom: 48px;
+    }
+    .data-table { border-collapse: collapse; width: 100%; }
+    .data-table thead th {
+      background: #7c8fd4;
+      color: white;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .data-table thead th:first-child { border-right: 1px solid rgba(255,255,255,0.3); }
+    .data-table tbody td {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 26px;
+      color: #444;
+      padding: 22px 24px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+      font-weight: 400;
+    }
+    .data-table tbody td:first-child {
+      border-right: 1px solid #e0e0e0;
+      font-weight: 600;
+      color: #333;
+    }
+    .data-table tbody tr:last-child td { border-bottom: none; }
+    .table-desc {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 27px;
+      color: #666;
+      line-height: 1.8;
+      text-align: center;
+      font-weight: 400;
+    }
+
+
+/* ===== slide-08-image-grid ===== */
+.img-grid {
+      display: flex;
+      gap: 18px;
+      width: 100%;
+    }
+    .img-grid-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .img-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #e0e4f0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .img-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .img-thumb-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #d0d8f0 0%, #c0caec 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8898cc;
+    }
+    .img-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: #5b6bbf;
+      color: white;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      line-height: 1;
+    }
+    .img-caption {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 21px;
+      color: #555;
+      line-height: 1.65;
+      text-align: center;
+      font-weight: 400;
+    }
+
+
+/* ===== slide-09-steps ===== */
+.steps-container {
+      position: relative;
+      width: 100%;
+    }
+    .steps-container::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 16%;
+      right: 16%;
+      height: 3px;
+      background: #7c8fd4;
+      z-index: 0;
+    }
+    .steps-grid {
+      display: flex;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .step-header {
+      background: #5b6bbf;
+      color: white;
+      border-radius: 30px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      position: relative;
+      z-index: 2;
+    }
+    .step-header-word {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+    }
+    .step-header-num {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 26px;
+      font-weight: 900;
+    }
+    .step-body {
+      background: #f0f0f0;
+      border-radius: 14px;
+      padding: 48px 20px 28px;
+      margin-top: -18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .step-icon-area {
+      width: 72px;
+      height: 72px;
+      color: #5b6bbf;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-desc {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 22px;
+      color: #444;
+      line-height: 1.7;
+      text-align: center;
+      font-weight: 400;
+    }

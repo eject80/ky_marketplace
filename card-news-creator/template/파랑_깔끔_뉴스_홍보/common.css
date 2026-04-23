@@ -1,0 +1,368 @@
+/* ===== LAYER 1: Universal Fixed ===== */
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Black+Han+Sans&family=Nanum+Pen+Script&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+}
+body {
+	width: 1080px;
+	height: 1440px;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+}
+body::-webkit-scrollbar {
+	display: none;
+}
+.canvas {
+	position: relative;
+	width: 1080px;
+	height: 1440px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ===== LAYER 2: Design Variables ===== */
+
+/* Canvas: light gray with graph paper grid */
+.canvas {
+	background-color: #e4e4e4;
+	background-image: linear-gradient(rgba(140, 140, 140, 0.22) 1px, transparent 1px), linear-gradient(90deg, rgba(140, 140, 140, 0.22) 1px, transparent 1px);
+	background-size: 36px 36px;
+}
+
+/* Board wrapper (clip + shadow cards + main board) */
+.board-wrap {
+	position: relative;
+	width: 940px;
+	height: 1310px;
+}
+
+/* Gray shadow cards stacked behind main board */
+.board-shadow {
+	position: absolute;
+	top: 70px;
+	left: 0;
+	width: 940px;
+	height: 1200px;
+	border-radius: 26px;
+}
+.board-shadow--1 {
+	background: #c2c2c2;
+	transform: rotate(-2.5deg);
+	z-index: 1;
+}
+.board-shadow--2 {
+	background: #cfcfcf;
+	transform: rotate(1.8deg);
+	z-index: 2;
+}
+
+/* Main clipboard board */
+.clipboard-board {
+	position: absolute;
+	top: 70px;
+	left: 0;
+	width: 940px;
+	height: 1200px;
+	background: #f3f3f3;
+	border: 6px solid #3d6e8f;
+	border-radius: 26px;
+	z-index: 3;
+	/* overflow: hidden; */
+	display: flex;
+	flex-direction: column;
+	padding: 58px 64px 52px;
+}
+
+/* Clip at top center of board-wrap */
+.clip-top {
+	position: absolute;
+	top: -50px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 10;
+}
+
+/* Content card inside board */
+.card {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+}
+.card--centered {
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+/* Chapter badge: [01][CHAPTER] */
+.chapter-badge {
+	display: inline-flex;
+	align-items: stretch;
+	font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+	font-weight: 700;
+	overflow: hidden;
+	border-radius: 4px;
+}
+.chapter-num {
+	background: #9a9a9a;
+	color: #fff;
+	font-size: 28px;
+	padding: 8px 22px;
+	letter-spacing: 1px;
+}
+.chapter-label {
+	background: #3d6e8f;
+	color: #fff;
+	font-size: 28px;
+	padding: 8px 22px;
+	letter-spacing: 4px;
+}
+
+/* Cover: handwriting subtitle */
+.cover-handwriting {
+	font-family: 'Nanum Pen Script', cursive;
+	font-size: 72px;
+	color: #555;
+	line-height: 1;
+	margin-bottom: 8px;
+}
+
+/* Cover: large outlined title (dark) */
+.cover-title-dark {
+	font-family: 'Black Han Sans', 'Noto Sans KR', sans-serif;
+	font-size: 190px;
+	color: #f3f3f3;
+	-webkit-text-stroke: 8px #222;
+	line-height: 1;
+	letter-spacing: -2px;
+	margin-bottom: -40px;
+}
+
+/* Cover: large outlined title (blue) */
+.cover-title-blue {
+	font-family: 'Black Han Sans', 'Noto Sans KR', sans-serif;
+	font-size: 200px;
+	color: #f3f3f3;
+	-webkit-text-stroke: 8px #3d6e8f;
+	line-height: 1;
+	letter-spacing: -2px;
+}
+
+/* Dotted divider (blue) */
+.divider-dotted {
+	width: 100%;
+	border: none;
+	border-top: 3px dotted #3d6e8f;
+	flex-shrink: 0;
+}
+
+/* Solid divider (gray) */
+.divider-line {
+	width: 100%;
+	border: none;
+	border-top: 1.5px solid #bbb;
+	flex-shrink: 0;
+}
+
+/* Hashtag badges */
+.hashtag-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+	justify-content: center;
+}
+.hashtag {
+	border: 2.5px solid #3d6e8f;
+	border-radius: 40px;
+	padding: 10px 26px;
+	color: #3d6e8f;
+	font-family: 'Pretendard', sans-serif;
+	font-weight: 600;
+	font-size: 28px;
+}
+
+/* "자세히보기 >>" */
+.cover-more {
+	color: #666;
+	font-family: 'Pretendard', sans-serif;
+	font-size: 30px;
+	font-weight: 500;
+}
+
+/* Content page titles */
+.page-title {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 900;
+	font-size: 80px;
+	color: #222;
+	line-height: 1.15;
+}
+.page-title.blue {
+	color: #3d6e8f;
+}
+
+.section-subtitle {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 38px;
+	color: #333;
+	line-height: 1.4;
+}
+
+.body-text {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 400;
+	font-size: 28px;
+	color: #666;
+	line-height: 1.78;
+}
+
+/* Image placeholder */
+.img-placeholder {
+	border-radius: 12px;
+	background: linear-gradient(135deg, #c4d6e6 0%, #8aafc4 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+.img-placeholder-label {
+	color: rgba(255, 255, 255, 0.65);
+	font-family: 'Pretendard', sans-serif;
+	font-size: 28px;
+}
+
+/* Slide 2: icon + subtitle row */
+.search-row {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.icon-search {
+	width: 68px;
+	height: 68px;
+	border: 3px solid #3d6e8f;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+/* Slide 3: image grid */
+.img-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 28px;
+	flex: 1;
+}
+.img-grid-item {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+.img-num-badge {
+	background: #3d6e8f;
+	color: #fff;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 26px;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+.img-caption-title {
+	font-family: 'Pretendard', sans-serif;
+	font-weight: 700;
+	font-size: 30px;
+	color: #333;
+}
+.img-caption-body {
+	font-family: 'Pretendard', sans-serif;
+	font-weight: 400;
+	font-size: 24px;
+	color: #666;
+	line-height: 1.65;
+}
+
+/* Slide 4: 3-column steps */
+.steps-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	flex: 1;
+}
+.step-col {
+	padding: 28px 18px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	gap: 20px;
+}
+.step-col + .step-col {
+	border-left: 1.5px solid #ccc;
+}
+.step-label {
+	font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+	font-size: 26px;
+	color: #999;
+	align-self: flex-start;
+}
+.step-icon {
+	width: 88px;
+	height: 88px;
+}
+.step-keyword {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 32px;
+	color: #222;
+}
+.step-desc {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 400;
+	font-size: 26px;
+	color: #666;
+	line-height: 1.65;
+}
+
+/* Closing text */
+.closing-text {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-size: 32px;
+	color: #666;
+	text-align: center;
+	line-height: 1.75;
+}
+
+
+/* ===== slide-02-image ===== */
+.img-wide {
+      width: 100%;
+      height: 340px;
+    }
+
+
+/* ===== slide-03-image-grid ===== */
+.img-grid-photo {
+      width: 100%;
+      height: 360px;
+    }
+    .img-num-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }

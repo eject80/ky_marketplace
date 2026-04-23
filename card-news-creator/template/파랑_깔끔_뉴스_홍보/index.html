@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>파랑 깔끔 뉴스 홍보 — 슬라이드 목록</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="page-header">
+    <h1 class="page-title">파랑 깔끔 뉴스 홍보</h1>
+    <p class="page-meta">슬라이드 클릭 → 새 탭에서 전체 크기(1080 × 1440 px) 미리보기</p>
+  </div>
+
+  <div class="slides-grid" id="slidesGrid"></div>
+
+  <script>
+    const slides = [
+      { num: '01', name: '표지',         file: 'slide-01-cover.html' },
+      { num: '02', name: '이미지 + 텍스트', file: 'slide-02-image.html' },
+      { num: '03', name: '이미지 그리드', file: 'slide-03-image-grid.html' },
+      { num: '04', name: '3단계 정리',   file: 'slide-04-steps.html' },
+      { num: '05', name: '마무리',       file: 'slide-05-closing.html' },
+    ];
+
+    function render() {
+      const grid = document.getElementById('slidesGrid');
+      const colWidth = (grid.clientWidth - 48) / 3;
+      const previewH = colWidth * (1440 / 1080);
+      const scale = colWidth / 1080;
+
+      grid.innerHTML = slides.map(s => `
+        <div class="slide-card">
+          <div class="slide-meta">
+            <span class="slide-num">${s.num}</span>
+            <span class="slide-name">${s.name}</span>
+          </div>
+          <div class="slide-preview" style="height:${previewH}px">
+            <iframe
+              src="${s.file}"
+              width="1080"
+              height="1440"
+              scrolling="no"
+              style="transform:scale(${scale.toFixed(4)});"
+            ></iframe>
+            <a class="slide-link" href="${s.file}" target="_blank" title="${s.name} 전체 보기"></a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    render();
+    window.addEventListener('resize', render);
+  </script>
+</body>
+</html>

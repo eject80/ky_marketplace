@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>핵심정리 페이지</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <div class="board-shadow board-shadow--1"></div>
+      <div class="board-shadow board-shadow--2"></div>
+      <div class="clipboard-board">
+        <div class="clip-top">
+          <svg viewBox="0 0 200 88" xmlns="http://www.w3.org/2000/svg" width="200" height="88">
+            <defs>
+              <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d6d6d6"/>
+                <stop offset="100%" stop-color="#a0a0a0"/>
+              </linearGradient>
+            </defs>
+            <path d="M66 52 C66 10 134 10 134 52" fill="none" stroke="url(#cg)" stroke-width="24" stroke-linecap="round"/>
+            <rect x="10" y="52" width="180" height="32" rx="10" fill="url(#cg)"/>
+            <rect x="10" y="52" width="180" height="11" rx="10" fill="rgba(255,255,255,0.28)"/>
+            <line x1="12" y1="72" x2="188" y2="72" stroke="rgba(0,0,0,0.11)" stroke-width="2"/>
+            <path d="M74 52 C74 22 126 22 126 52" fill="none" stroke="rgba(0,0,0,0.16)" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card">
+          <div class="chapter-badge">
+            <span class="chapter-num">03</span>
+            <span class="chapter-label">CHAPTER</span>
+          </div>
+          <h2 class="page-title blue">핵심정리 페이지</h2>
+          <p class="section-subtitle">소제목 및 관련 내용을 입력해주세요.</p>
+          <p class="body-text">해당 페이지는 많은 분량 텍스트를 입력할 때 쓰기 좋은 페이지입니다.</p>
+          <hr class="divider-line">
+          <div class="steps-grid">
+            <div class="step-col">
+              <span class="step-label">Step 1</span>
+              <svg class="step-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="16" y="18" width="36" height="48" rx="3" stroke="#3d6e8f" stroke-width="3"/>
+                <line x1="24" y1="30" x2="44" y2="30" stroke="#3d6e8f" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="24" y1="40" x2="44" y2="40" stroke="#3d6e8f" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="24" y1="50" x2="36" y2="50" stroke="#3d6e8f" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="62" cy="42" r="12" stroke="#3d6e8f" stroke-width="3"/>
+                <circle cx="62" cy="38" r="5" stroke="#3d6e8f" stroke-width="2.5"/>
+                <path d="M50 60 C50 52 74 52 74 60" stroke="#3d6e8f" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <p class="step-keyword">첫번째 키워드</p>
+              <p class="step-desc">해당 페이지는 3단계의 흐름을 간단히 보여주는 페이지입니다.</p>
+            </div>
+            <div class="step-col">
+              <span class="step-label">Step 2</span>
+              <svg class="step-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="16" width="36" height="46" rx="3" stroke="#3d6e8f" stroke-width="3"/>
+                <line x1="28" y1="28" x2="48" y2="28" stroke="#3d6e8f" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="28" y1="37" x2="48" y2="37" stroke="#3d6e8f" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="28" y1="46" x2="38" y2="46" stroke="#3d6e8f" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="59" cy="57" r="12" stroke="#3d6e8f" stroke-width="3"/>
+                <line x1="67" y1="65" x2="74" y2="72" stroke="#3d6e8f" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="57" cy="55" r="5" stroke="#3d6e8f" stroke-width="2.2" fill="none"/>
+              </svg>
+              <p class="step-keyword">두번째 키워드</p>
+              <p class="step-desc">이곳에는 해당 과정의 핵심이 되는 내용을 간단하게 적어주세요.</p>
+            </div>
+            <div class="step-col">
+              <span class="step-label">Step 3</span>
+              <svg class="step-icon" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="14" y="22" width="60" height="40" rx="4" stroke="#3d6e8f" stroke-width="3"/>
+                <line x1="14" y1="36" x2="74" y2="36" stroke="#3d6e8f" stroke-width="2.2"/>
+                <circle cx="26" cy="29" r="4" stroke="#3d6e8f" stroke-width="2.2" fill="none"/>
+                <circle cx="44" cy="52" r="9" stroke="#3d6e8f" stroke-width="2.5" fill="none"/>
+                <circle cx="44" cy="49" r="3.5" stroke="#3d6e8f" stroke-width="2" fill="none"/>
+                <path d="M36 60 C36 55 52 55 52 60" stroke="#3d6e8f" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <line x1="34" y1="68" x2="54" y2="68" stroke="#3d6e8f" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <p class="step-keyword">세번째 키워드</p>
+              <p class="step-desc">마지막 단계에선 착지점에 대한 구체적인 내용을 입력해주세요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

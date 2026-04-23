@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>내용 비교 페이지</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="page-stack">
+      <div class="page-stack-layer page-stack-layer--1"></div>
+      <div class="page-stack-layer page-stack-layer--2"></div>
+    </div>
+
+    <div class="main-card">
+      <div class="bookmark-tab">
+        <div class="bookmark-blue"></div>
+        <div class="bookmark-gray"></div>
+      </div>
+
+      <!-- Page title -->
+      <div class="page-title-row">
+        <span class="page-title"><span class="t-blue">내용 비교</span> <span style="color:#1a1a1a;">페이지</span></span>
+      </div>
+      <hr class="divider-line">
+
+      <!-- Comparison blocks -->
+      <div class="compare-wrap">
+        <!-- BEFORE block -->
+        <div class="compare-block">
+          <div class="compare-label-pill compare-label-pill--before">BEFORE</div>
+          <div class="compare-keyword compare-keyword--before">
+            이곳에<br>키워드를<br>적어주세요
+          </div>
+          <div class="compare-body">
+            이곳에 텍스트를 적어주세요. 변경되기 전의 내용을 자세하게 적어주면 좋습니다.
+            이곳에 텍스트를 적어주세요. 변경되기 전의 내용을 자세하게 적어주면 좋습니다.
+          </div>
+        </div>
+
+        <!-- Down arrow -->
+        <div class="compare-arrow-down">
+          <svg class="compare-arrow-svg" viewBox="0 0 60 40" width="60" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="arrowGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#aaa"/>
+                <stop offset="100%" stop-color="#555"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 4 L30 28 M18 18 L30 32 L42 18" stroke="url(#arrowGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- AFTER block -->
+        <div class="compare-block">
+          <div class="compare-label-pill compare-label-pill--after">AFTER</div>
+          <div class="compare-keyword compare-keyword--after">
+            이곳에<br>키워드를<br>적어주세요
+          </div>
+          <div class="compare-body">
+            이곳에 텍스트를 적어주세요. 변경되기 후의 내용을 자세하게 적어주면 좋습니다.
+            이곳에 텍스트를 적어주세요. 변경되기 후의 내용을 자세하게 적어주면 좋습니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative chars -->
+      <div class="char-left"></div>
+      <div class="char-right"></div>
+    </div>
+  </div>
+</body>
+</html>

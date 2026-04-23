@@ -1,0 +1,483 @@
+/* ===== LAYER 1: Universal Fixed ===== */
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+.canvas {
+  position: relative;
+  width: 1080px;
+  height: 1440px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== LAYER 2: Design Variables ===== */
+
+/* Canvas: light gray background */
+.canvas {
+  background-color: #e8e8ea;
+}
+
+/* ── Page wrapper ── */
+.page-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top header banner (dark navy) ── */
+.header-band {
+  background: #1e3560;
+  width: 100%;
+  padding: 60px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* canvas wordmark in teal */
+.brand-logo {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #3ecfbe;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+/* Page main title inside header */
+.header-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 80px;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+/* Sub title inside header */
+.header-subtitle {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 34px;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.4;
+}
+
+/* Decorative icon in top-right of header */
+.header-icon {
+  position: absolute;
+  right: 60px;
+  bottom: -20px;
+  width: 160px;
+  height: 160px;
+  z-index: 10;
+}
+
+/* ── Body area below header ── */
+.body-area {
+  flex: 1;
+  background: #e8e8ea;
+  padding: 48px 60px 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── White content card ── */
+.content-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 52px 60px 56px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Cover layout specifics ── */
+
+/* Cover subtitle label (navy bar) */
+.cover-label {
+  display: inline-block;
+  background: #1e3560;
+  color: #ffffff;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 500;
+  font-size: 34px;
+  padding: 14px 28px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+/* Cover main heading */
+.cover-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 900;
+  font-size: 108px;
+  color: #111111;
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+/* Cover description box (white rounded) */
+.cover-desc-box {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 40px 44px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.cover-desc-text {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  color: #444444;
+  line-height: 1.75;
+  flex: 1;
+}
+
+/* Cover 3D icon placeholder */
+.cover-icon-placeholder {
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #a8d4f0 0%, #6aacde 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cover hashtag footer band */
+.cover-footer {
+  background: #1e3560;
+  width: 100%;
+  padding: 40px 72px;
+  flex-shrink: 0;
+}
+
+.cover-tags {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 27px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.8;
+}
+
+/* ── Info cards layout (slide 2) ── */
+.info-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 34px 44px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-card-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 38px;
+  color: #1e3560;
+  text-align: center;
+}
+
+.info-card-body {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 29px;
+  color: #555555;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ── Row table layout (slide 3) ── */
+.table-intro-title {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 44px;
+  color: #1e3560;
+  line-height: 1.3;
+}
+
+.table-intro-sub {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: #666666;
+  line-height: 1.5;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+.data-table thead tr {
+  background: #1e3560;
+}
+
+.data-table thead th {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #ffffff;
+  padding: 18px 20px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.data-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.data-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.data-table tbody td {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 27px;
+  color: #444444;
+  padding: 14px 20px;
+  text-align: center;
+}
+
+/* ── Grid table layout (slide 4) ── */
+.grid-intro-text {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #444444;
+  line-height: 1.55;
+}
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+}
+
+.schedule-cell {
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.schedule-cell-header {
+  background: #1e3560;
+  color: #ffffff;
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  padding: 18px 14px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.schedule-cell-body {
+  background: #ffffff;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  gap: 12px;
+}
+
+.schedule-venue {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: #222222;
+  text-align: center;
+}
+
+.schedule-divider {
+  width: 60%;
+  border: none;
+  border-top: 1.5px solid #dddddd;
+}
+
+.schedule-prog {
+  font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #666666;
+  text-align: center;
+  line-height: 1.5;
+}
+
+
+/* ===== slide-01-cover ===== */
+.canvas {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    /* Main body between logo row and footer */
+    .cover-body {
+      flex: 1;
+      background: #e8e8ea;
+      padding: 64px 72px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 36px;
+    }
+
+    /* Top logo row (light gray bg) */
+    .logo-row {
+      background: #e8e8ea;
+      padding: 48px 72px 32px;
+      flex-shrink: 0;
+    }
+
+
+/* ===== slide-02-info-cards ===== */
+.canvas {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    /* Header band taller for this page */
+    .header-band {
+      padding-bottom: 80px;
+    }
+
+    /* Megaphone icon */
+    .header-icon {
+      width: 180px;
+      height: 180px;
+      bottom: -36px;
+    }
+
+    /* Body: stack of info cards */
+    .body-area {
+      flex: 1;
+      background: #e8e8ea;
+      padding: 40px 60px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+
+/* ===== slide-03-row-table ===== */
+.canvas {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    .header-band {
+      padding-bottom: 90px;
+    }
+
+    /* Folder icon in header */
+    .header-icon {
+      width: 170px;
+      height: 170px;
+      bottom: -30px;
+    }
+
+    /* Body: white card with table */
+    .body-area {
+      flex: 1;
+      background: #e8e8ea;
+      padding: 40px 60px 56px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-card {
+      flex: 1;
+      padding: 44px 52px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* Compact row heights for many rows */
+    .data-table tbody td {
+      padding: 11px 20px;
+      font-size: 26px;
+    }
+    .data-table thead th {
+      font-size: 27px;
+      padding: 16px 20px;
+    }
+
+
+/* ===== slide-04-grid-table ===== */
+.canvas {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+    }
+
+    .header-band {
+      padding-bottom: 90px;
+    }
+
+    /* Checkbox icon in header */
+    .header-icon {
+      width: 155px;
+      height: 155px;
+      bottom: -28px;
+    }
+
+    .body-area {
+      flex: 1;
+      background: #e8e8ea;
+      padding: 40px 60px 56px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content-card {
+      flex: 1;
+      padding: 44px 52px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .schedule-grid {
+      flex: 1;
+    }

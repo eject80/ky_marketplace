@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>02 목차</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <!-- Clip -->
+      <div class="clip-top">
+        <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg" width="280" height="90">
+          <defs>
+            <linearGradient id="clipGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#555555"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="48" width="272" height="38" rx="10" fill="url(#clipGrad)"/>
+          <path d="M90 48 C90 6 190 6 190 48" fill="none" stroke="url(#clipGrad)" stroke-width="24" stroke-linecap="round"/>
+          <rect x="4" y="48" width="272" height="14" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <line x1="4" y1="66" x2="276" y2="66" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="clipboard-board">
+        <div class="card">
+          <!-- Title -->
+          <div class="title-row">
+            <span class="page-title">목차</span>
+            <span class="page-en">CONTENTS</span>
+          </div>
+          <hr class="title-rule">
+
+          <!-- Description -->
+          <p class="toc-desc">메시지는 짧고 간결할수록 효과적으로 전달돼요. 2-3줄로 작성하면 더<br>쉽게 읽을 수 있어요.</p>
+
+          <!-- TOC Items -->
+          <ul class="toc-list">
+            <li class="toc-item">
+              <span class="toc-num">01</span>
+              <div class="toc-divider"></div>
+              <span class="toc-text">프로젝트 개요와 목표를 작성해 주세요.</span>
+            </li>
+            <li class="toc-item">
+              <span class="toc-num">02</span>
+              <div class="toc-divider"></div>
+              <span class="toc-text">프로젝트 개요와 목표를 작성해 주세요.</span>
+            </li>
+            <li class="toc-item">
+              <span class="toc-num">03</span>
+              <div class="toc-divider"></div>
+              <span class="toc-text">프로젝트 개요와 목표를 작성해 주세요.</span>
+            </li>
+            <li class="toc-item">
+              <span class="toc-num">04</span>
+              <div class="toc-divider"></div>
+              <span class="toc-text">프로젝트 개요와 목표를 작성해 주세요.</span>
+            </li>
+            <li class="toc-item">
+              <span class="toc-num">05</span>
+              <div class="toc-divider"></div>
+              <span class="toc-text">프로젝트 개요와 목표를 작성해 주세요.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

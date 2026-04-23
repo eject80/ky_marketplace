@@ -1,0 +1,762 @@
+/* ===== LAYER 1: Universal Fixed ===== */
+@import url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+}
+body {
+	width: 1080px;
+	height: 1440px;
+	overflow: hidden;
+	-webkit-font-smoothing: antialiased;
+}
+body::-webkit-scrollbar {
+	display: none;
+}
+.canvas {
+	position: relative;
+	width: 1080px;
+	height: 1440px;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* ===== LAYER 2: Design Variables ===== */
+
+/* Canvas: light gray background */
+.canvas {
+	background-color: #e8e8ec;
+}
+
+/* ─── Calendar-style frame ─── */
+/* Outer wrapper */
+.cal-wrap {
+	position: relative;
+	width: 960px;
+	height: 1340px;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Top header pill: "APRIL NEWSLETTER" */
+.cal-header {
+	position: relative;
+	z-index: 10;
+	background: #2c76f0;
+	border-radius: 20px 20px 0 0;
+	height: 88px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+	font-weight: 700;
+	font-size: 32px;
+	letter-spacing: 6px;
+	color: #ffffff;
+}
+
+/* Ring pins row (left + right) */
+.cal-rings {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 80px;
+	z-index: 20;
+}
+.cal-ring {
+	width: 52px;
+	height: 52px;
+	background: #d0d0d8;
+	border-radius: 50%;
+	border: 6px solid #b8b8c2;
+	box-shadow: inset 0 2px 6px rgba(0,0,0,0.18);
+}
+
+/* Main white board */
+.cal-board {
+	flex: 1;
+	background: #ffffff;
+	border-radius: 0 0 24px 24px;
+	padding: 80px 72px 56px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	overflow: hidden;
+}
+
+/* ─── Slide number badge ─── */
+.slide-num-badge {
+	width: 68px;
+	height: 68px;
+	background: #3a3a3a;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'Noto Sans KR', 'Pretendard', sans-serif;
+	font-weight: 700;
+	font-size: 30px;
+	color: #ffffff;
+	flex-shrink: 0;
+	align-self: center;
+	margin-bottom: 8px;
+}
+
+/* ─── Page titles ─── */
+.page-title {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 900;
+	font-size: 76px;
+	color: #2a2a2a;
+	line-height: 1.15;
+	text-align: center;
+}
+
+/* ─── Image placeholder ─── */
+.img-placeholder {
+	border-radius: 14px;
+	background: linear-gradient(135deg, #c4d8f8 0%, #7aaee8 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+.img-placeholder-label {
+	color: rgba(255, 255, 255, 0.7);
+	font-family: 'Pretendard', sans-serif;
+	font-size: 26px;
+}
+
+/* ─── Image grid (slide 2) ─── */
+.img-grid-2col {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 32px;
+	flex: 1;
+}
+.img-grid-item {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+.img-category {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 28px;
+	color: #2c76f0;
+	text-align: center;
+}
+.img-caption {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 30px;
+	color: #2a2a2a;
+	text-align: center;
+	line-height: 1.4;
+}
+
+/* ─── Notice table rows (slide 3) ─── */
+.notice-list {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	flex: 1;
+}
+.notice-item {
+	background: #f4f6fb;
+	border-radius: 14px;
+	padding: 30px 36px;
+	display: flex;
+	gap: 36px;
+	align-items: flex-start;
+}
+.notice-label {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 30px;
+	color: #2c76f0;
+	min-width: 90px;
+	text-align: center;
+	line-height: 1.4;
+	flex-shrink: 0;
+}
+.notice-content {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 400;
+	font-size: 30px;
+	color: #2a2a2a;
+	line-height: 1.7;
+}
+
+/* ─── Profile card (slide 4) ─── */
+.profile-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0;
+	position: relative;
+}
+.profile-circle {
+	width: 360px;
+	height: 360px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #c4d8f8 0%, #8ab4e8 100%);
+	overflow: hidden;
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.profile-ribbon {
+	background: #2c76f0;
+	color: #ffffff;
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 30px;
+	padding: 16px 48px;
+	margin-top: -20px;
+	position: relative;
+	z-index: 3;
+	border-radius: 6px;
+}
+.profile-ribbon::before,
+.profile-ribbon::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	width: 0;
+	height: 0;
+}
+.profile-ribbon::before {
+	left: -20px;
+	border-top: 28px solid #1a5bc8;
+	border-left: 20px solid transparent;
+}
+.profile-ribbon::after {
+	right: -20px;
+	border-top: 28px solid #1a5bc8;
+	border-right: 20px solid transparent;
+}
+.profile-desc {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 400;
+	font-size: 32px;
+	color: #444;
+	text-align: center;
+	line-height: 1.75;
+}
+.profile-note {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-size: 22px;
+	color: #aaa;
+}
+
+/* ─── Key-message boxes (slide 5) ─── */
+.key-boxes {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+	flex: 1;
+}
+.key-box {
+	background: #f4f6fb;
+	border-radius: 14px;
+	padding: 32px 40px;
+}
+.key-box-label {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 28px;
+	color: #2c76f0;
+	margin-bottom: 10px;
+}
+.key-box-content {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-weight: 700;
+	font-size: 34px;
+	color: #2a2a2a;
+	line-height: 1.5;
+}
+
+/* ─── Closing footer (slide 5) ─── */
+.closing-divider {
+	width: 100%;
+	border: none;
+	border-top: 1.5px solid #ddd;
+	flex-shrink: 0;
+}
+.closing-contact {
+	font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+	font-size: 30px;
+	color: #666;
+	text-align: center;
+}
+
+/* ─── Decorative dots/blobs (reusable) ─── */
+.deco-dot {
+	position: absolute;
+	border-radius: 50%;
+	background: #2c76f0;
+	opacity: 0.15;
+}
+
+
+/* ===== slide-01-cover ===== */
+/* Cover 전용 */
+    .cal-board {
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+
+    /* 말풍선 타이틀 그룹 */
+    .cover-bubble-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 20px;
+    }
+
+    /* 별 장식 */
+    .cover-stars {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .star {
+      font-size: 52px;
+      color: #2c76f0;
+      line-height: 1;
+    }
+
+    /* 검정 말풍선 (이번 달) */
+    .bubble-dark {
+      background: #3a3a3a;
+      border-radius: 50px;
+      padding: 22px 60px;
+      position: relative;
+      margin-bottom: -10px;
+      z-index: 2;
+    }
+    .bubble-dark-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 80px;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    /* 파랑 말풍선 (공지사항) — 아래 꼬리 포함 */
+    .bubble-blue {
+      background: #2c76f0;
+      border-radius: 60px;
+      padding: 32px 72px 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .bubble-blue::after {
+      content: '';
+      position: absolute;
+      bottom: -42px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-left: 36px solid transparent;
+      border-right: 36px solid transparent;
+      border-top: 44px solid #2c76f0;
+    }
+    .bubble-blue-text {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 900;
+      font-size: 120px;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    /* 부제 */
+    .cover-sub {
+      margin-top: 60px;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-size: 34px;
+      font-weight: 400;
+      color: #555;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* 주변 아이콘 장식 (메가폰, 스마트폰, 돋보기, 손) */
+    .deco-icon {
+      position: absolute;
+      font-size: 80px;
+      opacity: 0.85;
+    }
+    .deco-megaphone { left: 50px; top: 320px; font-size: 100px; }
+    .deco-phone     { right: 60px; top: 300px; font-size: 90px; }
+    .deco-magnify   { left: 40px; bottom: 100px; font-size: 110px; }
+    .deco-sparkle   { right: 80px; top: 560px; font-size: 56px; color: #2c76f0; }
+
+
+/* ===== slide-02-image-grid ===== */
+.cal-board {
+      gap: 36px;
+    }
+
+    /* 번호 + 제목 그룹 */
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* 2열 이미지 그리드 */
+    .img-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      flex: 1;
+    }
+    .img-grid-item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .img-placeholder {
+      flex: 1;
+      min-height: 340px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #c4d8f8 0%, #7aaee8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-placeholder-label {
+      color: rgba(255,255,255,0.7);
+      font-family: 'Pretendard', sans-serif;
+      font-size: 26px;
+    }
+    .img-category {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #2c76f0;
+      text-align: center;
+    }
+    .img-caption {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      color: #2a2a2a;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+
+/* ===== slide-03-notice-table ===== */
+.cal-board {
+      gap: 40px;
+    }
+
+    /* 번호 + 제목 */
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* 공지 항목 리스트 */
+    .notice-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      flex: 1;
+    }
+    .notice-item {
+      background: #f4f6fb;
+      border-radius: 14px;
+      padding: 32px 40px;
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+    }
+    .notice-label {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      color: #2c76f0;
+      min-width: 100px;
+      text-align: center;
+      line-height: 1.45;
+      flex-shrink: 0;
+    }
+    .notice-divider-v {
+      width: 2px;
+      background: #dde3f0;
+      border-radius: 2px;
+      align-self: stretch;
+      flex-shrink: 0;
+    }
+    .notice-content {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 30px;
+      color: #2a2a2a;
+      line-height: 1.72;
+    }
+
+    /* 우측 하단 장식 */
+    .deco-bird {
+      position: absolute;
+      right: 48px;
+      bottom: 80px;
+      font-size: 64px;
+      opacity: 0.9;
+    }
+
+
+/* ===== slide-04-profile ===== */
+.cal-board {
+      gap: 36px;
+      align-items: center;
+    }
+
+    /* 번호 + 제목 */
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+    }
+
+    /* 프로필 영역 */
+    .profile-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      position: relative;
+      width: 100%;
+    }
+
+    /* 원형 이미지 + 뒤 장식 */
+    .profile-bg-deco {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 420px;
+      height: 420px;
+    }
+    /* 점 패턴 장식 */
+    .deco-dots-left {
+      position: absolute;
+      left: -30px;
+      top: 30px;
+      display: grid;
+      grid-template-columns: repeat(5, 14px);
+      gap: 8px;
+    }
+    .deco-dot-sm {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #2c76f0;
+      opacity: 0.3;
+    }
+    /* 파랑 원 장식 */
+    .deco-circle-right {
+      position: absolute;
+      right: -20px;
+      top: 40px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #2c76f0;
+      opacity: 0.25;
+    }
+    .deco-circle-small {
+      position: absolute;
+      right: 10px;
+      top: 110px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #2c76f0;
+      opacity: 0.2;
+    }
+    /* 번개/지그재그 장식 */
+    .deco-zap {
+      position: absolute;
+      left: 10px;
+      bottom: 60px;
+      font-size: 40px;
+      color: #2c76f0;
+      opacity: 0.5;
+      transform: rotate(-15deg);
+    }
+
+    .profile-circle {
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d4e4f8 0%, #a0c0e8 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .profile-circle-inner {
+      font-family: 'Pretendard', sans-serif;
+      font-size: 28px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* 리본 배너 */
+    .profile-ribbon-wrap {
+      margin-top: -24px;
+      position: relative;
+      z-index: 5;
+    }
+    .profile-ribbon {
+      background: #2c76f0;
+      color: #ffffff;
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      padding: 18px 56px;
+      position: relative;
+      border-radius: 6px;
+    }
+    .profile-ribbon::before {
+      content: '';
+      position: absolute;
+      left: -22px;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-top: 32px solid #1a5bc8;
+      border-left: 22px solid transparent;
+    }
+    .profile-ribbon::after {
+      content: '';
+      position: absolute;
+      right: -22px;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-top: 32px solid #1a5bc8;
+      border-right: 22px solid transparent;
+    }
+
+    /* 설명 텍스트 */
+    .profile-desc {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      color: #444;
+      text-align: center;
+      line-height: 1.78;
+    }
+
+    /* 하단 주석 */
+    .profile-note {
+      position: absolute;
+      bottom: 32px;
+      left: 72px;
+      font-family: 'Pretendard', sans-serif;
+      font-size: 22px;
+      color: #bbb;
+    }
+
+
+/* ===== slide-05-closing ===== */
+.cal-board {
+      gap: 36px;
+    }
+
+    /* 번호 + 제목 */
+    .title-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* 아이콘 + 박스 행 */
+    .icon-box-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 28px;
+    }
+    .icon-col {
+      flex-shrink: 0;
+      display: flex;
+      align-items: flex-start;
+      padding-top: 8px;
+    }
+
+    /* key-message 박스들 */
+    .key-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      flex: 1;
+    }
+    .key-box {
+      background: #f4f6fb;
+      border-radius: 14px;
+      padding: 32px 40px;
+    }
+    .key-box-label {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      color: #2c76f0;
+      margin-bottom: 10px;
+    }
+    .key-box-content {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      color: #2a2a2a;
+      line-height: 1.55;
+    }
+
+    /* 구분선 */
+    .closing-divider {
+      width: 100%;
+      border: none;
+      border-top: 1.5px solid #ddd;
+      flex-shrink: 0;
+    }
+
+    /* 문의 */
+    .closing-contact {
+      font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+      font-size: 30px;
+      color: #666;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    /* 장식: 우측 하단 아이콘 그룹 */
+    .deco-bottom-right {
+      position: absolute;
+      right: 36px;
+      bottom: 100px;
+    }

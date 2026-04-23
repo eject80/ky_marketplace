@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>2단 분할</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board">
+      <div class="shadow-card shadow-card--2"></div>
+      <div class="shadow-card shadow-card--1"></div>
+
+      <div class="clip-wrapper">
+        <svg viewBox="0 0 50 96" width="50" height="96" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9,72 L9,28 C9,8 41,8 41,28 L41,72" fill="none" stroke="#cf1f1f" stroke-width="9" stroke-linecap="round"/>
+          <path d="M18,72 L18,36 C18,24 32,24 32,36 L32,72" fill="none" stroke="#cf1f1f" stroke-width="9" stroke-linecap="round"/>
+          <rect x="5" y="68" width="40" height="24" rx="5" fill="#cf1f1f"/>
+        </svg>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="card-header-label">CARDNEWS</span>
+        </div>
+        <div class="card-body">
+          <div class="script-row">
+            <span class="script-text">Simple Card News</span>
+          </div>
+          <h1 class="slide-h1">2단 분할 레이아웃</h1>
+          <hr class="divider-red">
+          <div class="two-col">
+            <div class="col-item">
+              <div class="col-photo">
+                <span class="col-photo-placeholder">사진 영역</span>
+              </div>
+              <div class="col-label">첫번째 소제목</div>
+            </div>
+            <div class="col-item">
+              <div class="col-photo">
+                <span class="col-photo-placeholder">사진 영역</span>
+              </div>
+              <div class="col-label">두번째 소제목</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

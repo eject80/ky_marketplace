@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>표지</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <div class="board-shadow board-shadow--1"></div>
+      <div class="board-shadow board-shadow--2"></div>
+      <div class="clipboard-board">
+        <div class="clip-top">
+          <svg viewBox="0 0 200 88" xmlns="http://www.w3.org/2000/svg" width="200" height="88">
+            <defs>
+              <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d6d6d6"/>
+                <stop offset="100%" stop-color="#a0a0a0"/>
+              </linearGradient>
+            </defs>
+            <path d="M66 52 C66 10 134 10 134 52" fill="none" stroke="url(#cg)" stroke-width="24" stroke-linecap="round"/>
+            <rect x="10" y="52" width="180" height="32" rx="10" fill="url(#cg)"/>
+            <rect x="10" y="52" width="180" height="11" rx="10" fill="rgba(255,255,255,0.28)"/>
+            <line x1="12" y1="72" x2="188" y2="72" stroke="rgba(0,0,0,0.11)" stroke-width="2"/>
+            <path d="M74 52 C74 22 126 22 126 52" fill="none" stroke="rgba(0,0,0,0.16)" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card card--centered">
+          <p class="cover-handwriting">다양하게 활용하기 좋은</p>
+          <div class="cover-title-dark">깔끔한</div>
+          <div class="cover-title-blue">카드뉴스</div>
+          <hr class="divider-dotted">
+          <div class="hashtag-row">
+            <span class="hashtag">#핵심키워드</span>
+            <span class="hashtag">#핵심키워드</span>
+            <span class="hashtag">#핵심키워드</span>
+            <span class="hashtag">#핵심키워드</span>
+          </div>
+          <p class="cover-more">자세히보기 >></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

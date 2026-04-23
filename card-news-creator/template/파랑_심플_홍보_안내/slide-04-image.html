@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>04 이미지 설명</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <!-- Clip -->
+      <div class="clip-top">
+        <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg" width="280" height="90">
+          <defs>
+            <linearGradient id="clipGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#555555"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="48" width="272" height="38" rx="10" fill="url(#clipGrad)"/>
+          <path d="M90 48 C90 6 190 6 190 48" fill="none" stroke="url(#clipGrad)" stroke-width="24" stroke-linecap="round"/>
+          <rect x="4" y="48" width="272" height="14" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <line x1="4" y1="66" x2="276" y2="66" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="clipboard-board">
+        <!-- Top title area -->
+        <div class="top-section">
+          <div class="title-row">
+            <span class="page-title-ko"><span class="h-blue">이미지</span> 설명</span>
+            <span class="page-en">Image Layout</span>
+          </div>
+          <hr class="title-rule">
+        </div>
+
+        <!-- Image section (full width, fills rest) -->
+        <div class="image-section">
+          <div class="img-placeholder-full">
+            <span class="img-placeholder-full-label">이미지 영역</span>
+          </div>
+          <!-- Text overlay -->
+          <div class="image-overlay-bar">
+            <p class="image-caption-title">이미지 설명 제목을 간단하게 적어주세요.</p>
+            <p class="image-caption-body">이 영역에는 이미지와 관련된 설명을 적습니다. 예시, 사례, 활동 사진, 참고<br>자료 등을 넣어 설명하면 좋습니다. 비즈니스에서는 사례 소개, 학교에서는<br>활동 결과 과정리용으로 활용할 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

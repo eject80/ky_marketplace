@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>정보 설명 이미지</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <div class="board-shadow board-shadow--1"></div>
+      <div class="board-shadow board-shadow--2"></div>
+      <div class="clipboard-board">
+        <div class="clip-top">
+          <svg viewBox="0 0 200 88" xmlns="http://www.w3.org/2000/svg" width="200" height="88">
+            <defs>
+              <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d6d6d6"/>
+                <stop offset="100%" stop-color="#a0a0a0"/>
+              </linearGradient>
+            </defs>
+            <path d="M66 52 C66 10 134 10 134 52" fill="none" stroke="url(#cg)" stroke-width="24" stroke-linecap="round"/>
+            <rect x="10" y="52" width="180" height="32" rx="10" fill="url(#cg)"/>
+            <rect x="10" y="52" width="180" height="11" rx="10" fill="rgba(255,255,255,0.28)"/>
+            <line x1="12" y1="72" x2="188" y2="72" stroke="rgba(0,0,0,0.11)" stroke-width="2"/>
+            <path d="M74 52 C74 22 126 22 126 52" fill="none" stroke="rgba(0,0,0,0.16)" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="card">
+          <div class="chapter-badge">
+            <span class="chapter-num">02</span>
+            <span class="chapter-label">CHAPTER</span>
+          </div>
+          <h2 class="page-title">정보 설명 이미지</h2>
+          <div class="img-grid">
+            <div class="img-grid-item">
+              <div class="img-placeholder img-grid-photo">
+                <span class="img-placeholder-label">이미지</span>
+              </div>
+              <div class="img-num-row">
+                <div class="img-num-badge">01</div>
+                <p class="img-caption-title">핵심 키워드를 입력하세요</p>
+              </div>
+              <p class="img-caption-body">위 이미지에서 말하고자 하는 내용을 적어주세요. 주제에 대한 설명을 입력해주세요.</p>
+            </div>
+            <div class="img-grid-item">
+              <div class="img-placeholder img-grid-photo">
+                <span class="img-placeholder-label">이미지</span>
+              </div>
+              <div class="img-num-row">
+                <div class="img-num-badge">02</div>
+                <p class="img-caption-title">핵심 키워드를 입력하세요</p>
+              </div>
+              <p class="img-caption-body">위 이미지에서 말하고자 하는 내용을 적어주세요. 주제에 대한 설명을 입력해주세요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

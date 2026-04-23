@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>05 비교 정리</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <!-- Clip -->
+      <div class="clip-top">
+        <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg" width="280" height="90">
+          <defs>
+            <linearGradient id="clipGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#555555"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="48" width="272" height="38" rx="10" fill="url(#clipGrad)"/>
+          <path d="M90 48 C90 6 190 6 190 48" fill="none" stroke="url(#clipGrad)" stroke-width="24" stroke-linecap="round"/>
+          <rect x="4" y="48" width="272" height="14" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <line x1="4" y1="66" x2="276" y2="66" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="clipboard-board">
+        <div class="card">
+          <!-- Title -->
+          <div class="title-row">
+            <span class="page-title-ko"><span class="h-blue">비교</span> 정리</span>
+            <span class="page-en">Comparison Layout</span>
+          </div>
+          <hr class="title-rule">
+
+          <!-- Compare columns -->
+          <div class="compare-wrap">
+            <!-- Column A -->
+            <div class="compare-col">
+              <div class="compare-label">항목 A</div>
+              <div class="compare-subtitle">첫 번째 기준에 대한 내<br>용을 적어주세요.</div>
+              <ul class="compare-bullet-list">
+                <li>이 영역에는 첫 번째 기준이 되는 내용을 작성합니다.</li>
+                <li>현재 상황, 기존 방식, 또는 비교 대상이 되는 요소를 중심으로 설명하면 좋습니다.</li>
+                <li>특징이나 장점, 한계점 등을 간단히 정리해 주면 이후 내용과의 차이를 이해하는 데 도움이 됩니다.</li>
+              </ul>
+            </div>
+
+            <!-- Arrow -->
+            <div class="compare-arrow">
+              <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" fill="none">
+                <path d="M8 26 H44 M32 14 L44 26 L32 38" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <!-- Column B -->
+            <div class="compare-col">
+              <div class="compare-label">항목 B</div>
+              <div class="compare-subtitle">두 번째 기준에 대한 내<br>용을 적어주세요.</div>
+              <ul class="compare-bullet-list">
+                <li>이 영역에는 항목 A와 비교되는 내용을 작성합니다.</li>
+                <li>개선된 방식, 제안 내용, 또는 새로운 방향성을 중심으로 설명하면 좋습니다.</li>
+                <li>두 항목의 차이점과 변화 포인트가 자연스럽게 드러나도록 작성하면 효과적인 비교가 가능합니다.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

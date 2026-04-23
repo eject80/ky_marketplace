@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>표지</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="bg-blob bg-blob--1"></div>
+    <div class="bg-blob bg-blob--2"></div>
+    <div class="bg-blob bg-blob--3"></div>
+    <div class="clipboard-frame">
+      <div class="clip-wrapper">
+        <svg viewBox="0 0 220 80" xmlns="http://www.w3.org/2000/svg" width="220" height="80">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9aaae0"/><stop offset="100%" stop-color="#5b6bbf"/></linearGradient></defs>
+          <rect x="6" y="46" width="208" height="30" rx="10" fill="url(#cg)"/>
+          <path d="M76 46 C76 8 144 8 144 46" fill="none" stroke="url(#cg)" stroke-width="20" stroke-linecap="round"/>
+          <rect x="6" y="46" width="208" height="12" rx="10" fill="rgba(255,255,255,0.18)"/>
+          <line x1="6" y1="61" x2="214" y2="61" stroke="rgba(0,0,30,0.15)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="card card--centered">
+        <div class="slide-icon">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="5"/>
+            <line x1="48" y1="48" x2="70" y2="70" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="cover-badge-row">
+          <div class="cover-badge">Simple and clean presentation</div>
+          <div class="cover-badge-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+              <circle cx="20" cy="20" r="13" stroke="currentColor" stroke-width="4"/>
+              <line x1="30" y1="30" x2="44" y2="44" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <h1 class="cover-title">
+          <span class="cover-title-line"><span class="ct-blue">간단</span><span class="ct-black">하고</span></span>
+          <span class="cover-title-line"><span class="ct-blue">세련</span><span class="ct-black">된</span></span>
+          <span class="cover-title-line ct-black">카드뉴스</span>
+        </h1>
+        <p class="cover-url">sample.sample.com</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

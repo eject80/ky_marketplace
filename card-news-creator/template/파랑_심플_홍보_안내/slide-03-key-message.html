@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1080">
+  <title>03 핵심 메시지</title>
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+  <div class="canvas">
+    <div class="board-wrap">
+      <!-- Clip -->
+      <div class="clip-top">
+        <svg viewBox="0 0 280 90" xmlns="http://www.w3.org/2000/svg" width="280" height="90">
+          <defs>
+            <linearGradient id="clipGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#555555"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="48" width="272" height="38" rx="10" fill="url(#clipGrad)"/>
+          <path d="M90 48 C90 6 190 6 190 48" fill="none" stroke="url(#clipGrad)" stroke-width="24" stroke-linecap="round"/>
+          <rect x="4" y="48" width="272" height="14" rx="10" fill="rgba(255,255,255,0.12)"/>
+          <line x1="4" y1="66" x2="276" y2="66" stroke="rgba(0,0,0,0.25)" stroke-width="1.5"/>
+        </svg>
+      </div>
+
+      <div class="clipboard-board">
+        <div class="card">
+          <!-- Title -->
+          <div class="title-row">
+            <span class="page-title-ko"><span class="h-blue">핵심</span> <span style="color:#1a1a1a;">메시지</span></span>
+            <span class="page-en">Key Message</span>
+          </div>
+          <hr class="title-rule">
+
+          <!-- Quote block -->
+          <div class="quote-block">
+            <span class="quote-mark-open">&ldquo;</span>
+            <p class="quote-text">핵심 메시지를<br>이 곳에<br>작성합니다.</p>
+            <span class="quote-mark-close">&rdquo;</span>
+          </div>
+
+          <!-- Body text -->
+          <p class="body-text">이 페이지에는 프레젠테이션 전체를 관통하는 핵심 메시지를 간<br>단히 설명합니다. 발표의 방향성과 의도를 짧은 문장으로 정리해,<br>청중이 내용을 쉽게 이해할 수 있도록 돕습니다. 이후 이어질 내<br>용의 기준이 되는 중요한 메시지를 담으면 좋습니다.</p>
+
+          <!-- Pencil deco -->
+          <div class="pencil-deco">
+            <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" width="90" height="108">
+              <!-- Pencil body -->
+              <rect x="30" y="0" width="40" height="90" rx="4" fill="#1a1a1a"/>
+              <!-- Pencil top -->
+              <rect x="30" y="0" width="40" height="12" rx="4" fill="#555555"/>
+              <!-- Pencil stripe -->
+              <rect x="30" y="75" width="40" height="8" fill="#888888"/>
+              <!-- Pencil tip -->
+              <polygon points="30,90 70,90 50,118" fill="#f5d77a"/>
+              <!-- Pencil tip dark -->
+              <polygon points="44,104 56,104 50,118" fill="#333333"/>
+              <!-- Pencil eraser -->
+              <rect x="36" y="0" width="28" height="8" rx="2" fill="#ff7777"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
