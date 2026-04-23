@@ -35,6 +35,16 @@
 				"name": "fasteject",
 				"email": "fasteject@gmail.com"
 			}
+		},
+		{
+			"name": "Supanova-Design-Skill",
+			"description": "Premium Korean landing page design system for Claude Code. Generates agency-quality standalone HTML pages with Tailwind CSS, Korean typography standards, and conversion-optimized layouts.",
+			"version": "1.0.0",
+			"source": "./Supanova-Design-Skill",
+			"author": {
+				"name": "fasteject",
+				"email": "fasteject@gmail.com"
+			}
 		}
 	]
 }
