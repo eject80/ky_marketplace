@@ -19,8 +19,8 @@ allowed-tools:
 ## 경로 정보
 
 - 스킬 폴더: `${CLAUDE_SKILL_DIR}/` (SKILL.md 위치, 설치 경로 자동 해석)
-- 템플릿 위치: `${CLAUDE_SKILL_DIR}/../../template/`
-- 예제 이미지: `${CLAUDE_SKILL_DIR}/../../examples/`
+- 템플릿 위치: `${CLAUDE_SKILL_DIR}/template/`
+- 예제 이미지: `${CLAUDE_SKILL_DIR}/examples/`
 - 출력 위치: `./output/YYYY-MM-DD-{핵심주제}/` (현재 작업 디렉토리 기준)
 - HTTP 서버 루트: 현재 작업 디렉토리 (output/ 서빙용)
 
@@ -106,7 +106,7 @@ allowed-tools:
 mkdir -p "./output/{YYYY-MM-DD}-{핵심주제}"
 
 # 템플릿 전체 복사 (HTML, CSS 모두)
-cp -r "${CLAUDE_SKILL_DIR}/../../template/{선택된_템플릿}/." \
+cp -r "${CLAUDE_SKILL_DIR}/template/{선택된_템플릿}/." \
       "./output/{YYYY-MM-DD}-{핵심주제}/"
 ```
 
