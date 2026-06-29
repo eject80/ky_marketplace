@@ -55,6 +55,16 @@
 				"name": "fasteject",
 				"email": "fasteject@gmail.com"
 			}
+		},
+		{
+			"name": "PPT-creator",
+			"description": "12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정 스킬",
+			"version": "1.0.0",
+			"source": "./PPT-creator",
+			"author": {
+				"name": "fasteject",
+				"email": "fasteject@gmail.com"
+			}
 		}
 	]
 }
