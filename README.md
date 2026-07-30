@@ -1,7 +1,7 @@
-# Local Plugin Marketplace
+# ky-marketplace
 
-fasteject의 Claude Code 플러그인 로컬 마켓플레이스.
-이 디렉토리 자체가 하나의 마켓플레이스(`local-marketplace`)이며, 하위 폴더가 각 플러그인이다.
+Claude Code 플러그인 마켓플레이스.
+이 디렉토리 자체가 하나의 마켓플레이스(`ky-marketplace`)이며, 하위 폴더가 각 플러그인이다.
 
 ---
 
@@ -49,6 +49,11 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
 │   │   └── plugin.json
 │   └── skills/card-news-create/SKILL.md
 │
+├── PPT-creator/                   ← 플러그인 6
+│   ├── .claude-plugin/
+│   │   └── plugin.json
+│   └── skills/[ppt-create|ppt-export|ppt-review]/SKILL.md
+│
 └── README.md
 ```
 
@@ -56,14 +61,15 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
 
 ```json
 {
-  "name": "local-marketplace",
-  "owner": { "name": "fasteject", "email": "fasteject@gmail.com" },
+  "name": "ky-marketplace",
+  "owner": { "name": "eject80" },
   "plugins": [
     { "name": "gws-skills",            "source": "./gws-skills",            "version": "1.0.5" },
     { "name": "plugin-creator",        "source": "./plugin-creator",        "version": "2.1.0" },
     { "name": "WebPPT-creator",        "source": "./WebPPT-creator",        "version": "1.0.2" },
     { "name": "Supanova-Design-Skill", "source": "./Supanova-Design-Skill", "version": "1.0.0" },
-    { "name": "card-news-creator",     "source": "./card-news-creator",     "version": "1.0.0" }
+    { "name": "card-news-creator",     "source": "./card-news-creator",     "version": "1.0.0" },
+    { "name": "PPT-creator",           "source": "./PPT-creator",           "version": "1.0.0" }
   ]
 }
 ```
@@ -82,6 +88,7 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
 | `WebPPT-creator` | 1.0.2 | MIT | 순수 HTML/CSS/JS 웹 슬라이드 프레젠테이션 생성 |
 | `Supanova-Design-Skill` | 1.0.0 | MIT | 프리미엄 한국어 랜딩페이지 디자인 시스템 (4개 스킬) |
 | `card-news-creator` | 1.0.0 | MIT | 컨텍스트 기반 카드뉴스 HTML + PNG 자동 생성 |
+| `PPT-creator` | 1.0.0 | MIT | 12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정 |
 
 ### gws-skills 스킬 카테고리
 
@@ -105,16 +112,26 @@ local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등�
 
 - `card-news-create` — 컨텍스트 입력 → 템플릿 자동/수동 선택 → 슬라이드 구성 → HTML + PNG 출력 (`output/YYYY-MM-DD-주제/` 폴더)
 
+### PPT-creator 스킬
+
+- `ppt-create` — 12×24 그리드 엔진 기반 PPTX 생성
+- `ppt-export` — 슬라이드를 이미지로 내보내기
+- `ppt-review` — 생성된 슬라이드 검토·수정
+
 ---
 
 ## 최초 설정
 
-### 1. 마켓플레이스 등록 (최초 1회)
+### 1. 저장소 클론 후 마켓플레이스 등록
+
+```bash
+git clone https://github.com/eject80/ky_marketplace.git
+```
 
 Claude Code 대화 안에서:
 
 ```
-/plugin marketplace add D:/Python_Project/local_plugin_marketplace
+/plugin marketplace add <클론한 경로>/ky_marketplace
 ```
 
 또는 `/plugin` UI에서 Add marketplace → 경로 입력.
@@ -122,11 +139,12 @@ Claude Code 대화 안에서:
 ### 2. 플러그인 설치
 
 ```
-/plugin install gws-skills@local-marketplace
-/plugin install plugin-creator@local-marketplace
-/plugin install WebPPT-creator@local-marketplace
-/plugin install Supanova-Design-Skill@local-marketplace
-/plugin install card-news-creator@local-marketplace
+/plugin install gws-skills@ky-marketplace
+/plugin install plugin-creator@ky-marketplace
+/plugin install WebPPT-creator@ky-marketplace
+/plugin install Supanova-Design-Skill@ky-marketplace
+/plugin install card-news-creator@ky-marketplace
+/plugin install PPT-creator@ky-marketplace
 ```
 
 ### 3. 확인
@@ -135,17 +153,18 @@ Claude Code 대화 안에서:
 
 ```json
 "enabledPlugins": {
-  "gws-skills@local-marketplace": true,
-  "plugin-creator@local-marketplace": true,
-  "WebPPT-creator@local-marketplace": true,
-  "Supanova-Design-Skill@local-marketplace": true,
-  "card-news-creator@local-marketplace": true
+  "gws-skills@ky-marketplace": true,
+  "plugin-creator@ky-marketplace": true,
+  "WebPPT-creator@ky-marketplace": true,
+  "Supanova-Design-Skill@ky-marketplace": true,
+  "card-news-creator@ky-marketplace": true,
+  "PPT-creator@ky-marketplace": true
 },
 "extraKnownMarketplaces": {
-  "local-marketplace": {
+  "ky-marketplace": {
     "source": {
       "source": "directory",
-      "path": "D:\\Python_Project\\local_plugin_marketplace"
+      "path": "<클론한 경로>/ky_marketplace"
     },
     "autoUpdate": true
   }
@@ -179,7 +198,7 @@ plugin-creator가 자동 생성하는 파일:
 ### Step 2. 폴더를 이 디렉토리에 배치
 
 ```
-local_plugin_marketplace/
+ky_marketplace/
 └── obsidian-tools/          ← 여기에 넣는다
     ├── .claude-plugin/
     │   └── plugin.json
@@ -196,15 +215,15 @@ local_plugin_marketplace/
   "source": "./obsidian-tools",
   "description": "Obsidian 노트 관리 자동화",
   "version": "1.0.0",
-  "author": { "name": "fasteject", "email": "fasteject@gmail.com" }
+  "author": { "name": "Author Name" }
 }
 ```
 
 ### Step 4. 마켓플레이스 갱신 및 설치
 
 ```
-/plugin marketplace update local-marketplace
-/plugin install obsidian-tools@local-marketplace
+/plugin marketplace update ky-marketplace
+/plugin install obsidian-tools@ky-marketplace
 ```
 
 ---
@@ -219,8 +238,8 @@ local_plugin_marketplace/
 4. Claude Code에서:
 
 ```
-/plugin marketplace update local-marketplace
-/plugin update [plugin-name]@local-marketplace
+/plugin marketplace update ky-marketplace
+/plugin update [plugin-name]@ky-marketplace
 ```
 
 ### 개발 중 즉시 테스트 (설치 없이)
@@ -232,15 +251,15 @@ claude --plugin-dir ./[plugin-name]
 ### 전체 플러그인 관리 명령어
 
 ```
-/plugin                                        # UI로 전체 관리
-/plugin install name@local-marketplace         # 설치
-/plugin uninstall name@local-marketplace       # 제거
-/plugin enable name@local-marketplace          # 활성화
-/plugin disable name@local-marketplace         # 비활성화
-/plugin update name@local-marketplace          # 업데이트
-/plugin marketplace add <path>                 # 마켓플레이스 등록
-/plugin marketplace update local-marketplace   # 마켓플레이스 목록 갱신
-/plugin marketplace remove local-marketplace   # 마켓플레이스 제거
+/plugin                                    # UI로 전체 관리
+/plugin install name@ky-marketplace        # 설치
+/plugin uninstall name@ky-marketplace      # 제거
+/plugin enable name@ky-marketplace         # 활성화
+/plugin disable name@ky-marketplace        # 비활성화
+/plugin update name@ky-marketplace         # 업데이트
+/plugin marketplace add <path>             # 마켓플레이스 등록
+/plugin marketplace update ky-marketplace  # 마켓플레이스 목록 갱신
+/plugin marketplace remove ky-marketplace  # 마켓플레이스 제거
 ```
 
 ---
@@ -258,7 +277,7 @@ claude --plugin-dir ./[plugin-name]
   "name": "plugin-name",
   "version": "1.0.0",
   "description": "설명",
-  "author": { "name": "fasteject", "email": "fasteject@gmail.com" },
+  "author": { "name": "Author Name" },
   "license": "MIT",
   "keywords": ["tag1", "tag2"]
 }
@@ -273,7 +292,7 @@ claude --plugin-dir ./[plugin-name]
 
 ```json
 {
-  "name": "local-marketplace",
+  "name": "ky-marketplace",
   "plugins": [
     { "name": "plugin-one", "source": "./plugin-one", "version": "1.0.0" },
     { "name": "plugin-two", "source": "./plugin-two", "version": "1.0.0" }
@@ -325,12 +344,12 @@ skills/
 
 **원인:** 각 플러그인이 독립 마켓플레이스로 파편화되어 있어 통합 관리가 안 됨.
 
-**해결:** `local_plugin_marketplace` 루트 자체를 마켓플레이스로 만들고, 루트 `.claude-plugin/marketplace.json`에서 모든 플러그인을 `source: "./plugin-name"` 형태로 참조.
+**해결:** 저장소 루트 자체를 마켓플레이스로 만들고, 루트 `.claude-plugin/marketplace.json`에서 모든 플러그인을 `source: "./plugin-name"` 형태로 참조.
 
 ```json
 // settings.json (올바른 방식)
 "extraKnownMarketplaces": {
-  "local-marketplace": { "source": { "source": "directory", "path": "...\\local_plugin_marketplace" } }
+  "ky-marketplace": { "source": { "source": "directory", "path": "...\\ky_marketplace" } }
 }
 ```
 
@@ -364,13 +383,12 @@ skills/
 
 ### ✅ 성공: 마켓플레이스 단일화 이후
 
-- `settings.json`에 마켓플레이스 항목이 하나(`local-marketplace`)로 정리됨
-- 플러그인 식별자가 `plugin-creator@plugin-creator` → `plugin-creator@local-marketplace`로 명확해짐
+- `settings.json`에 마켓플레이스 항목이 하나(`ky-marketplace`)로 정리됨
+- 플러그인 식별자가 `plugin-creator@plugin-creator` → `plugin-creator@ky-marketplace`로 명확해짐
 - 새 플러그인 추가 시 루트 `marketplace.json` 한 곳만 수정하면 됨
 
 ---
 
 ## 작성자
 
-- **name**: fasteject
-- **email**: <fasteject@gmail.com>
+- **name**: eject80

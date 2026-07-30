@@ -26,7 +26,7 @@ Once installed, use any skill by referencing its name in a prompt:
 ## Installation
 
 ```
-/plugin install Supanova-Design-Skill@local-marketplace
+/plugin install Supanova-Design-Skill@ky-marketplace
 ```
 
 Or test without installing:
@@ -37,4 +37,4 @@ claude --plugin-dir ./Supanova-Design-Skill
 
 ## Author
 
-fasteject — fasteject@gmail.com
+eject80

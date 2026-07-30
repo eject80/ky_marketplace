@@ -1,9 +1,8 @@
 {
-	"name": "local-marketplace",
-	"description": "Local plugin marketplace for fasteject's Claude Code plugins",
+	"name": "ky-marketplace",
+	"description": "Claude Code plugin marketplace",
 	"owner": {
-		"name": "fasteject",
-		"email": "fasteject@gmail.com"
+		"name": "eject80"
 	},
 	"plugins": [
 		{
@@ -12,8 +11,7 @@
 			"version": "1.0.5",
 			"source": "./gws-skills",
 			"author": {
-				"name": "fasteject",
-				"email": "fasteject@gmail.com"
+				"name": "gws-skills contributors"
 			}
 		},
 		{
@@ -22,8 +20,7 @@
 			"version": "2.1.0",
 			"source": "./plugin-creator",
 			"author": {
-				"name": "fasteject",
-				"email": "fasteject@gmail.com"
+				"name": "eject80"
 			}
 		},
 		{
@@ -32,8 +29,7 @@
 			"version": "1.0.2",
 			"source": "./WebPPT-creator",
 			"author": {
-				"name": "fasteject",
-				"email": "fasteject@gmail.com"
+				"name": "eject80"
 			}
 		},
 		{
@@ -42,8 +38,7 @@
 			"version": "1.0.0",
 			"source": "./Supanova-Design-Skill",
 			"author": {
-				"name": "fasteject",
-				"email": "fasteject@gmail.com"
+				"name": "eject80"
 			}
 		},
 		{
@@ -52,8 +47,7 @@
 			"version": "1.0.0",
 			"source": "./card-news-creator",
 			"author": {
-				"name": "fasteject",
-				"email": "fasteject@gmail.com"
+				"name": "eject80"
 			}
 		},
 		{
@@ -62,8 +56,7 @@
 			"version": "1.0.0",
 			"source": "./PPT-creator",
 			"author": {
-				"name": "fasteject",
-				"email": "fasteject@gmail.com"
+				"name": "eject80"
 			}
 		}
 	]

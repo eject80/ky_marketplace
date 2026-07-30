@@ -3,8 +3,7 @@
 	"version": "1.0.0",
 	"description": "컨텍스트를 입력받아 카드뉴스 HTML과 PNG 이미지를 자동 생성. 8종 템플릿 내장.",
 	"author": {
-		"name": "fasteject",
-		"email": "fasteject@gmail.com"
+		"name": "eject80"
 	},
 	"license": "MIT",
 	"keywords": ["card-news", "html", "image", "presentation", "korean"]

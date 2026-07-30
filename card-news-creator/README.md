@@ -13,7 +13,7 @@
 
 ```bash
 # 마켓플레이스에서 설치
-/plugin install card-news-creator@local-marketplace
+/plugin install card-news-creator@ky-marketplace
 
 # 또는 즉시 테스트 (설치 없이)
 claude --plugin-dir ./card-news-creator

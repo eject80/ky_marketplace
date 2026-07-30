@@ -81,4 +81,4 @@ window.Presentation.getState()    // 현재 상태 객체 반환
 
 ## 라이선스
 
-MIT © fasteject
+MIT © eject80

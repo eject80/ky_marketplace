@@ -265,7 +265,7 @@ claude --plugin-dir ./plugin-name --debug
 1. Claude Code에서 `plugin-creator` skill이 활성화된 상태로 대화 시작
 2. "plugin-creator SKILL.md를 v2.2.0으로 업그레이드해줘. Phase 1 항목 적용" 식으로 요청
 3. 수정 완료 후 `plugin.json`과 루트 `marketplace.json`의 version 증가
-4. `/plugin marketplace update local-marketplace` → `/plugin update plugin-creator@local-marketplace`
+4. `/plugin marketplace update ky-marketplace` → `/plugin update plugin-creator@ky-marketplace`
 
 ---
 
