@@ -2,17 +2,15 @@
 
 **Claude Code / Codex CLI 플러그인 마켓플레이스.** PPT·카드뉴스·랜딩페이지 제작처럼 반복되는 작업을 스킬로 자동화한다.
 
-[![License](https://img.shields.io/badge/license-MIT-a6e3a1?style=flat-square)](#license)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-89b4fa?style=flat-square)](https://code.claude.com/docs)
-[![Codex CLI](https://img.shields.io/badge/Codex%20CLI-plugin%20marketplace-f5c2e7?style=flat-square)](https://github.com/openai/codex)
+![License](https://img.shields.io/badge/license-MIT-a6e3a1?style=flat-square)
+![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-89b4fa?style=flat-square)
+![Codex CLI](https://img.shields.io/badge/Codex%20CLI-plugin%20marketplace-f5c2e7?style=flat-square)
 
 ---
 
 ## Install
 
 ### Claude Code 플러그인 마켓플레이스로 설치 (권장)
-
-clone 없이 바로 등록:
 
 ```
 /plugin marketplace add eject80/ky_marketplace
@@ -34,10 +32,17 @@ clone 없이 바로 등록:
 
 ```bash
 codex plugin marketplace add eject80/ky_marketplace
-codex plugin add plugin-creator@ky-marketplace
 ```
 
-Claude Code용 `.claude-plugin/`과는 별개로 `.agents/plugins/marketplace.json` + 플러그인별 `.codex-plugin/plugin.json`을 따로 두고 있다 — 두 마켓플레이스 스키마가 서로 달라서 (`source` 필드 타입, `policy`/`category` 필수 여부) 하나로 합칠 수 없다.
+원하는 플러그인만 골라 설치:
+
+```bash
+codex plugin add plugin-creator@ky-marketplace
+codex plugin add WebPPT-creator@ky-marketplace
+codex plugin add Supanova-Design-Skill@ky-marketplace
+codex plugin add card-news-creator@ky-marketplace
+codex plugin add PPT-creator@ky-marketplace
+```
 
 ### 로컬 clone으로 설치 (오프라인 사용, 직접 수정 시)
 
@@ -57,26 +62,30 @@ claude --plugin-dir ./<plugin-name>
 
 ### 설치 전 확인
 
-대부분의 플러그인은 추가 요구사항이 없다. 다음 두 개만 예외:
+아래 2개의 플러그인은 추가 요구사항이 있다. 다른 플로그인은 요구사항이 없다:
 
-| 플러그인 | 요구사항 |
-|---------|---------|
-| `PPT-creator` | Node.js (`ppt-create`가 `pptxgenjs` 사용) · Windows + PowerPoint (`ppt-export`의 COM 자동화, Windows 전용) |
-| `card-news-creator` | Playwright MCP (HTML → PNG 변환 시) · 인터넷 연결 (Pretendard 웹폰트 CDN) |
 
-요구사항이 없으면 스킬 자체는 그냥 동작하지 않고 조용히 실패하니, 위 표에 해당하는 플러그인만 설치 전에 준비하면 된다.
+| 플러그인                | 요구사항                                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------------------- |
+| `PPT-creator`       | Node.js (`ppt-create`가 `pptxgenjs` 사용) · Windows + PowerPoint (`ppt-export`의 COM 자동화, Windows 전용) |
+| `card-news-creator` | Playwright MCP (HTML → PNG 변환 시) · 인터넷 연결 (Pretendard 웹폰트 CDN)                                    |
+
+
+요구사항이 없으면 스킬 자체는 그냥 동작하지 않고 조용히 실패하니, 위 표에 해당하는 플러그인만 설치 전에 준비해야 한다.
 
 ---
 
 ## 포함된 플러그인
 
-| 플러그인 | 설명 | 주요 스킬 |
-|---------|------|----------|
-| [`plugin-creator`](plugin-creator) | 새 Claude Code 플러그인을 올바른 구조로 스캐폴딩 | `plugin-creator` |
-| [`WebPPT-creator`](WebPPT-creator) | 순수 HTML/CSS/JS 웹 슬라이드 프레젠테이션 생성 (번들러 불필요) | `webppt-create` |
-| [`Supanova-Design-Skill`](Supanova-Design-Skill) | 프리미엄 한국어 랜딩페이지 디자인 시스템 | `output` · `redesign` · `soft` · `taste` |
-| [`card-news-creator`](card-news-creator) | 컨텍스트 입력 → 카드뉴스 HTML + PNG 자동 생성 (템플릿 8종) | `card-news-create` |
-| [`PPT-creator`](PPT-creator) | 12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정 | `ppt-create` · `ppt-export` · `ppt-review` |
+
+| 플러그인                                             | 설명                                        | 주요 스킬                                      |
+| ------------------------------------------------ | ----------------------------------------- | ------------------------------------------ |
+| [`plugin-creator`](plugin-creator)               | 새 Claude Code 플러그인을 올바른 구조로 스캐폴딩          | `plugin-creator`                           |
+| [`WebPPT-creator`](WebPPT-creator)               | 순수 HTML/CSS/JS 웹 슬라이드 프레젠테이션 생성 (번들러 불필요) | `webppt-create`                            |
+| [`Supanova-Design-Skill`](Supanova-Design-Skill) | 프리미엄 한국어 랜딩페이지 디자인 시스템                    | `output` · `redesign` · `soft` · `taste`   |
+| [`card-news-creator`](card-news-creator)         | 컨텍스트 입력 → 카드뉴스 HTML + PNG 자동 생성 (템플릿 8종)  | `card-news-create`                         |
+| [`PPT-creator`](PPT-creator)                     | 12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정     | `ppt-create` · `ppt-export` · `ppt-review` |
+
 
 각 플러그인의 자세한 사용법은 폴더별 README를 참고.
 
@@ -84,12 +93,14 @@ claude --plugin-dir ./<plugin-name>
 
 ## Uninstall
 
-| 명령 | 설명 |
-|------|------|
-| `/plugin uninstall <name>@ky-marketplace` | 플러그인 제거 (Claude Code) |
-| `/plugin marketplace remove ky-marketplace` | 마켓플레이스 자체 제거 (Claude Code) |
-| `codex plugin remove <name>@ky-marketplace` | 플러그인 제거 (Codex CLI) |
-| `codex plugin marketplace remove ky-marketplace` | 마켓플레이스 자체 제거 (Codex CLI) |
+
+| 구분          | 명령                                               | 설명                         |
+| ----------- | ------------------------------------------------ | -------------------------- |
+| Claude Code | `/plugin uninstall <name>@ky-marketplace`        | 플러그인 제거 (Claude Code)      |
+| Claude Code | `/plugin marketplace remove ky-marketplace`      | 마켓플레이스 자체 제거 (Claude Code) |
+| Codex CLI   | `codex plugin remove <name>@ky-marketplace`      | 플러그인 제거 (Codex CLI)        |
+| Codex CLI   | `codex plugin marketplace remove ky-marketplace` | 마켓플레이스 자체 제거 (Codex CLI)   |
+
 
 전체 관리 UI는 `/plugin`, 업데이트는 `/plugin update <name>@ky-marketplace` · `/plugin marketplace update ky-marketplace`.
 
