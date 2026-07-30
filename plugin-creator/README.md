@@ -1,13 +1,13 @@
 # plugin-creator
 
-Claude Code 플러그인을 올바른 구조로 자동 생성해주는 skill 플러그인.
+Claude Code / Codex CLI 플러그인을 올바른 구조로 자동 생성해주는 skill 플러그인.
 
 ## 기능
 
-- `plugin.json`, `marketplace.json` 자동 생성
+- `plugin.json`, `marketplace.json` 자동 생성 — Claude Code(`.claude-plugin/`)와 Codex CLI(`.codex-plugin/`, `.agents/plugins/marketplace.json`) 양쪽 다 기본 생성
 - Skills / Commands / Agents / Hooks / MCP 구조 지원
 - 공식 스펙에 맞는 파일 구조 검증
-- 로컬 설치 및 업데이트 가이드 제공
+- 로컬 설치 및 업데이트 가이드 제공 (Claude Code + Codex CLI)
 
 ## 설치
 

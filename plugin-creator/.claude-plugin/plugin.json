@@ -1,7 +1,7 @@
 {
   "name": "plugin-creator",
-  "version": "2.1.0",
-  "description": "Scaffolds new Claude Code plugins with correct structure, validation, and marketplace integration",
+  "version": "2.2.0",
+  "description": "Scaffolds new Claude Code and Codex CLI plugins with correct structure, validation, and marketplace integration",
   "author": {
     "name": "eject80"
   },

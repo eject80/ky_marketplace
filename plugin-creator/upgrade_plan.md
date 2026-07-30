@@ -1,10 +1,12 @@
 # plugin-creator 업그레이드 계획
 
 작성일: 2026-03-11
-현재 버전: 2.1.0
+현재 버전: 2.2.0
 참고 문서: <https://code.claude.com/docs/ko/plugins> / <https://code.claude.com/docs/ko/plugins-reference>
-이후 버전: 2.2.0 (Phase 1), 2.3.0 (Phase 2), 2.4.0 (Phase 3), 3.0.0 (Phase 4)
+이후 버전: 2.3.0 (Phase 1), 2.4.0 (Phase 2), 2.5.0 (Phase 3), 3.0.0 (Phase 4)
 (반드시 단계별로 to_do_list.md를 만들어 업그레이드 진행할 것)
+
+> 2.2.0은 아래 로드맵에 없던 항목 — Codex CLI 지원 추가(`.codex-plugin/plugin.json`, `.agents/plugins/marketplace.json` 자동 생성)로 소진됨. 아래 Phase 1-4 본문의 버전 번호(2.2.0~3.0.0)는 아직 갱신 전이라, 실제 착수 시 한 칸씩 밀려서(2.3.0~) 나간다고 보면 된다. 내용 자체는 전부 미착수.
 
 ---
 
