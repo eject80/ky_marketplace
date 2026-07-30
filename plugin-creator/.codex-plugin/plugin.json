@@ -1,0 +1,8 @@
+{
+  "name": "plugin-creator",
+  "version": "2.1.0",
+  "description": "Scaffolds new Claude Code plugins with correct structure, validation, and marketplace integration",
+  "author": { "name": "eject80" },
+  "license": "MIT",
+  "keywords": ["plugin", "scaffold", "generator", "boilerplate", "marketplace"]
+}

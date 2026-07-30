@@ -1,9 +1,10 @@
 # ky-marketplace
 
-**Claude Code 플러그인 마켓플레이스.** PPT·카드뉴스·랜딩페이지 제작처럼 반복되는 작업을 스킬로 자동화한다.
+**Claude Code / Codex CLI 플러그인 마켓플레이스.** PPT·카드뉴스·랜딩페이지 제작처럼 반복되는 작업을 스킬로 자동화한다.
 
 [![License](https://img.shields.io/badge/license-MIT-a6e3a1?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-89b4fa?style=flat-square)](https://code.claude.com/docs)
+[![Codex CLI](https://img.shields.io/badge/Codex%20CLI-plugin%20marketplace-f5c2e7?style=flat-square)](https://github.com/openai/codex)
 
 ---
 
@@ -28,6 +29,15 @@ clone 없이 바로 등록:
 ```
 
 > `marketplace add`와 `install`은 같은 프롬프트에 이어 보내지 말고, 별도 프롬프트로 나눠 보낼 것 — 한 번에 보내면 설치가 안 될 수 있다.
+
+### Codex CLI
+
+```bash
+codex plugin marketplace add eject80/ky_marketplace
+codex plugin add plugin-creator@ky-marketplace
+```
+
+Claude Code용 `.claude-plugin/`과는 별개로 `.agents/plugins/marketplace.json` + 플러그인별 `.codex-plugin/plugin.json`을 따로 두고 있다 — 두 마켓플레이스 스키마가 서로 달라서 (`source` 필드 타입, `policy`/`category` 필수 여부) 하나로 합칠 수 없다.
 
 ### 로컬 clone으로 설치 (오프라인 사용, 직접 수정 시)
 
@@ -76,8 +86,10 @@ claude --plugin-dir ./<plugin-name>
 
 | 명령 | 설명 |
 |------|------|
-| `/plugin uninstall <name>@ky-marketplace` | 플러그인 제거 |
-| `/plugin marketplace remove ky-marketplace` | 마켓플레이스 자체 제거 |
+| `/plugin uninstall <name>@ky-marketplace` | 플러그인 제거 (Claude Code) |
+| `/plugin marketplace remove ky-marketplace` | 마켓플레이스 자체 제거 (Claude Code) |
+| `codex plugin remove <name>@ky-marketplace` | 플러그인 제거 (Codex CLI) |
+| `codex plugin marketplace remove ky-marketplace` | 마켓플레이스 자체 제거 (Codex CLI) |
 
 전체 관리 UI는 `/plugin`, 업데이트는 `/plugin update <name>@ky-marketplace` · `/plugin marketplace update ky-marketplace`.
 

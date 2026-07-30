@@ -1,0 +1,41 @@
+{
+  "name": "ky-marketplace",
+  "interface": { "displayName": "ky-marketplace" },
+  "plugins": [
+    {
+      "name": "plugin-creator",
+      "description": "Scaffolds new Claude Code plugins with correct structure, validation, and marketplace integration",
+      "source": { "source": "local", "path": "./plugin-creator" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    },
+    {
+      "name": "WebPPT-creator",
+      "description": "순수 HTML/CSS/JavaScript만으로 동작하는 웹 기반 슬라이드 프레젠테이션 생성 스킬. 번들러 불필요, 단일 파일 실행.",
+      "source": { "source": "local", "path": "./WebPPT-creator" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    },
+    {
+      "name": "Supanova-Design-Skill",
+      "description": "Premium Korean landing page design system for Claude Code. Generates agency-quality standalone HTML pages with Tailwind CSS, Korean typography standards, and conversion-optimized layouts.",
+      "source": { "source": "local", "path": "./Supanova-Design-Skill" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    },
+    {
+      "name": "card-news-creator",
+      "description": "컨텍스트를 입력받아 카드뉴스 HTML과 PNG 이미지를 자동 생성. 8종 템플릿(남색/빨강/파랑/회색/흑백) 내장.",
+      "source": { "source": "local", "path": "./card-news-creator" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    },
+    {
+      "name": "PPT-creator",
+      "description": "12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정 스킬",
+      "source": { "source": "local", "path": "./PPT-creator" },
+      "policy": { "installation": "AVAILABLE", "authentication": "ON_INSTALL" },
+      "category": "Productivity"
+    }
+  ]
+}
