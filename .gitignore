@@ -21,3 +21,6 @@ node_modules/
 
 # 개인 작업용 todo (공개 금지)
 todo.md
+
+# claude 작성 지침이기 때문에 제외
+CLAUDE.md

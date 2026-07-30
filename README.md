@@ -1,128 +1,13 @@
 # ky-marketplace
 
-Claude Code 플러그인 마켓플레이스.
-이 디렉토리 자체가 하나의 마켓플레이스(`ky-marketplace`)이며, 하위 폴더가 각 플러그인이다.
+**Claude Code 플러그인 마켓플레이스.** PPT·카드뉴스·랜딩페이지 제작처럼 반복되는 작업을 스킬로 자동화한다.
+
+[![License](https://img.shields.io/badge/license-MIT-a6e3a1?style=flat-square)](#license)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-89b4fa?style=flat-square)](https://code.claude.com/docs)
 
 ---
 
-## 목차
-
-1. [구조](#구조)
-2. [포함된 플러그인](#포함된-플러그인)
-3. [최초 설정](#최초-설정)
-4. [새 플러그인 추가하기](#새-플러그인-추가하기)
-5. [유지보수](#유지보수)
-6. [플러그인 스펙 규칙](#플러그인-스펙-규칙)
-7. [삽질 기록 (실패와 교훈)](#삽질-기록)
-
----
-
-## 구조
-
-```
-local_plugin_marketplace/          ← 마켓플레이스 루트 (여기를 등록)
-├── .claude-plugin/
-│   └── marketplace.json           ← 모든 플러그인 목록 (핵심)
-│
-├── gws-skills/                    ← 플러그인 1
-│   ├── .claude-plugin/
-│   │   └── plugin.json
-│   └── skills/[name]/SKILL.md
-│
-├── plugin-creator/                ← 플러그인 2
-│   ├── .claude-plugin/
-│   │   └── plugin.json
-│   └── skills/plugin-creator/SKILL.md
-│
-├── WebPPT-creator/                ← 플러그인 3
-│   ├── .claude-plugin/
-│   │   └── plugin.json
-│   └── skills/webppt-create/SKILL.md
-│
-├── Supanova-Design-Skill/         ← 플러그인 4
-│   ├── .claude-plugin/
-│   │   └── plugin.json
-│   └── skills/[output|redesign|soft|taste]/SKILL.md
-│
-├── card-news-creator/             ← 플러그인 5
-│   ├── .claude-plugin/
-│   │   └── plugin.json
-│   └── skills/card-news-create/SKILL.md
-│
-├── PPT-creator/                   ← 플러그인 6
-│   ├── .claude-plugin/
-│   │   └── plugin.json
-│   └── skills/[ppt-create|ppt-export|ppt-review]/SKILL.md
-│
-└── README.md
-```
-
-### 루트 `marketplace.json` 구조
-
-```json
-{
-  "name": "ky-marketplace",
-  "owner": { "name": "eject80" },
-  "plugins": [
-    { "name": "gws-skills",            "source": "./gws-skills",            "version": "1.0.5" },
-    { "name": "plugin-creator",        "source": "./plugin-creator",        "version": "2.1.0" },
-    { "name": "WebPPT-creator",        "source": "./WebPPT-creator",        "version": "1.0.2" },
-    { "name": "Supanova-Design-Skill", "source": "./Supanova-Design-Skill", "version": "1.0.0" },
-    { "name": "card-news-creator",     "source": "./card-news-creator",     "version": "1.0.0" },
-    { "name": "PPT-creator",           "source": "./PPT-creator",           "version": "1.0.0" }
-  ]
-}
-```
-
-`source`는 루트에서 각 플러그인 폴더를 가리키는 **상대 경로**다.
-절대 경로는 이식성이 깨지므로 절대 사용하지 않는다.
-
----
-
-## 포함된 플러그인
-
-| 플러그인 | 버전 | 라이선스 | 설명 |
-|---------|------|---------|------|
-| `gws-skills` | 1.0.5 | Apache-2.0 | Google Workspace 작업 자동화 (Gmail, Calendar, Drive, Sheets, Meet 등) |
-| `plugin-creator` | 2.1.0 | MIT | 새 플러그인 스캐폴딩 자동화 |
-| `WebPPT-creator` | 1.0.2 | MIT | 순수 HTML/CSS/JS 웹 슬라이드 프레젠테이션 생성 |
-| `Supanova-Design-Skill` | 1.0.0 | MIT | 프리미엄 한국어 랜딩페이지 디자인 시스템 (4개 스킬) |
-| `card-news-creator` | 1.0.0 | MIT | 컨텍스트 기반 카드뉴스 HTML + PNG 자동 생성 |
-| `PPT-creator` | 1.0.0 | MIT | 12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정 |
-
-### gws-skills 스킬 카테고리
-
-- `gws-*` — 서비스별 핵심 기능 (gmail, calendar, drive, sheets, chat, meet, forms, keep, tasks, slides, people, modelarmor 등)
-- `recipe-*` — 복합 작업 레시피 30개 이상 (예: `recipe-find-free-time`, `recipe-post-mortem-setup`)
-- `persona-*` — 역할별 워크플로우 (exec-assistant, project-manager, team-lead, researcher 등)
-- `gws-workflow-*` — 크로스 서비스 워크플로우
-
-### WebPPT-creator 스킬
-
-- `webppt-create` — 브라우저에서 바로 실행되는 독립 HTML 슬라이드 폴더 생성. 번들러 없이 동작.
-
-### Supanova-Design-Skill 스킬 카테고리
-
-- `output-skill` — 완전한 HTML 생성 강제 (플레이스홀더·스켈레톤 금지)
-- `redesign-skill` — 기존 랜딩페이지를 프리미엄 품질로 업그레이드
-- `soft-skill` — 랜딩페이지 폰트·간격·그림자·애니메이션 디자인 기준 정의
-- `taste-skill` — 프리미엄 전환 최적화 랜딩페이지 생성 엔진 (Tailwind CDN)
-
-### card-news-creator 스킬
-
-- `card-news-create` — 컨텍스트 입력 → 템플릿 자동/수동 선택 → 슬라이드 구성 → HTML + PNG 출력 (`output/YYYY-MM-DD-주제/` 폴더)
-
-### PPT-creator 스킬
-
-- `ppt-create` — 12×24 그리드 엔진 기반 PPTX 생성
-- `ppt-export` — 슬라이드를 이미지로 내보내기
-- `ppt-review` — 생성된 슬라이드 검토·수정
-
----
-
-## 최초 설정
-
-### 1. 저장소 클론 후 마켓플레이스 등록
+## Quick Install
 
 ```bash
 git clone https://github.com/eject80/ky_marketplace.git
@@ -134,12 +19,9 @@ Claude Code 대화 안에서:
 /plugin marketplace add <클론한 경로>/ky_marketplace
 ```
 
-또는 `/plugin` UI에서 Add marketplace → 경로 입력.
-
-### 2. 플러그인 설치
+원하는 플러그인만 골라 설치:
 
 ```
-/plugin install gws-skills@ky-marketplace
 /plugin install plugin-creator@ky-marketplace
 /plugin install WebPPT-creator@ky-marketplace
 /plugin install Supanova-Design-Skill@ky-marketplace
@@ -147,248 +29,51 @@ Claude Code 대화 안에서:
 /plugin install PPT-creator@ky-marketplace
 ```
 
-### 3. 확인
+설치 없이 바로 테스트해보고 싶다면:
 
-`~/.claude/settings.json`에 다음이 생겨야 정상:
+```bash
+claude --plugin-dir ./<plugin-name>
+```
 
-```json
-"enabledPlugins": {
-  "gws-skills@ky-marketplace": true,
-  "plugin-creator@ky-marketplace": true,
-  "WebPPT-creator@ky-marketplace": true,
-  "Supanova-Design-Skill@ky-marketplace": true,
-  "card-news-creator@ky-marketplace": true,
-  "PPT-creator@ky-marketplace": true
-},
-"extraKnownMarketplaces": {
-  "ky-marketplace": {
-    "source": {
-      "source": "directory",
-      "path": "<클론한 경로>/ky_marketplace"
-    },
-    "autoUpdate": true
-  }
-}
+---
+
+## 포함된 플러그인
+
+| 플러그인 | 설명 | 주요 스킬 |
+|---------|------|----------|
+| [`plugin-creator`](plugin-creator) | 새 Claude Code 플러그인을 올바른 구조로 스캐폴딩 | `plugin-creator` |
+| [`WebPPT-creator`](WebPPT-creator) | 순수 HTML/CSS/JS 웹 슬라이드 프레젠테이션 생성 (번들러 불필요) | `webppt-create` |
+| [`Supanova-Design-Skill`](Supanova-Design-Skill) | 프리미엄 한국어 랜딩페이지 디자인 시스템 | `output` · `redesign` · `soft` · `taste` |
+| [`card-news-creator`](card-news-creator) | 컨텍스트 입력 → 카드뉴스 HTML + PNG 자동 생성 (템플릿 8종) | `card-news-create` |
+| [`PPT-creator`](PPT-creator) | 12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정 | `ppt-create` · `ppt-export` · `ppt-review` |
+
+각 플러그인의 자세한 사용법은 폴더별 README를 참고.
+
+---
+
+## 플러그인 관리
+
+```
+/plugin                                    # UI로 전체 관리
+/plugin uninstall name@ky-marketplace      # 제거
+/plugin update name@ky-marketplace         # 업데이트
+/plugin marketplace update ky-marketplace  # 마켓플레이스 목록 갱신
 ```
 
 ---
 
 ## 새 플러그인 추가하기
 
-### Step 1. plugin-creator로 스캐폴딩
-
-`plugin-creator` 플러그인이 설치된 Claude Code 대화에서:
-
-```
-"[이름]이라는 [유형] 플러그인 만들어줘. [설명]"
-```
-
-예시:
+`plugin-creator`가 설치된 대화에서 요청 한 줄이면 충분:
 
 ```
 "obsidian-tools라는 skills 플러그인 만들어줘. Obsidian 노트 관리 자동화"
 ```
 
-plugin-creator가 자동 생성하는 파일:
-
-- `.claude-plugin/plugin.json`
-- `skills/[name]/SKILL.md`
-- `README.md`, `LICENSE`
-
-### Step 2. 폴더를 이 디렉토리에 배치
-
-```
-ky_marketplace/
-└── obsidian-tools/          ← 여기에 넣는다
-    ├── .claude-plugin/
-    │   └── plugin.json
-    └── skills/...
-```
-
-### Step 3. 루트 `marketplace.json` 업데이트
-
-`.claude-plugin/marketplace.json`의 `plugins` 배열에 추가:
-
-```json
-{
-  "name": "obsidian-tools",
-  "source": "./obsidian-tools",
-  "description": "Obsidian 노트 관리 자동화",
-  "version": "1.0.0",
-  "author": { "name": "Author Name" }
-}
-```
-
-### Step 4. 마켓플레이스 갱신 및 설치
-
-```
-/plugin marketplace update ky-marketplace
-/plugin install obsidian-tools@ky-marketplace
-```
+마켓플레이스 구조, `marketplace.json` 관리 규칙, 버전 범프 절차 등 유지보수 관련 내용은 [CLAUDE.md](CLAUDE.md) 참고.
 
 ---
 
-## 유지보수
+## License
 
-### 플러그인 내용 수정 후 업데이트
-
-1. 소스 파일 수정
-2. 해당 플러그인의 `plugin.json` `version` 증가 (예: `1.0.0` → `1.0.1`)
-3. 루트 `.claude-plugin/marketplace.json`에서 **그 플러그인 항목의** `version`을 같은 값으로 업데이트 (다른 플러그인 버전은 건드리지 않음)
-4. Claude Code에서:
-
-```
-/plugin marketplace update ky-marketplace
-/plugin update [plugin-name]@ky-marketplace
-```
-
-### 개발 중 즉시 테스트 (설치 없이)
-
-```bash
-claude --plugin-dir ./[plugin-name]
-```
-
-### 전체 플러그인 관리 명령어
-
-```
-/plugin                                    # UI로 전체 관리
-/plugin install name@ky-marketplace        # 설치
-/plugin uninstall name@ky-marketplace      # 제거
-/plugin enable name@ky-marketplace         # 활성화
-/plugin disable name@ky-marketplace        # 비활성화
-/plugin update name@ky-marketplace         # 업데이트
-/plugin marketplace add <path>             # 마켓플레이스 등록
-/plugin marketplace update ky-marketplace  # 마켓플레이스 목록 갱신
-/plugin marketplace remove ky-marketplace  # 마켓플레이스 제거
-```
-
----
-
-## 플러그인 스펙 규칙
-
-### `plugin.json`
-
-- `name` 이 유일한 필수 필드
-- 각 플러그인의 버전은 독립적이며, 루트 `marketplace.json`의 **해당 플러그인 항목** `version`과 일치해야 함
-- `repository` 필드는 실제 공개 저장소가 있을 때만 포함 (없으면 반드시 제거)
-
-```json
-{
-  "name": "plugin-name",
-  "version": "1.0.0",
-  "description": "설명",
-  "author": { "name": "Author Name" },
-  "license": "MIT",
-  "keywords": ["tag1", "tag2"]
-}
-```
-
-### `marketplace.json`
-
-**묶음 배포** (루트에 위치, `source: "./plugin-name"`)
-
-이 마켓플레이스처럼 루트 하나가 여러 플러그인을 관리할 때.
-루트 `.claude-plugin/marketplace.json`에 해당.
-
-```json
-{
-  "name": "ky-marketplace",
-  "plugins": [
-    { "name": "plugin-one", "source": "./plugin-one", "version": "1.0.0" },
-    { "name": "plugin-two", "source": "./plugin-two", "version": "1.0.0" }
-  ]
-}
-```
-
-### Skills 디렉토리 구조
-
-`skills/[skill-name]/SKILL.md` **flat 구조만 인식**한다.
-중간에 카테고리 폴더를 끼우면 로드되지 않는다.
-
-```
-✅ 올바른 구조:
-skills/
-  gws-gmail/SKILL.md
-  recipe-find-free-time/SKILL.md
-  persona-exec-assistant/SKILL.md
-
-❌ 인식 안 되는 구조:
-skills/
-  core/gws-gmail/SKILL.md
-  recipes/recipe-find-free-time/SKILL.md
-```
-
-카테고리가 필요하면 폴더 대신 **이름 접두사**를 사용한다: `gws-`, `recipe-`, `persona-`, `workflow-`
-
----
-
-## 삽질 기록
-
-실패와 교훈을 기록해 같은 실수를 반복하지 않는다.
-
----
-
-### ❌ 실패 1: 각 플러그인을 별도 마켓플레이스로 등록
-
-**상황:** 처음에 `gws-skills`와 `plugin-creator`를 각각 별도 마켓플레이스로 등록했다.
-
-```json
-// settings.json (잘못된 방식)
-"extraKnownMarketplaces": {
-  "plugin-creator": { "source": { "source": "directory", "path": "...\\plugin-creator" } },
-  "gws-skills":     { "source": { "source": "directory", "path": "...\\gws-skills" } }
-}
-```
-
-**증상:** Claude Code에서는 동작하지만, 다른 프로그램(AI 클라이언트 등)에서는 플러그인을 인식하지 못함.
-
-**원인:** 각 플러그인이 독립 마켓플레이스로 파편화되어 있어 통합 관리가 안 됨.
-
-**해결:** 저장소 루트 자체를 마켓플레이스로 만들고, 루트 `.claude-plugin/marketplace.json`에서 모든 플러그인을 `source: "./plugin-name"` 형태로 참조.
-
-```json
-// settings.json (올바른 방식)
-"extraKnownMarketplaces": {
-  "ky-marketplace": { "source": { "source": "directory", "path": "...\\ky_marketplace" } }
-}
-```
-
----
-
-### ❌ 실패 2: Skills 중첩 폴더 구조 사용
-
-**상황:** 스킬이 많아지자 카테고리별로 폴더를 나누려 했다.
-
-```
-skills/
-  core/gws-gmail/SKILL.md      ← 로드 안 됨
-  recipes/recipe-xxx/SKILL.md  ← 로드 안 됨
-```
-
-**증상:** 파일은 존재하지만 Claude Code가 스킬을 인식하지 못함.
-
-**해결:** 중첩 폴더 제거, flat 구조 유지. 카테고리는 폴더가 아닌 **이름 접두사**로 구분.
-
----
-
-### ❌ 실패 3: `marketplace.json`에 `repository` 필드 추가
-
-**상황:** plugin.json 템플릿을 그대로 복사하면서 `repository` 필드가 포함됨.
-
-**증상:** 마켓플레이스 등록 시 존재하지 않는 GitHub 저장소로 연결 시도 → 오류.
-
-**해결:** 공개 저장소가 실제로 없으면 `repository` 필드를 아예 삭제한다.
-
----
-
-### ✅ 성공: 마켓플레이스 단일화 이후
-
-- `settings.json`에 마켓플레이스 항목이 하나(`ky-marketplace`)로 정리됨
-- 플러그인 식별자가 `plugin-creator@plugin-creator` → `plugin-creator@ky-marketplace`로 명확해짐
-- 새 플러그인 추가 시 루트 `marketplace.json` 한 곳만 수정하면 됨
-
----
-
-## 작성자
-
-- **name**: eject80
+각 플러그인은 자체 `LICENSE` 파일을 갖는다 (전부 MIT). 마켓플레이스 저장소 자체에는 별도 라이선스가 없다.

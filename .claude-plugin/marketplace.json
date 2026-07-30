@@ -6,15 +6,6 @@
 	},
 	"plugins": [
 		{
-			"name": "gws-skills",
-			"description": "Google Workspace CLI (gws) skills for Claude Code — Gmail, Calendar, Drive, Sheets, Chat, Meet, and more",
-			"version": "1.0.5",
-			"source": "./gws-skills",
-			"author": {
-				"name": "gws-skills contributors"
-			}
-		},
-		{
 			"name": "plugin-creator",
 			"description": "Scaffolds new Claude Code plugins with correct structure, validation, and marketplace integration",
 			"version": "2.1.0",
