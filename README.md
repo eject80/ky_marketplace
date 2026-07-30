@@ -7,16 +7,14 @@
 
 ---
 
-## Quick Install
+## Install
 
-```bash
-git clone https://github.com/eject80/ky_marketplace.git
-```
+### Claude Code 플러그인 마켓플레이스로 설치 (권장)
 
-Claude Code 대화 안에서:
+clone 없이 바로 등록:
 
 ```
-/plugin marketplace add <클론한 경로>/ky_marketplace
+/plugin marketplace add eject80/ky_marketplace
 ```
 
 원하는 플러그인만 골라 설치:
@@ -29,11 +27,34 @@ Claude Code 대화 안에서:
 /plugin install PPT-creator@ky-marketplace
 ```
 
+> `marketplace add`와 `install`은 같은 프롬프트에 이어 보내지 말고, 별도 프롬프트로 나눠 보낼 것 — 한 번에 보내면 설치가 안 될 수 있다.
+
+### 로컬 clone으로 설치 (오프라인 사용, 직접 수정 시)
+
+```bash
+git clone https://github.com/eject80/ky_marketplace.git
+```
+
+```
+/plugin marketplace add <클론한 경로>/ky_marketplace
+```
+
 설치 없이 바로 테스트해보고 싶다면:
 
 ```bash
 claude --plugin-dir ./<plugin-name>
 ```
+
+### 설치 전 확인
+
+대부분의 플러그인은 추가 요구사항이 없다. 다음 두 개만 예외:
+
+| 플러그인 | 요구사항 |
+|---------|---------|
+| `PPT-creator` | Node.js (`ppt-create`가 `pptxgenjs` 사용) · Windows + PowerPoint (`ppt-export`의 COM 자동화, Windows 전용) |
+| `card-news-creator` | Playwright MCP (HTML → PNG 변환 시) · 인터넷 연결 (Pretendard 웹폰트 CDN) |
+
+요구사항이 없으면 스킬 자체는 그냥 동작하지 않고 조용히 실패하니, 위 표에 해당하는 플러그인만 설치 전에 준비하면 된다.
 
 ---
 
@@ -51,14 +72,14 @@ claude --plugin-dir ./<plugin-name>
 
 ---
 
-## 플러그인 관리
+## Uninstall
 
-```
-/plugin                                    # UI로 전체 관리
-/plugin uninstall name@ky-marketplace      # 제거
-/plugin update name@ky-marketplace         # 업데이트
-/plugin marketplace update ky-marketplace  # 마켓플레이스 목록 갱신
-```
+| 명령 | 설명 |
+|------|------|
+| `/plugin uninstall <name>@ky-marketplace` | 플러그인 제거 |
+| `/plugin marketplace remove ky-marketplace` | 마켓플레이스 자체 제거 |
+
+전체 관리 UI는 `/plugin`, 업데이트는 `/plugin update <name>@ky-marketplace` · `/plugin marketplace update ky-marketplace`.
 
 ---
 
