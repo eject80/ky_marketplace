@@ -15,3 +15,6 @@ wheels/
 
 # Node.js dependencies
 node_modules/
+
+# 깃 커밋 메시지 작성 지침
+.commit-message-instructions.md
