@@ -36,6 +36,11 @@ ky_marketplace/                    ← 마켓플레이스 루트 (여기를 등�
 │   ├── .codex-plugin/plugin.json
 │   └── skills/[ppt-create|ppt-export|ppt-review]/SKILL.md
 │
+├── ky-image-generator/            ← 플러그인 (skills 없이 원격 MCP 서버만 연결)
+│   ├── .claude-plugin/plugin.json  (mcpServers → "./.mcp.json" 경로 참조)
+│   ├── .mcp.json
+│   └── .codex-plugin/plugin.json   (mcpServers 인라인 객체, 별도 파일 없음 — 이유는 "삽질 기록" 참고)
+│
 └── README.md
 ```
 
@@ -86,7 +91,7 @@ Codex는 `.claude-plugin/marketplace.json` 경로 자체는 인식하지만 `sou
 - `name`이 유일한 필수 필드
 - `author`는 선택사항. 개인 이메일 대신 GitHub 핸들(`eject80`) 사용
 - `repository` 필드는 실제 공개 저장소가 있을 때만 포함 (없으면 반드시 제거)
-- `skills` 필드는 생략 — Claude Code, Codex 둘 다 명시 안 하면 플러그인 루트의 `skills/` 폴더를 기본값으로 스캔한다. `hooks`/`apps`/`mcpServers`도 실제 파일이 없으면 넣지 않는다 (Codex 쪽에서 특히 엄격하게 체크함)
+- `skills` 필드는 생략 — Claude Code, Codex 둘 다 명시 안 하면 플러그인 루트의 `skills/` 폴더를 기본값으로 스캔한다. `hooks`/`apps`/`mcpServers`도 실제로 쓸 게 없으면 넣지 않는다. MCP 서버를 감싸는 플러그인(예: `ky-image-generator`)은 skills 없이 `mcpServers`만 있어도 된다 — 정확한 스키마(Claude는 파일 참조/인라인 다 되고, Codex는 인라인만 동작)는 아래 "삽질 기록" 참고
 
 `.claude-plugin/plugin.json`과 `.codex-plugin/plugin.json`은 필드가 거의 같아서 사실상 같은 내용으로 두 곳에 만들면 된다:
 
@@ -126,6 +131,8 @@ skills/
 4. 루트 `.claude-plugin/marketplace.json`과 `.agents/plugins/marketplace.json` 양쪽의 `plugins` 배열에 항목 추가 (스키마 차이는 위 섹션 참고)
 5. `/plugin marketplace update ky-marketplace` → `/plugin install [name]@ky-marketplace`, `codex plugin marketplace upgrade ky-marketplace` → `codex plugin add [name]@ky-marketplace`로 양쪽 확인
 
+**원격 MCP 서버만 감싸는 플러그인(스킬 없음)**은 위 스캐폴딩 플로우를 쓰지 않는다 — `plugin-creator`는 항상 `skills/[name]/SKILL.md`를 만들기 때문. 대신 기존 플러그인 폴더 구조를 그대로 본떠 `.claude-plugin/plugin.json`·`.mcp.json`·`.codex-plugin/plugin.json`을 수동으로 작성한다 (`ky-image-generator`가 예시, mcpServers 스키마는 "삽질 기록" 참고). 루트 두 `marketplace.json`과 README 반영은 위 4번과 동일.
+
 ## 플러그인 수정 후 업데이트
 
 1. 소스 파일 수정
@@ -156,6 +163,36 @@ skills/
 
 Codex CLI가 `.claude-plugin/marketplace.json` 경로 자체는 인식하길래 그대로 될 줄 알았는데, `source` 필드가 Claude Code는 문자열, Codex는 `{"source": "local", "path": "..."}` 형태의 태그된 객체라 스키마가 안 맞아 플러그인이 하나도 안 떴다 (`codex plugin list --marketplace ky-marketplace --json` → `available: []`).
 → Codex 전용 `.agents/plugins/marketplace.json`을 별도로 만들고, 플러그인 폴더마다 `.codex-plugin/plugin.json`도 나란히 둔다. `skills/` 폴더 컨벤션은 둘이 같아서 SKILL.md는 공유해도 된다.
+
+### ❌ Codex `plugin.json`의 `mcpServers`를 파일 경로 문자열로 참조
+
+Claude Code 문서(`mcp.json`)를 따라 `"mcpServers": "./mcp.json"`처럼 별도 파일을 경로로 참조했더니, `codex plugin add`는 에러 없이 "성공"했고 `codex plugin list`에도 플러그인이 정상적으로 뜨지만 **`codex mcp list`에는 해당 MCP 서버가 전혀 등록되지 않았다** (조용히 무시됨 — 설치 실패 메시지조차 없어서 알아채기 어려움).
+→ Codex는 `plugin.json`의 `mcpServers`에 **인라인 객체**를 직접 넣어야 실제로 등록된다 (`codex mcp list`로 확인 완료). 원격 서버 필드는 `url` + `bearer_token_env_var`(토큰이 담긴 환경변수 이름) + 필요시 `http_headers`. Claude Code는 인라인/파일 경로 둘 다 되지만(`mcp.md` 공식 문서 확인), Codex는 **인라인만** 검증됨 — 두 호스트가 같은 필드명(`mcpServers`)을 쓰면서도 값 형태 지원 범위가 다르므로, 새 원격 MCP 플러그인을 만들 때마다 양쪽 다 실제 CLI(`codex mcp list` / `claude plugin details <name>`)로 등록 여부를 반드시 확인한다.
+
+Claude Code 쪽 검증된 스키마 (`.mcp.json`, 인라인도 가능):
+```json
+{
+  "mcpServers": {
+    "server-name": {
+      "type": "http",
+      "url": "https://example.com/mcp",
+      "headers": { "Authorization": "Bearer ${MY_API_KEY}" }
+    }
+  }
+}
+```
+
+Codex 쪽 검증된 스키마 (`.codex-plugin/plugin.json`에 인라인, **파일 참조 금지**):
+```json
+{
+  "mcpServers": {
+    "server-name": {
+      "url": "https://example.com/mcp",
+      "bearer_token_env_var": "MY_API_KEY"
+    }
+  }
+}
+```
 
 ## 커밋 컨벤션
 

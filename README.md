@@ -1,6 +1,6 @@
 # ky-marketplace
 
-**Claude Code / Codex CLI 플러그인 마켓플레이스.** PPT·카드뉴스·랜딩페이지 제작처럼 반복되는 작업을 스킬로 자동화한다.
+**Claude Code / Codex CLI 플러그인 마켓플레이스.** PPT·카드뉴스·랜딩페이지 제작처럼 반복되는 작업을 스킬로 자동화하고, 사내 도구는 MCP 서버 연결로 제공한다.
 
 ![License](https://img.shields.io/badge/license-MIT-a6e3a1?style=flat-square)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-89b4fa?style=flat-square)
@@ -24,6 +24,7 @@
 /plugin install Supanova-Design-Skill@ky-marketplace
 /plugin install card-news-creator@ky-marketplace
 /plugin install PPT-creator@ky-marketplace
+/plugin install ky-image-generator@ky-marketplace
 ```
 
 > `marketplace add`와 `install`은 같은 프롬프트에 이어 보내지 말고, 별도 프롬프트로 나눠 보낼 것 — 한 번에 보내면 설치가 안 될 수 있다.
@@ -42,6 +43,7 @@ codex plugin add WebPPT-creator@ky-marketplace
 codex plugin add Supanova-Design-Skill@ky-marketplace
 codex plugin add card-news-creator@ky-marketplace
 codex plugin add PPT-creator@ky-marketplace
+codex plugin add ky-image-generator@ky-marketplace
 ```
 
 ### 로컬 clone으로 설치 (오프라인 사용, 직접 수정 시)
@@ -62,16 +64,17 @@ claude --plugin-dir ./<plugin-name>
 
 ### 설치 전 확인
 
-아래 2개의 플러그인은 추가 요구사항이 있다. 다른 플로그인은 요구사항이 없다:
+아래 3개의 플러그인은 추가 요구사항이 있다. 다른 플러그인은 요구사항이 없다:
 
 
-| 플러그인                | 요구사항                                                                                              |
-| ------------------- | ------------------------------------------------------------------------------------------------- |
-| `PPT-creator`       | Node.js (`ppt-create`가 `pptxgenjs` 사용) · Windows + PowerPoint (`ppt-export`의 COM 자동화, Windows 전용) |
-| `card-news-creator` | Playwright MCP (HTML → PNG 변환 시) · 인터넷 연결 (Pretendard 웹폰트 CDN)                                    |
+| 플러그인               | 요구사항                                                                                                   |
+| -------------------- | ---------------------------------------------------------------------------------------------------- |
+| `PPT-creator`         | Node.js (`ppt-create`가 `pptxgenjs` 사용) · Windows + PowerPoint (`ppt-export`의 COM 자동화, Windows 전용)      |
+| `card-news-creator`   | Playwright MCP (HTML → PNG 변환 시) · 인터넷 연결 (Pretendard 웹폰트 CDN)                                        |
+| `ky-image-generator`  | (주)아이비김영 재직자 전용 · kimyoung.co.kr 관리자 페이지에서 발급받은 API 키를 `KY_IMAGE_GENERATOR_API_KEY` 환경변수로 설정 필요 |
 
 
-요구사항이 없으면 스킬 자체는 그냥 동작하지 않고 조용히 실패하니, 위 표에 해당하는 플러그인만 설치 전에 준비해야 한다.
+요구사항이 없으면 해당 기능이 조용히 실패하니, 위 표에 해당하는 플러그인만 설치 전에 준비해야 한다.
 
 ---
 
@@ -85,6 +88,7 @@ claude --plugin-dir ./<plugin-name>
 | [`Supanova-Design-Skill`](Supanova-Design-Skill) | 프리미엄 한국어 랜딩페이지 디자인 시스템                    | `output` · `redesign` · `soft` · `taste`   |
 | [`card-news-creator`](card-news-creator)         | 컨텍스트 입력 → 카드뉴스 HTML + PNG 자동 생성 (템플릿 8종)  | `card-news-create`                         |
 | [`PPT-creator`](PPT-creator)                     | 12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정     | `ppt-create` · `ppt-export` · `ppt-review` |
+| [`ky-image-generator`](ky-image-generator)       | Gemini 이미지 생성 → Google Drive 업로드 MCP 도구 (사내용) | — (MCP 도구만, 스킬 없음)                    |
 
 
 각 플러그인의 자세한 사용법은 폴더별 README를 참고.
