@@ -2,10 +2,7 @@
   "mcpServers": {
     "ky-image-generator": {
       "type": "http",
-      "url": "https://api.kimyoung.work/mcp/image-generator",
-      "headers": {
-        "Authorization": "Bearer ${KY_IMAGE_GENERATOR_API_KEY}"
-      }
+      "url": "https://api.kimyoung.work/mcp/image-generator"
     }
   }
 }
