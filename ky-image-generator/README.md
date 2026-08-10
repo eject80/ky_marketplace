@@ -61,6 +61,10 @@ Claude Code나 Codex CLI가 아니어도, MCP 서버 주소를 직접 입력할 
 
 `발급받은_API_키` 자리에 1번에서 받은 키를 그대로 붙여넣으면 된다.
 
+Chatbox AI 기준 실제 입력 화면 예시:
+
+![Chatbox AI MCP 서버 편집 화면 — 이름 ky-image-generator, 유형 원격(http/sse), URL https://api.kimyoung.work/mcp/image-generator, HTTP Header에 Authorization=Bearer 발급받은_API_키](docs/chatbox-mcp-setup.png)
+
 **3. JSON으로 직접 설정해야 하는 프로그램이라면**
 
 ```json

@@ -104,6 +104,10 @@ claude --plugin-dir ./<plugin-name>
 - 서버 주소(URL): `https://api.kimyoung.work/mcp/image-generator`
 - HTTP 헤더: `Authorization=Bearer 발급받은_API_키`
 
+Chatbox AI 기준 실제 입력 화면 예시:
+
+![Chatbox AI MCP 서버 편집 화면 — 이름 ky-image-generator, 유형 원격(http/sse), URL https://api.kimyoung.work/mcp/image-generator, HTTP Header에 Authorization=Bearer 발급받은_API_키](ky-image-generator/docs/chatbox-mcp-setup.png)
+
 자세한 절차와 JSON 설정 예시는 [`ky-image-generator/README.md`](ky-image-generator/README.md#다른-프로그램-수동-설치) 참고.
 
 ---
