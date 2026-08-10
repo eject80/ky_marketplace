@@ -71,7 +71,7 @@ claude --plugin-dir ./<plugin-name>
 | -------------------- | ---------------------------------------------------------------------------------------------------- |
 | `PPT-creator`         | Node.js (`ppt-create`가 `pptxgenjs` 사용) · Windows + PowerPoint (`ppt-export`의 COM 자동화, Windows 전용)      |
 | `card-news-creator`   | Playwright MCP (HTML → PNG 변환 시) · 인터넷 연결 (Pretendard 웹폰트 CDN)                                        |
-| `ky-image-generator`  | (주)아이비김영 재직자 전용 · kimyoung.co.kr 관리자 페이지에서 발급받은 API 키를 `KY_IMAGE_GENERATOR_API_KEY` 환경변수로 설정 필요 |
+| `ky-image-generator`  | (주)아이비김영 재직자 전용 · 최초 사용 전 브라우저로 사내 이메일 인증(OTP) 필요 — Claude Code는 자동, Codex CLI는 `codex mcp login ky-image-generator` 직접 실행 |
 
 
 요구사항이 없으면 해당 기능이 조용히 실패하니, 위 표에 해당하는 플러그인만 설치 전에 준비해야 한다.

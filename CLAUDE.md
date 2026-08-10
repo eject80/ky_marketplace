@@ -182,6 +182,8 @@ Claude Code 쪽 검증된 스키마 (`.mcp.json`, 인라인도 가능):
 }
 ```
 
+원격 서버가 OAuth(동적 클라이언트 등록)를 지원하면 `headers` 없이 `url`만 넣는다 — 401을 받으면 Claude Code가 알아서 OAuth discovery부터 시작한다.
+
 Codex 쪽 검증된 스키마 (`.codex-plugin/plugin.json`에 인라인, **파일 참조 금지**):
 ```json
 {
@@ -193,6 +195,13 @@ Codex 쪽 검증된 스키마 (`.codex-plugin/plugin.json`에 인라인, **파�
   }
 }
 ```
+
+원격 서버가 OAuth를 지원하면 `bearer_token_env_var`를 **아예 넣지 않는다** — 넣는 순간 OAuth가 영구적으로 꺼진다. 이유는 아래 "삽질 기록" 참고.
+
+### ❌ Codex `bearer_token_env_var`를 OAuth 지원 서버에도 습관적으로 넣음
+
+`ky-image-generator`는 OAuth(이메일 OTP)와 API 키를 둘 다 지원하는 서버인데, `.codex-plugin/plugin.json`에 `bearer_token_env_var`를 넣어놨더니 Codex CLI(0.146.0)가 이 서버를 OAuth 로그인 후보에서 아예 제외했다 (Codex 소스 `codex-mcp/src/mcp/auth.rs`의 `oauth_login_candidate()`: `if bearer_token_env_var.is_some() { return None; }`). Claude Code 쪽도 같은 이유로 `.mcp.json`에 고정 `headers`를 넣어서 OAuth를 못 타게 막고 있었다 — 두 호스트에서 동일한 패턴의 실수.
+→ 서버가 OAuth를 지원하면 두 호스트 모두 헤더/토큰 필드를 넣지 말고 `url`만 등록한다. Codex는 Claude Code와 달리 401에서 자동으로 OAuth를 시작하지 않으므로, 설치 후 `codex mcp login <server-name>`을 사용자가 직접 한 번 실행해야 브라우저 로그인이 뜬다 (Claude Code는 첫 툴 호출 시 자동).
 
 ## 커밋 컨벤션
 

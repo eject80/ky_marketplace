@@ -6,21 +6,7 @@
 
 ## 사전 준비
 
-- (주)아이비김영 재직자만 사용 가능하다.
-- kimyoung.co.kr 관리자 페이지의 "API Key 관리"에서 본인 명의 API 키를 발급받는다.
-- 발급받은 키를 환경변수 `KY_IMAGE_GENERATOR_API_KEY`로 설정한다 (플러그인 설치 **전에** 설정해야 한다):
-
-```bash
-# macOS / Linux
-export KY_IMAGE_GENERATOR_API_KEY="발급받은키"
-```
-
-```powershell
-# Windows PowerShell
-$env:KY_IMAGE_GENERATOR_API_KEY = "발급받은키"
-```
-
-키를 계속 쓰려면 셸 프로필(`.zshrc`/`.bashrc`/PowerShell 프로필 등)에 등록해둔다.
+(주)아이비김영 재직자만 사용 가능하다. Claude Code, Codex CLI 둘 다 OAuth(사내 이메일 인증)를 쓴다 — 로그인을 트리거하는 방식만 다르다.
 
 ## 설치
 
@@ -30,6 +16,8 @@ $env:KY_IMAGE_GENERATOR_API_KEY = "발급받은키"
 /plugin marketplace update ky-marketplace
 /plugin install ky-image-generator@ky-marketplace
 ```
+
+별도 사전 설정이 필요 없다. 설치 후 `generate_image` 툴을 처음 호출하면 브라우저가 열리고, 사내 이메일로 받은 인증번호(OTP)를 입력하면 연결된다. 로그인은 15분 access token / 30일 refresh token으로 유지되며, 만료되면 다시 이메일 인증을 거친다.
 
 설치 없이 바로 테스트:
 
@@ -43,6 +31,14 @@ claude --plugin-dir ./ky-image-generator
 codex plugin marketplace upgrade ky-marketplace
 codex plugin add ky-image-generator@ky-marketplace
 ```
+
+Codex CLI는 Claude Code와 달리 첫 툴 호출에서 자동으로 로그인 창이 뜨지 않는다 — 설치 후 아래 명령을 직접 한 번 실행해야 한다:
+
+```bash
+codex mcp login ky-image-generator
+```
+
+브라우저가 열리면 사내 이메일로 받은 인증번호(OTP)를 입력한다. 로그인 세션이 만료되면 같은 명령을 다시 실행한다.
 
 ## 사용법
 
@@ -58,4 +54,6 @@ codex plugin add ky-image-generator@ky-marketplace
 
 ## 문제 해결
 
-- 툴 호출 시 인증 오류가 나면 `KY_IMAGE_GENERATOR_API_KEY` 환경변수가 제대로 설정됐는지, 키가 만료되지 않았는지 kimyoung.co.kr 관리자 페이지에서 확인한다.
+- 인증 오류가 나거나 로그인이 안 되면 재직 여부(퇴사자는 로그인해도 차단됨)를 우선 확인한다.
+- **Claude Code**: 브라우저 로그인이 안 뜨면 `/mcp`로 재연결해본다.
+- **Codex CLI**: "not logged in" 오류가 나면 `codex mcp login ky-image-generator`를 다시 실행한다.
