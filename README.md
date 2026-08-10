@@ -60,7 +60,25 @@ Claude Desktop 앱도 Claude Code CLI와는 별도의 UI로 플러그인 마켓�
 
    ![Claude Desktop 디렉터리 화면 — 개인 탭에 ky_marketplace 필터가 선택되어 있고 Card news creator, Ky image generator, Plugin creator가 설치 버튼과 함께 나열됨](docs/claude-desktop-plugin-list.png)
 
-> CLI의 `/plugin` 명령과 별개의 UI지만 같은 `.claude-plugin/marketplace.json`을 읽는다. `ky-image-generator`는 플러그인 설치만으로 끝나지 않는다 — 설치 후 플러그인 상세 화면의 **커넥터** 탭에서 `ky-image-generator` 커넥터를 한 번 더 연결해야 하고, 그때 브라우저로 사내 이메일 인증(OTP)이 뜬다.
+> CLI의 `/plugin` 명령과 별개의 UI지만 같은 `.claude-plugin/marketplace.json`을 읽는다.
+
+**`ky-image-generator`처럼 MCP 서버가 딸린 플러그인은 위 4단계로 끝나지 않는다.** 이어서 커넥터를 등록·연결하는 3단계가 더 있다:
+
+5. 방금 설치한 플러그인 이름(`Ky image generator`)을 클릭해 상세 화면을 연다. **커넥터** 섹션에 `ky-image-generator`가 보이는데, 이 시점엔 버튼이 **설치**로 되어 있다 — 아직 아무것도 연결되지 않은 상태다.
+
+   ![Claude Desktop 플러그인 상세 화면 — Ky image generator, 소스 마켓플레이스(ky_marketplace), 버전 1.2.0, 커넥터 섹션에 ky-image-generator와 설치 버튼](docs/claude-desktop-connector-install.png)
+
+6. **설치**를 클릭하면 **커스텀 커넥터 추가** 창이 뜬다. 이름과 URL이 이미 채워져 있으니(`ky-image-generator`, `https://api.kimyoung.work/mcp/image-generator`) 그대로 **추가**를 누른다 — OAuth 클라이언트 ID/시크릿은 선택사항이라 비워둔다.
+
+   ![Claude Desktop 커스텀 커넥터 추가 창 — 이름 ky-image-generator, URL https://api.kimyoung.work/mcp/image-generator가 미리 채워져 있고 OAuth 클라이언트 ID·시크릿은 선택사항으로 비어 있음, 추가 버튼](docs/claude-desktop-connector-add-dialog.png)
+
+7. 이제 커넥터 항목에 **커스텀** 배지가 붙고 버튼이 **연결**로 바뀐다. **연결**을 클릭하면 브라우저가 열리고 사내 이메일 인증(OTP)이 진행된다.
+
+   ![Claude Desktop 플러그인 상세 화면 — ky-image-generator 커넥터에 커스텀 배지가 붙고 연결 버튼으로 바뀐 상태](docs/claude-desktop-connector-connect.png)
+
+연결이 끝나면 왼쪽 사이드바 **사용자 지정 → 커넥터**(전체 목록)에서도 `ky-image-generator`가 "사용자 정의" 배지와 체크 표시로 확인된다.
+
+![Claude Desktop 커넥터 전체 목록 화면 — ky-image-generator가 사용자 정의 배지와 체크(연결됨) 상태로 표시됨](docs/claude-desktop-connectors-list.png)
 
 ### ChatGPT Desktop
 

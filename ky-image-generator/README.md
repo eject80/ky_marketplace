@@ -42,7 +42,7 @@ codex mcp login ky-image-generator
 
 ### Claude Desktop
 
-Claude Desktop 앱은 마켓플레이스 전체를 설치할 수 있다 — 절차는 [루트 README의 Claude Desktop](../README.md#claude-desktop) 참고. 플러그인 설치 후 플러그인 상세 화면의 **커넥터** 탭에서 `ky-image-generator` 커넥터를 한 번 더 연결해야 하며, 그때 브라우저로 사내 이메일 인증(OTP)이 뜬다. 별도 API 키 설정은 필요 없다.
+Claude Desktop 앱은 마켓플레이스 전체를 설치할 수 있다 — 절차는 [루트 README의 Claude Desktop](../README.md#claude-desktop) 참고. 플러그인 설치만으로는 끝나지 않는다: 플러그인 상세 화면의 **커넥터** 섹션에서 `ky-image-generator`를 **설치**(커스텀 커넥터로 등록) → **연결**(OAuth) 순서로 한 번 더 거쳐야 하며, 그때 브라우저로 사내 이메일 인증(OTP)이 뜬다. 별도 API 키 설정은 필요 없다.
 
 ### ChatGPT Desktop
 
@@ -107,7 +107,7 @@ Chatbox AI 기준 실제 입력 화면 예시:
 
 - 인증 오류가 나거나 로그인이 안 되면 재직 여부(퇴사자는 로그인해도 차단됨)를 우선 확인한다.
 - **Claude Code**: 브라우저 로그인이 안 뜨면 `/mcp`로 재연결해본다.
-- **Claude Desktop**: 플러그인은 설치됐는데 도구가 안 보이면, 플러그인 상세 화면의 **커넥터** 탭에서 `ky-image-generator`가 실제로 연결(Connect)됐는지 확인한다.
+- **Claude Desktop**: 플러그인은 설치됐는데 도구가 안 보이면, 플러그인 상세 화면의 **커넥터** 섹션을 확인한다. 버튼이 아직 "설치"면 커스텀 커넥터로 먼저 등록해야 하고, "연결"이면 그걸 눌러야 OAuth가 진행된다 — 설치만으로는 연결되지 않는다.
 - **Codex CLI**: "not logged in" 오류가 나면 `codex mcp login ky-image-generator`를 다시 실행한다.
 - **ChatGPT Desktop**: 도구가 안 보이면 Codex 모드(또는 ChatGPT+Work 모드)인지 확인하고, 새 대화를 시작해 도구 목록을 새로고침한다.
 - **Chatbox AI 등(API 키 방식)**: 인증 오류가 나면 [API 키 발급 페이지](https://api.kimyoung.work/llm-gateway/my-key)에서 키가 살아있는지, HTTP 헤더를 `Authorization=Bearer 발급받은_API_키` 형식 그대로 입력했는지 확인한다.
