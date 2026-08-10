@@ -50,12 +50,34 @@ codex plugin add ky-image-generator@ky-marketplace
 
 Claude Desktop 앱도 Claude Code CLI와는 별도의 UI로 플러그인 마켓플레이스를 지원한다.
 
-1. Claude Desktop을 열고 왼쪽 사이드바의 **Customize** 메뉴를 연다.
-2. **Plugins** 탭 → "Personal plugins" 섹션의 **+** 버튼 → **Add marketplace**를 클릭한다.
-3. **Add from a repository**를 선택하고 저장소 주소(`eject80/ky_marketplace`)를 입력한다.
-4. 마켓플레이스가 추가되면 **Browse plugins**에서 원하는 플러그인을 찾아 **Install**을 클릭한다.
+1. Claude Desktop을 열고 왼쪽 사이드바의 **사용자 지정**(Customize) 메뉴를 연다.
+2. **플러그인**(Plugins) 탭 → 오른쪽 위 **추가** 드롭다운 → **마켓플레이스 추가**를 클릭한다.
+3. **저장소에서 추가**를 선택하고, 검색창에 `eject80/ky_marketplace`를 입력해 선택한 뒤 **동기화**를 누른다.
 
-> CLI의 `/plugin` 명령과 별개의 UI지만 같은 `.claude-plugin/marketplace.json`을 읽는다. `ky-image-generator`도 여기서 설치할 수 있고, 로그인은 Claude Code와 동일하게 첫 사용 시 브라우저로 자동 연결된다.
+   ![Claude Desktop 마켓플레이스 추가 화면 — 저장소 검색창에 eject80/ky_marketplace가 선택된 상태, 자동으로 동기화 토글 켜짐, 동기화 버튼](docs/claude-desktop-add-marketplace.png)
+
+4. 마켓플레이스가 추가되면 **찾아보기**를 눌러 플러그인 목록에서 원하는 걸 설치(+)한다.
+
+   ![Claude Desktop 디렉터리 화면 — 개인 탭에 ky_marketplace 필터가 선택되어 있고 Card news creator, Ky image generator, Plugin creator가 설치 버튼과 함께 나열됨](docs/claude-desktop-plugin-list.png)
+
+> CLI의 `/plugin` 명령과 별개의 UI지만 같은 `.claude-plugin/marketplace.json`을 읽는다. `ky-image-generator`는 플러그인 설치만으로 끝나지 않는다 — 설치 후 플러그인 상세 화면의 **커넥터** 탭에서 `ky-image-generator` 커넥터를 한 번 더 연결해야 하고, 그때 브라우저로 사내 이메일 인증(OTP)이 뜬다.
+
+### ChatGPT Desktop
+
+ChatGPT 데스크톱 앱(Codex 통합 앱)도 마켓플레이스를 지원한다. Codex CLI용으로 이미 만들어 둔 `.agents/plugins/marketplace.json`을 그대로 읽으므로 저장소를 따로 손볼 필요가 없다.
+
+1. ChatGPT 데스크톱 앱에서 좌측 상단 모드 전환으로 **Codex** 모드(또는 ChatGPT + Work 모드)로 바꾼다 — 플러그인 기능은 이 두 모드에서만 보인다.
+2. **설정 → 플러그인**으로 들어간다.
+3. 오른쪽 위 **추가** 드롭다운 → **마켓플레이스 추가**를 클릭한다.
+4. **출처**에 `eject80/ky_marketplace`를 입력하고 **마켓플레이스 추가**를 누른다.
+
+   ![ChatGPT 데스크톱 플러그인 마켓플레이스 추가 화면 — 출처 필드에 eject80/ky_marketplace 입력, Git ref는 main, 마켓플레이스 추가 버튼](docs/chatgpt-desktop-add-marketplace.png)
+
+5. 사이드바에 뜨는 **플러그인 디렉터리**의 `ky-marketplace` 섹션에서 원하는 플러그인의 **설치**를 클릭한다.
+
+   ![ChatGPT 데스크톱 플러그인 디렉터리 화면 — ky-marketplace 섹션에 Plugin Creator, Webppt Creator, Supanova Design Skill, Card News Creator, Ppt Creator, Ky Image Generator가 설치 버튼과 함께 나열됨](docs/chatgpt-desktop-plugin-list.png)
+
+> Plugins 기능은 ChatGPT Plus 이상 유료 플랜에서만 지원된다(OpenAI 공식 문서 기준). `ky-image-generator`는 설치 후 실제로 이미지 생성 툴을 처음 호출할 때 브라우저로 사내 이메일 인증(OTP)이 뜬다 — API 키 설정은 필요 없다.
 
 ### 로컬 clone으로 설치 (오프라인 사용, 직접 수정 시)
 
@@ -113,14 +135,14 @@ claude --plugin-dir ./<plugin-name>
 | 프로그램 | 연결 방법 | 인증 |
 | --- | --- | --- |
 | Claude Desktop | 이 마켓플레이스를 그대로 설치 (위 [Claude Desktop](#claude-desktop) 참고) | 자동 OAuth (사내 이메일 인증) |
-| ChatGPT Desktop | `ky-image-generator`만 개별 연결 | OAuth (사내 이메일 인증) |
-| Chatbox AI 등 그 외 프로그램 | `ky-image-generator`만 개별 연결 | API 키 |
+| ChatGPT Desktop | 이 마켓플레이스를 그대로 설치 (위 [ChatGPT Desktop](#chatgpt-desktop) 참고) | 자동 OAuth (사내 이메일 인증) |
+| Chatbox AI 등 마켓플레이스를 지원하지 않는 프로그램 | `ky-image-generator`만 개별 연결 | API 키 |
 
 - (주)아이비김영 재직자만 사용 가능하다.
 - API 키가 필요한 경우 발급처: https://api.kimyoung.work/llm-gateway/my-key
 - 서버 주소(URL): `https://api.kimyoung.work/mcp/image-generator`
 
-ChatGPT Desktop 연결 절차, Chatbox AI용 API 키 절차·JSON 설정 예시·스크린샷은 [`ky-image-generator/README.md`](ky-image-generator/README.md#다른-프로그램-수동-설치) 참고.
+Chatbox AI용 API 키 절차·JSON 설정 예시·스크린샷은 [`ky-image-generator/README.md`](ky-image-generator/README.md#다른-프로그램-수동-설치) 참고.
 
 ---
 

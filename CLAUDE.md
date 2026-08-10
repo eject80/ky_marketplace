@@ -203,6 +203,11 @@ Codex 쪽 검증된 스키마 (`.codex-plugin/plugin.json`에 인라인, **파�
 `ky-image-generator`는 OAuth(이메일 OTP)와 API 키를 둘 다 지원하는 서버인데, `.codex-plugin/plugin.json`에 `bearer_token_env_var`를 넣어놨더니 Codex CLI(0.146.0)가 이 서버를 OAuth 로그인 후보에서 아예 제외했다 (Codex 소스 `codex-mcp/src/mcp/auth.rs`의 `oauth_login_candidate()`: `if bearer_token_env_var.is_some() { return None; }`). Claude Code 쪽도 같은 이유로 `.mcp.json`에 고정 `headers`를 넣어서 OAuth를 못 타게 막고 있었다 — 두 호스트에서 동일한 패턴의 실수.
 → 서버가 OAuth를 지원하면 두 호스트 모두 헤더/토큰 필드를 넣지 말고 `url`만 등록한다. Codex는 Claude Code와 달리 401에서 자동으로 OAuth를 시작하지 않으므로, 설치 후 `codex mcp login <server-name>`을 사용자가 직접 한 번 실행해야 브라우저 로그인이 뜬다 (Claude Code는 첫 툴 호출 시 자동).
 
+### ❌ ChatGPT Desktop은 마켓플레이스를 지원 안 한다고 단정
+
+처음엔 "ChatGPT는 개별 MCP 커넥터(Developer mode)만 되고 마켓플레이스 개념이 없다"고 README에 적었는데, exa로 다시 조사하니 틀렸다. ChatGPT 데스크톱 앱(Codex 통합 앱, 2026년 기준)은 자체 "Plugins" 기능이 있고, 그 안에서 우리 마켓플레이스를 그대로 읽는다 — `$REPO_ROOT/.agents/plugins/marketplace.json`(Codex CLI용으로 이미 만든 파일)과 `$REPO_ROOT/.claude-plugin/marketplace.json`(Claude Code용, "레거시 호환"으로 인식) 둘 다 지원 대상이다. 즉 저장소를 전혀 안 고쳐도 ChatGPT Desktop에서 마켓플레이스로 추가할 수 있었다. computer-use로 실제 앱을 열어 확인: 플러그인 → **추가** 드롭다운 → **마켓플레이스 추가** → 출처에 `owner/repo` 입력 → 설치까지 실제로 됨.
+→ "이 호스트는 X를 지원 안 한다"는 판단은 공식 문서/실기기 확인 없이 내리지 않는다. Plugins 기능은 ChatGPT의 **Codex 모드** 또는 **ChatGPT + Work 모드**에서만 보인다는 점, 유료 플랜(Plus 이상)이 필요하다는 점도 실제로 뜨는 화면과 공식 문서로 교차 확인한 내용이다.
+
 ## 커밋 컨벤션
 
 `말머리 :: 제목` 형식 사용 (`feat`, `fix`, `refactor`, `docs`, `test`, `chore`, `style`, `revert`).
