@@ -40,6 +40,45 @@ codex mcp login ky-image-generator
 
 브라우저가 열리면 사내 이메일로 받은 인증번호(OTP)를 입력한다. 로그인 세션이 만료되면 같은 명령을 다시 실행한다.
 
+### 다른 프로그램 (수동 설치)
+
+Claude Code나 Codex CLI가 아니어도, MCP 서버 주소를 직접 입력할 수 있는 프로그램(예: Chatbox AI 등)이라면 이 도구를 쓸 수 있다. 이 경우엔 로그인 대신 **API 키**를 발급받아 쓴다.
+
+**1. API 키 발급받기**
+
+- (주)아이비김영 재직자만 발급받을 수 있다.
+- 아래 주소에 접속해서 로그인한 뒤 발급받는다:
+  https://api.kimyoung.work/llm-gateway/my-key
+
+**2. 프로그램에 연결 정보 입력하기**
+
+프로그램의 "MCP 서버 추가" 또는 "커넥터 추가" 화면에 아래 두 가지를 입력한다:
+
+| 항목 | 값 |
+| --- | --- |
+| 서버 주소(URL) | `https://api.kimyoung.work/mcp/image-generator` |
+| HTTP 헤더 | `Authorization=Bearer 발급받은_API_키` |
+
+`발급받은_API_키` 자리에 1번에서 받은 키를 그대로 붙여넣으면 된다.
+
+**3. JSON으로 직접 설정해야 하는 프로그램이라면**
+
+```json
+{
+  "mcpServers": {
+    "ky-image-generator": {
+      "type": "http",
+      "url": "https://api.kimyoung.work/mcp/image-generator",
+      "headers": {
+        "Authorization": "Bearer 발급받은_API_키"
+      }
+    }
+  }
+}
+```
+
+> `발급받은_API_키` 부분만 실제로 발급받은 키로 바꿔서 쓴다. API 키는 비밀번호와 같으니 다른 사람과 공유하거나 채팅·문서·화면 캡처 등 공개된 곳에 올리지 않는다.
+
 ## 사용법
 
 설치 후 대화 중에 원하는 이미지를 설명하면 `generate_image` 툴이 호출된다. 입력 가능한 옵션:
@@ -57,3 +96,4 @@ codex mcp login ky-image-generator
 - 인증 오류가 나거나 로그인이 안 되면 재직 여부(퇴사자는 로그인해도 차단됨)를 우선 확인한다.
 - **Claude Code**: 브라우저 로그인이 안 뜨면 `/mcp`로 재연결해본다.
 - **Codex CLI**: "not logged in" 오류가 나면 `codex mcp login ky-image-generator`를 다시 실행한다.
+- **다른 프로그램(API 키 방식)**: 인증 오류가 나면 [API 키 발급 페이지](https://api.kimyoung.work/llm-gateway/my-key)에서 키가 살아있는지, HTTP 헤더를 `Authorization=Bearer 발급받은_API_키` 형식 그대로 입력했는지 확인한다.

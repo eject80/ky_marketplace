@@ -95,6 +95,19 @@ claude --plugin-dir ./<plugin-name>
 
 ---
 
+## 공지사항
+
+**`ky-image-generator`는 Claude Code / Codex CLI가 아닌 다른 프로그램에서도 수동으로 연결할 수 있다.** MCP 서버 주소를 직접 입력할 수 있는 프로그램(예: Chatbox AI 등)이라면 아래 정보로 연결하면 된다.
+
+- (주)아이비김영 재직자만 API 키를 발급받을 수 있다.
+- API 키 발급: https://api.kimyoung.work/llm-gateway/my-key
+- 서버 주소(URL): `https://api.kimyoung.work/mcp/image-generator`
+- HTTP 헤더: `Authorization=Bearer 발급받은_API_키`
+
+자세한 절차와 JSON 설정 예시는 [`ky-image-generator/README.md`](ky-image-generator/README.md#다른-프로그램-수동-설치) 참고.
+
+---
+
 ## Uninstall
 
 
