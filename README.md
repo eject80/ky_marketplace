@@ -46,6 +46,17 @@ codex plugin add PPT-creator@ky-marketplace
 codex plugin add ky-image-generator@ky-marketplace
 ```
 
+### Claude Desktop
+
+Claude Desktop 앱도 Claude Code CLI와는 별도의 UI로 플러그인 마켓플레이스를 지원한다.
+
+1. Claude Desktop을 열고 왼쪽 사이드바의 **Customize** 메뉴를 연다.
+2. **Plugins** 탭 → "Personal plugins" 섹션의 **+** 버튼 → **Add marketplace**를 클릭한다.
+3. **Add from a repository**를 선택하고 저장소 주소(`eject80/ky_marketplace`)를 입력한다.
+4. 마켓플레이스가 추가되면 **Browse plugins**에서 원하는 플러그인을 찾아 **Install**을 클릭한다.
+
+> CLI의 `/plugin` 명령과 별개의 UI지만 같은 `.claude-plugin/marketplace.json`을 읽는다. `ky-image-generator`도 여기서 설치할 수 있고, 로그인은 Claude Code와 동일하게 첫 사용 시 브라우저로 자동 연결된다.
+
 ### 로컬 clone으로 설치 (오프라인 사용, 직접 수정 시)
 
 ```bash
@@ -97,18 +108,19 @@ claude --plugin-dir ./<plugin-name>
 
 ## 공지사항
 
-**`ky-image-generator`는 Claude Code / Codex CLI가 아닌 다른 프로그램에서도 수동으로 연결할 수 있다.** MCP 서버 주소를 직접 입력할 수 있는 프로그램(예: Chatbox AI 등)이라면 아래 정보로 연결하면 된다.
+**`ky-image-generator`는 Claude Code / Codex CLI가 아닌 다른 프로그램에서도 쓸 수 있다.** 프로그램에 따라 연결 방식이 다르다:
 
-- (주)아이비김영 재직자만 API 키를 발급받을 수 있다.
-- API 키 발급: https://api.kimyoung.work/llm-gateway/my-key
+| 프로그램 | 연결 방법 | 인증 |
+| --- | --- | --- |
+| Claude Desktop | 이 마켓플레이스를 그대로 설치 (위 [Claude Desktop](#claude-desktop) 참고) | 자동 OAuth (사내 이메일 인증) |
+| ChatGPT Desktop | `ky-image-generator`만 개별 연결 | OAuth (사내 이메일 인증) |
+| Chatbox AI 등 그 외 프로그램 | `ky-image-generator`만 개별 연결 | API 키 |
+
+- (주)아이비김영 재직자만 사용 가능하다.
+- API 키가 필요한 경우 발급처: https://api.kimyoung.work/llm-gateway/my-key
 - 서버 주소(URL): `https://api.kimyoung.work/mcp/image-generator`
-- HTTP 헤더: `Authorization=Bearer 발급받은_API_키`
 
-Chatbox AI 기준 실제 입력 화면 예시:
-
-![Chatbox AI MCP 서버 편집 화면 — 이름 ky-image-generator, 유형 원격(http/sse), URL https://api.kimyoung.work/mcp/image-generator, HTTP Header에 Authorization=Bearer 발급받은_API_키](ky-image-generator/docs/chatbox-mcp-setup.png)
-
-자세한 절차와 JSON 설정 예시는 [`ky-image-generator/README.md`](ky-image-generator/README.md#다른-프로그램-수동-설치) 참고.
+ChatGPT Desktop 연결 절차, Chatbox AI용 API 키 절차·JSON 설정 예시·스크린샷은 [`ky-image-generator/README.md`](ky-image-generator/README.md#다른-프로그램-수동-설치) 참고.
 
 ---
 
