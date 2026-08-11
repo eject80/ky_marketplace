@@ -139,7 +139,7 @@ claude --plugin-dir ./<plugin-name>
 | [`Supanova-Design-Skill`](Supanova-Design-Skill) | 프리미엄 한국어 랜딩페이지 디자인 시스템                    | `output` · `redesign` · `soft` · `taste`   |
 | [`card-news-creator`](card-news-creator)         | 컨텍스트 입력 → 카드뉴스 HTML + PNG 자동 생성 (템플릿 8종)  | `card-news-create`                         |
 | [`PPT-creator`](PPT-creator)                     | 12×24 그리드 기반 PPTX 생성·이미지 내보내기·슬라이드 수정     | `ppt-create` · `ppt-export` · `ppt-review` |
-| [`ky-image-generator`](ky-image-generator)       | Gemini 이미지 생성 → Google Drive 업로드 MCP 도구 (사내용) | — (MCP 도구만, 스킬 없음)                    |
+| [`ky-image-generator`](ky-image-generator)       | Gemini 이미지 생성 → Google Drive 업로드 + 생성 이력 조회 MCP 도구 (사내용) | — (MCP 도구만, 스킬 없음)                    |
 
 
 각 플러그인의 자세한 사용법은 폴더별 README를 참고.
