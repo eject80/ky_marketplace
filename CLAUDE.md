@@ -81,10 +81,12 @@ Codex CLI (`.agents/plugins/marketplace.json`) — `source`는 **태그된 객�
 Codex는 `.claude-plugin/marketplace.json` 경로 자체는 인식하지만 `source`가 문자열이라 파싱이 안 맞아서 별도 파일이 필요하다 (직접 검증 완료 — `codex plugin marketplace add .` 후 `.claude-plugin/marketplace.json`만 있을 땐 플러그인이 하나도 안 뜨고, `.agents/plugins/marketplace.json`을 추가하니 5개 다 인식됨).
 
 - `source`(Claude)/`source.path`(Codex)는 루트에서 각 플러그인 폴더를 가리키는 **상대 경로**다. 절대 경로는 이식성이 깨지므로 절대 사용하지 않는다.
-- **버전 범프 규칙:** 플러그인 버전 변경 시 반드시 세 곳 모두 업데이트
+- **버전 범프 규칙:** 플러그인 버전 변경 시 업데이트
   1. `{plugin}/.claude-plugin/plugin.json` → `version`
   2. `{plugin}/.codex-plugin/plugin.json` → `version`
-  3. 루트 `.claude-plugin/marketplace.json`과 `.agents/plugins/marketplace.json` → 해당 플러그인 항목의 `version` (다른 플러그인 버전은 건드리지 않음)
+  3. 루트 `.claude-plugin/marketplace.json` → 해당 플러그인 항목의 `version` (다른 플러그인 버전은 건드리지 않음)
+
+  `.agents/plugins/marketplace.json`(Codex)은 버전을 올리지 않는다 — Codex 공식 스펙(`openai/codex` 저장소 `plugin-json-spec.md`)상 플러그인 항목 필수/지원 필드는 `name`·`source`·`policy`·`category`뿐이고 `version`은 없다. 버전은 각 플러그인의 `.codex-plugin/plugin.json`에만 있고 마켓플레이스 목록에는 실리지 않는다. 이 저장소의 6개 플러그인 항목도 실제로 전부 `version` 필드가 없는 상태로 정상 동작 중이니, 여기에 `version`을 추가하지 않는다.
 
 ## `plugin.json` 스펙 규칙
 
